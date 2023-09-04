@@ -32,7 +32,7 @@ public enum Societe{
         return this.manaMult;
     }
 
-    public double getStealhMult(){
+    public double getStealthMult(){
         return this.stealthMult;
     }
 
