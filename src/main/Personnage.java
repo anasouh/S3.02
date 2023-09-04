@@ -2,7 +2,6 @@ package main;
 
 public abstract class Personnage {
     private final static int MANA_MAGIC = 20;
-    private final static int MANA_PHYSIC = 5;
     
     private String name;
     private int pv;
@@ -81,7 +80,6 @@ public abstract class Personnage {
     public void frapper(Personnage p) {
         // Attaque phyisque
         p.setPv(p.pv - calculerDegats(p));
-        this.setMana(this.mana - MANA_PHYSIC);
     }
 
     public void lancerSort(Personnage p) {
