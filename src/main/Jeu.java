@@ -57,7 +57,7 @@ public class Jeu {
 
     public static void actionJoueur(Livreur livreur, Monstre monstre, char choix, Scanner sc){
         
-        switch (choix.toUpperCase()) {
+        switch (Character.toUpperCase(choix)) {
             case 'P': //attaque physique
                 livreur.frapper(monstre);
                 break;
