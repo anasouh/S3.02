@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.lang.Math;
 
@@ -13,6 +14,8 @@ public class Livreur extends Personnage{
     private Societe societe; //decides of the multiplier for all the double characteristics
     
     private static Random random = new Random();
+
+    ArrayList<Item> inventory = new ArrayList<Item>();
 
     public Livreur(String name, Societe societe){
         //name,hp,physAtk,mana,def,speed
@@ -90,6 +93,17 @@ public class Livreur extends Personnage{
     public void setSociete(Societe societe) {
         this.societe = societe;
     }
+    
+    public void addItem(Item item){
+        inventory.add(item);
+    }
 
+    public String seeInventory(){
+        String result;
+        for (Item item : inventory){
+            result = result + item.toString() + "\n";
+        }
+        return result;
+    }
     
 }
