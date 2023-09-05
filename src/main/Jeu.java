@@ -9,7 +9,7 @@ public class Jeu {
         String nom = sc.nextLine();
         Livreur perso = new Livreur(nom, Societe.Deliveroo);
         System.out.println();
-        System.out.println("Ok " + perso.name + ", voici vos statistiques : ");
+        System.out.println("Ok " + perso.getName() + ", voici vos statistiques : ");
         System.out.println(perso);
         sc.close();
     }
