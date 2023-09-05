@@ -53,9 +53,59 @@ public class Jeu {
         System.out.println();
         System.out.println("Ok " + perso.getName() + ", voici vos statistiques : ");
         System.out.println(perso);
-        sc.close();
         return perso;
     }
+
+
+    public static boolean Combat(Livreur livreur, Monstre monstre){ //retourne true si Livreur gagne
+        Scanner sc = new Scanner(System.in);
+        char choix;
+        
+        while (livreur.getHp() > 0 && monstre.getHp() > 0){
+            
+            System.out.print("Que voulez vous faire ? ");
+            System.out.println("Attaque Physique - 'P' ; Attaque  Magique - 'M' ; Bloquer - 'B' ; Utiliser un objet - 'O' ");
+
+            choix = sc.next().charAt(0);
+    
+            switch (choix)
+            {
+                case 'P': //attaque physique
+                    livreur.frapper(monstre);
+                    break;
+
+                case 'M': //attaque magique
+                    livreur.lancerSort(monstre);
+                    break;
+
+                case 'B': //bloquer
+                    livreur.setImmune(true);
+                    break;
+
+                case 'O': //utiliser un objet
+                    livreur.seeConsumable(); //afficher la liste des item consommables possédés
+                    int conso = sc.next().charAt(0);
+                    livreur.removeItem(livreur.inventory.get(conso));
+                    break;
+
+                default:
+                    System.out.println("conard");
+
+                }
+                
+                // monstre attaque
+                monstre.frapper(livreur);
+                
+                System.out.println("Livreur : " + livreur);
+                System.out.println("Monstre : " + monstre);
+        }
+
+        sc.close();
+
+        return (livreur.getHp() > 0);
+        
+    }
+    
 
     public static List<Salle> genererSalles()
     {
@@ -69,14 +119,6 @@ public class Jeu {
     }
 
 
-
-
-    public static void DebuterPartie()
-    {
-        Livreur joueur = creerLivreur();
-        lstSalle = genererSalles();
-
-    }
 
     public void jouerTour(Livreur l)
     {
@@ -93,7 +135,16 @@ public class Jeu {
     
     public static void main(String[] args)
     {
-        DebuterPartie();
+
+        // Debuter Partie
+        Livreur joueur = creerLivreur();
+        lstSalle = genererSalles();
+
+        Monstre monstre = new Monstre("Maxime",100,10,100,10,1,10);
+
+        boolean win = Combat(joueur,monstre);
+        System.out.println(win);
+
     }
 
 
