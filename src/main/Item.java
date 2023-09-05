@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Random;
 
 public enum Item {
     //Equipements
@@ -75,5 +76,9 @@ public enum Item {
             str += " [" + type + "]";
         }
         return str;
+    }
+
+    public static Item randomObjet(){
+        return Item.values()[new Random().nextInt(Item.values().length)];
     }
 }
