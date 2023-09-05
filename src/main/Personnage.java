@@ -47,6 +47,7 @@ public abstract class Personnage {
 
     public void setHp(double d) {
         this.hp = d;
+        if (this.hp > 100) this.hp = 100;
     }
 
     public double getPhysAtk() {
