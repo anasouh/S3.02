@@ -42,8 +42,8 @@ public class Monstre extends Personnage{
 
     @Override
     public String toString(){
-        String result = super.toString();
-        result = result + "Type : " + this.type + " - Danger : " + this.danger;
+        String result = Color.RED + super.toString();
+        result = result + "Type : " + this.type + " - Danger : " + this.danger + Color.RESET;
         return result;
     }
 

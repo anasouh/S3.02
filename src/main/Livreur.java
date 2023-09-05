@@ -40,7 +40,7 @@ public class Livreur extends Personnage{
 
     @Override
     public String toString() {
-        return Color.GREEN + "Livreur [hp=" + this.hp + ", name=" + this.name + ", mana=" + this.mana + ", atk=" + this.physAtk + ", def=" + this.def
+        return Color.GREEN + "[hp=" + this.hp + ", name=" + this.name + ", mana=" + this.mana + ", atk=" + this.physAtk + ", def=" + this.def
                 + ", stealth=" + this.stealth + ", speed=" + this.speed + ", societe=" + this.societe + "]" + Color.RESET;
     }
     

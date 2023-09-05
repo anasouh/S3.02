@@ -131,7 +131,7 @@ public abstract class Personnage {
 
     @Override
     public String toString() {
-        return "Personnage [name=" + name + ", hp=" + hp + ", physAtk=" + physAtk + ", mana=" + mana + ", def=" + def
+        return "[name=" + name + ", hp=" + hp + ", physAtk=" + physAtk + ", mana=" + mana + ", def=" + def
                 + ", speed=" + speed + "]";
     }
 
