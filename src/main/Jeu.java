@@ -75,6 +75,11 @@ public class Jeu {
     {
         Livreur joueur = creerLivreur();
         lstSalle = genererSalles();
+
+    }
+
+    public void jouerTour(Livreur l)
+    {
         int nbSalle = lstSalle.size();
         for (int i = 0; i < nbSalle; i++)
         {
