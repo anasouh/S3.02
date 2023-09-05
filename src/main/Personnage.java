@@ -96,7 +96,9 @@ public abstract class Personnage {
 
     public void frapper(Personnage p) {
         // Attaque physique
-        p.setHp(p.hp - calculerDegats(p));
+        int degats = calculerDegats(p);
+        System.out.println(p.getName() + " perd " + degats + "HP!");
+        p.setHp(p.hp - degats);
     }
 
     public boolean lancerSort(Personnage p) {

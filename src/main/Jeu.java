@@ -28,10 +28,10 @@ public class Jeu {
     public static Livreur creerLivreur()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Entrez votre nom de personnage : ");
+        System.out.print("Entrez le nom de votre personnage: ");
         String nom = sc.nextLine();
         System.out.println("Choisissez votre societe : 'U' pour Uber eat, 'D' pour Deliveroo, " +
-                "'K' pour KingDelivery, autre caracter pour Indépendant");
+                "'K' pour KingDelivery, autre caractère pour Indépendant");
         char choix = sc.next().charAt(0);
         Societe societe;
 
@@ -51,9 +51,31 @@ public class Jeu {
         }
         Livreur perso = new Livreur(nom, societe);
         System.out.println();
-        System.out.println("Ok " + perso.getName() + ", voici vos statistiques : ");
-        System.out.println(perso);
         return perso;
+    }
+
+    public static void actionJoueur(Livreur livreur, Monstre monstre, char choix, Scanner sc){
+        switch (choix) {
+            case 'P': //attaque physique
+                livreur.frapper(monstre);
+                break;
+
+            case 'M': //attaque magique
+                livreur.lancerSort(monstre);
+                break;
+
+            case 'B': //bloquer
+                livreur.setImmune(true);
+                break;
+
+            case 'O': //utiliser un objet
+                List<Item> consommables = livreur.listeCons(); //afficher la liste des item consommables possédés
+                int conso = sc.nextInt();
+                livreur.useItem(consommables, consommables.get(conso));
+                break;
+
+            default: System.out.println("feur");
+        }
     }
 
 
@@ -71,41 +93,24 @@ public class Jeu {
 
             choix = sc.next().charAt(0);
     
-            switch (choix)
-            {
-                case 'P': //attaque physique
-                    livreur.frapper(monstre);
-                    break;
-
-                case 'M': //attaque magique
-                    livreur.lancerSort(monstre);
-                    break;
-
-                case 'B': //bloquer
-                    livreur.setImmune(true);
-                    break;
-
-                case 'O': //utiliser un objet
-                    List<Item> consommables = livreur.listeCons(); //afficher la liste des item consommables possédés
-                    int conso = sc.nextInt();
-                    livreur.useItem(consommables, consommables.get(conso));
-                    break;
-
-                default:
-                    System.out.println("feur");
-
-                }
-                
-                // monstre attaque
+            if (livreur.getSpeed() > monstre.getSpeed()){
+                actionJoueur(livreur, monstre, choix, sc);
+                //actionMonstre();
                 monstre.frapper(livreur);
+            } else {
+                monstre.frapper(livreur);
+                actionJoueur(livreur, monstre, choix, sc);
+            }
 
-                livreur.setImmune(false);
+            livreur.setImmune(false);
         }
+
+        System.out.println("Livreur : " + livreur);
+        System.out.println("Monstre : " + monstre);
 
         sc.close();
 
         return (livreur.getHp() > 0);
-        
     }
     
 
@@ -153,7 +158,7 @@ public class Jeu {
         joueur.inventory.add(Item.BURGER);
         joueur.inventory.add(Item.POMME);
 
-        Monstre monstre = new Monstre("Maxime",100,10,100,10,1,10);
+        Monstre monstre = new Monstre("pas Maxime");
 
         boolean win = Combat(joueur,monstre);
         System.out.println(win);
