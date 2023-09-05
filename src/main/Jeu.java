@@ -1,10 +1,13 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Jeu {
     private static List<Item> listeObjet;
+    private static List<Salle> lstSalle = new ArrayList<>();
 //t
      public static void setListeObjet(List<Item> listeObjet) {
         Jeu.listeObjet = listeObjet;
@@ -50,25 +53,108 @@ public class Jeu {
         System.out.println();
         System.out.println("Ok " + perso.getName() + ", voici vos statistiques : ");
         System.out.println(perso);
-        sc.close();
         return perso;
     }
+
+
+    public static boolean Combat(Livreur livreur, Monstre monstre){ //retourne true si Livreur gagne
+        Scanner sc = new Scanner(System.in);
+        char choix;
+        
+        while (livreur.getHp() > 0 && monstre.getHp() > 0){
+            
+            System.out.print("Que voulez vous faire ? ");
+            System.out.println("Attaque Physique - 'P' ; Attaque  Magique - 'M' ; Bloquer - 'B' ; Utiliser un objet - 'O' ");
+
+            choix = sc.next().charAt(0);
     
-    public static void jouerTour(Livreur l)
-    {
+            switch (choix)
+            {
+                case 'P': //attaque physique
+                    livreur.frapper(monstre);
+                    break;
+
+                case 'M': //attaque magique
+                    livreur.lancerSort(monstre);
+                    break;
+
+                case 'B': //bloquer
+                    livreur.setImmune(true);
+                    break;
+
+                case 'O': //utiliser un objet
+                    List<Item> consommables = livreur.listeCons(); //afficher la liste des item consommables possédés
+                    int conso = sc.nextInt();
+                    livreur.useItem(consommables, consommables.get(conso));
+                    break;
+
+                default:
+                    System.out.println("conard");
+
+                }
+                
+                // monstre attaque
+                monstre.frapper(livreur);
+                
+                System.out.println("Livreur : " + livreur);
+                System.out.println("Monstre : " + monstre);
+        }
+
+        sc.close();
+
+        return (livreur.getHp() > 0);
         
     }
+    
+
+    public static List<Salle> genererSalles()
+    {
+        List<Salle> res = new ArrayList<>();
+        int rnd = new Random().nextInt(10)+1;
+        for (int i = 0; i<rnd; i++)
+        {
+            res.add(new Salle());
+        }
+        return res;
+    }
+
+
+
+    public void jouerTour(Livreur l)
+    {
+        int nbSalle = lstSalle.size();
+        Salle current = lstSalle.get(0);
+        lstSalle.remove(0);
+        System.out.println("Vous arriver en face de "+current.getName().toString()"\n" +);
+        if (current.hasEvent())
+        {
+            current.lancerEvent(l);
+        }
+        else
+        {
+            System.out.println("Cette salle est vide...");
+        }
+        
+    }
+
     
     
     
     public static void main(String[] args)
     {
-        Livreur perso = creerLivreur();
-        perso.addItem(Item.BATON);
-        perso.addItem(Item.KEBAB);
-        perso.addItem(Item.CHAUSSETTES);
-        System.out.println(perso.seeInventory());
-        
+
+        // Debuter Partie
+        Livreur joueur = creerLivreur();
+        lstSalle = genererSalles();
+
+        joueur.inventory.add(Item.KEBAB);
+        joueur.inventory.add(Item.BURGER);
+        joueur.inventory.add(Item.POMME);
+
+        Monstre monstre = new Monstre("Maxime",100,10,100,10,1,10);
+
+        boolean win = Combat(joueur,monstre);
+        System.out.println(win);
 
     }
 

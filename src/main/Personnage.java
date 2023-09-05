@@ -5,7 +5,7 @@ public abstract class Personnage {
     //changed all the attributes to protected because of issues with Livreur (which extends Personnage)
     //changed the attributes to double because of issues with Livreur and Societe which do calculations in percentage (needing double)
 
-    private final static int MANA_MAGIC = 20;
+    private final static double MANA_MAGIC = 20;
     
     protected String name;
     protected double hp;
@@ -82,13 +82,13 @@ public abstract class Personnage {
     }
 
     public void frapper(Personnage p) {
-        // Attaque phyisque
+        // Attaque physique
         p.setHp(p.hp - calculerDegats(p));
     }
 
     public boolean lancerSort(Personnage p) {
         // Attaque magique
-        if (mana < MANA_MAGIC) {
+        if (mana > MANA_MAGIC) {
             p.setHp(p.hp - this.physAtk * 1.2);
             this.setMana(this.mana - MANA_MAGIC);
             return true;
@@ -101,5 +101,13 @@ public abstract class Personnage {
         if (this.speed < p.speed) return p;
         else return this;
     }
+
+    @Override
+    public String toString() {
+        return "Personnage [name=" + name + ", hp=" + hp + ", physAtk=" + physAtk + ", mana=" + mana + ", def=" + def
+                + ", speed=" + speed + "]";
+    }
+
+    
 
 }

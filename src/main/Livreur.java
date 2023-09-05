@@ -1,21 +1,21 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 import java.lang.Math;
 
 public class Livreur extends Personnage{
 
     private String name;
-    private int hp = 100; //max=100
-    private double mana = 100; //max=100
     private double stealth; //the enemy detects you if you don't have stealth
-
+    private boolean immune = false; //during fight or using an item, livreur can be immune to the enemy's physical attacks
     private Societe societe; //decides of the multiplier for all the double characteristics
     
     private static Random random = new Random();
 
-    ArrayList<Item> inventory = new ArrayList<Item>();
+    List<Item> inventory = new ArrayList<Item>();
 
     public Livreur(String name, Societe societe){
         //name,hp,physAtk,mana,def,speed
@@ -93,7 +93,15 @@ public class Livreur extends Personnage{
     public void setSociete(Societe societe) {
         this.societe = societe;
     }
-    
+
+    public boolean isImmune() {
+        return immune;
+    }
+
+    public void setImmune(boolean immune) {
+        this.immune = immune;
+    }
+
     public void addItem(Item item){
         inventory.add(item);
     }
@@ -104,6 +112,39 @@ public class Livreur extends Personnage{
             result = result + item.toString() + "\n";
         }
         return result;
+    }
+
+    public List<Item> listeCons(){
+        int cpt = 0;
+        List<Item> result = new ArrayList<>();
+        Iterator<Item> it = inventory.iterator();
+        Item item;
+        while (it.hasNext()) {
+            item = it.next();
+            if (item.getCons()){
+                System.out.println("[" + cpt + "] " + item.toString() + "\n");
+                result.add(item);
+            }
+            cpt++;
+            it.remove();
+        }
+        return result;
+    }
+
+    public boolean useItem(List<Item> consommables, Item item){ //Faire en sort que la stat redevienne normal au tour suivant
+        if (consommables.contains(item)){
+            switch (item.getModifiedStat()) {
+                case "atk":
+                    this.setPhysAtk(this.getPhysAtk() + item.getpoints());
+                    break;
+                default:
+                    System.out.println("nique");
+            }
+            consommables.remove(item);
+            this.inventory.addAll(consommables);
+            return true;
+        }
+        else return false;
     }
     
 }
