@@ -32,6 +32,10 @@ public class Jeu {
         System.out.println();
         System.out.println("Ok " + perso.getName() + ", voici vos statistiques : ");
         System.out.println(perso);
+        perso.addItem(Item.BATON);
+        perso.addItem(Item.KEBAB);
+        perso.addItem(Item.CHAUSSETTES);
+        System.out.println(perso.seeInventory());
         sc.close();
     }
 
