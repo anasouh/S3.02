@@ -56,6 +56,7 @@ public class Jeu {
     }
 
     public static void actionJoueur(Livreur livreur, Monstre monstre, char choix, Scanner sc){
+        
         switch (choix) {
             case 'P': //attaque physique
                 livreur.frapper(monstre);
@@ -83,6 +84,10 @@ public class Jeu {
     public static boolean Combat(Livreur livreur, Monstre monstre){ //retourne true si Livreur gagne
         Scanner sc = new Scanner(System.in);
         char choix;
+
+        //during fight these stats can change, after combat they're reverted back to its original value
+        double ancienneDef = livreur.getDef() ; double ancienneAtq = livreur.getPhysAtk(); 
+        double ancienneSpeed = livreur.getSpeed(); double ancienneStealth = livreur.getStealth(); 
         
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
             
@@ -91,9 +96,9 @@ public class Jeu {
             
             System.out.print("Que voulez vous faire ? ");
             System.out.println("Attaque Physique - 'P' ; Attaque  Magique - 'M' ; Bloquer - 'B' ; Utiliser un objet - 'O' ");
-
+            
             choix = sc.next().charAt(0);
-    
+            
             if (livreur.getSpeed() > monstre.getSpeed()){
                 actionJoueur(livreur, monstre, choix, sc);
                 //actionMonstre();
@@ -102,19 +107,25 @@ public class Jeu {
                 monstre.frapper(livreur);
                 actionJoueur(livreur, monstre, choix, sc);
             }
-
+            
             livreur.setImmune(false);
         }
-
+        
         System.out.println("Livreur : " + livreur);
         System.out.println("Monstre : " + monstre);
-
+        
         sc.close();
+        
+        if (livreur.getHp() > 0) {
+            livreur.setDef(ancienneDef); livreur.setPhysAtk(ancienneAtq);
+            livreur.setSpeed(ancienneSpeed); livreur.setStealth(ancienneStealth);
+            return true;
+        }
 
-        return (livreur.getHp() > 0);
-    }
+        return false;
+        }
     
-
+    
     public static List<Salle> genererSalles()
     {
         List<Salle> res = new ArrayList<>();
