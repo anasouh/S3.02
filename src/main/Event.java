@@ -25,7 +25,8 @@ public class Event{
             livreur.addItem(objet);
             }
             else{
-                //faire un combat entre un mimick et le livreur
+                Monstre mimick = new Monstre("Mimick");
+                Jeu.Combat(livreur, mimick);
             }
         }
         if(rep.equals("non")){
@@ -55,6 +56,8 @@ public class Event{
             }
 
             if(rdm >74){
+                Monstre monstre = new Monstre();
+                Jeu.Combat(livreur, monstre);
                 //créer un monstre aléatoire et faire un combat avec le livreur
             }
 
@@ -94,6 +97,8 @@ public class Event{
                     System.out.println("vous donner un de vos tacos a la personne pour la calmer et partez");
                 }
                 if(rep.equals("non")){
+                    Monstre pnj = new Monstre("etrange");
+                    Jeu.Combat(livreur, pnj);
                     //faire un combat entre un pnj et le livreur
                 }
             }
@@ -121,6 +126,8 @@ public class Event{
             }
             if(rdm>80){
                 System.out.println("oh non un monstre est présent ");
+                Monstre monstre = new Monstre();
+                Jeu.Combat(livreur, monstre);
                 //combat monstre / livreur a faire 
             }
         }
@@ -152,7 +159,9 @@ public class Event{
 
         public static void eventCombat(Livreur livreur){
             System.out.println("Un monstre vous attaque !");
-            //timer 
+            Thread.sleep(1000);
+            Monstre monstre = new Monstre();
+            Jeu.Combat(livreur, monstre);
             //combat livreur/monstre random
             System.out.println("Vous avez réussi a vaince le monstre");
         }
@@ -160,29 +169,33 @@ public class Event{
         public static void eventMonstreDos(Livreur livreur){
             Scanner scmonstredos = new Scanner(System.in);
             String rep ="";
+            Monstre monstre = new Monstre();
             //generer un monstre
             System.out.println("Vous reperez un monstre au loin voulez vous l'analyser ?");
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scmonstredos.nextLine();
-            System.out.println(/*afficher monstre*/);
+            System.out.println(monstre);
 
             int rdm = (int)Event.rng.nextInt(101);
-            //int proba = danger du mob * stealh / 100
-          /*   if(rdm <= proba){
+            int proba = monstre.getDanger() * livreur.getStealth() / 100;
+
+             if(rdm <= proba){
+                System.out.println("oh non le monstre vous a reperé !");
+                Jeu.Combat(livreur, monstre);
                 //faire un combat contre le monstre
             }
             else{
                 System.out.println("que voulez vous faire ? \n 1) attaquer \n 2) fuir");
                 while(!(rep.equals("attaquer") || rep.equals("fuir"))){
             rep = scmonstredos.nextLine();
-            } !!!!!!!!!!!!!!*
+            } 
             if(rep.equals("attaquer")){
-                //lancer un combat contre le monstre
+                Jeu.Combat(livreur, monstre);
             }
             if(rep.equals("fuir")){
                 System.out.println("vous arrivez a vous echapper sans combattre ");
             }
-        }*/
+        }
         }
         scmonstredos.close();
         }
@@ -193,8 +206,7 @@ public class Event{
             System.out.println("Vous tombez dans un piège en marchant vous perdez de la vie ");
             livreur.setHp(livreur.getHp() - (livreur.getHp()*0.05)+5);
         }
-        Password for 'https://selim.hamza.etu@gitlab.univ-lille.fr': 
-
+        
 
      public static void aleatoire(Livreur livreur){
         int rmd = Event.rng.nextInt(101);
