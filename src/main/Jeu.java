@@ -158,6 +158,10 @@ public class Jeu {
             return true;
         }
 
+        else if (monstre.getHp() <= 0 && livreur.getHp() <= 0){
+            if (monstre.getSpeed() <= livreur.getSpeed()) return true;
+        }
+
         return false;
         }
     
