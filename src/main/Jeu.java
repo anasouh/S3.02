@@ -22,17 +22,50 @@ public class Jeu {
         return listeObjet;
     }
 
-    
-    
-    public static void main(String[] args) {
+    public static Livreur creerLivreur()
+    {
         Scanner sc = new Scanner(System.in);
         System.out.print("Entrez votre nom de personnage : ");
         String nom = sc.nextLine();
-        Livreur perso = new Livreur(nom, Societe.Deliveroo);
+        System.out.println("Choisissez votre societe : 'U' pour Uber eat, 'D' pour Deliveroo, " +
+                "'K' pour KingDelivery, autre caracter pour Indépendant");
+        char choix = sc.next().charAt(0);
+        Societe societe;
+
+        switch (choix)
+        {
+            case 'U':
+                societe = Societe.UberEats;
+                //break;
+            case 'D':
+                societe = Societe.Deliveroo;
+                //break;
+            case 'K':
+                societe = Societe.KingDelivery;
+                //break;
+            default:
+                societe = Societe.Indépendant;
+        }
+        Livreur perso = new Livreur(nom, societe);
         System.out.println();
         System.out.println("Ok " + perso.getName() + ", voici vos statistiques : ");
         System.out.println(perso);
         sc.close();
+        return perso;
+    }
+
+    public static void jouerTour(Livreur l)
+    {
+        
+    }
+
+    
+    
+    public static void main(String[] args)
+    {
+        Livreur joueur = creerLivreur();
+
+
     }
 
 

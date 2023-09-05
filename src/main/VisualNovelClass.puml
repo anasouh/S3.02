@@ -1,27 +1,54 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+abstract class Personnage
+class AbstractCollection
+class Salle
+class Livreur
+class Monstre
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+enum Societe
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+Livreur --- Societe : <<Appartient>>
 
-class ArrayList {
-Object[] elementData
-size()
+abstract class Personnage
+{
+-name : String
+-pv : Integer
+-atq : Integer
+-mana : Integer
+-speed : Integer
+-inventer : Item[]
+-getName() : String
+-getAtq() : Integer
+-setAtq(modif : Integer)
+-getPv() : Integer
+-setPv() :
+-attaquerPhysiqu(p :Personnage) : Integer
+-attaquerMagic(p :Personnage) : Integer
+
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class Livreur extends Personnage
+{
+   -discretion : Integer
 }
+
+class Monstre extends Personnage
+{
+
+}
+
+class Salle
+{
+  -name : String
+  -event :  Event
+     -lstEvent : Event[*]
+}
+
+
+
+class Event
+
 
 @enduml
