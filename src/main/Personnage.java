@@ -23,6 +23,16 @@ public abstract class Personnage {
         this.speed = speed;
     }
 
+    public Personnage(String name){ //monstre générique
+        this.name = name;
+        this.hp = 100;
+        this.physAtk = 20;
+        this.mana = 100;
+        this.def = 20;
+        this.speed = 15;
+    }
+
+
     public String getName() {
         return name;
     }
@@ -78,7 +88,10 @@ public abstract class Personnage {
 
     public int calculerDegats(Personnage p) {
         // Calculer les dégâts émis à un personnage en prenant compte de sa défense
-        return (int) (this.physAtk * p.calculerReduction());
+        if (p instanceof Livreur && ((Livreur)p).isImmune()){
+            return 0;
+        }
+        return (int)(this.physAtk * p.calculerReduction());
     }
 
     public void frapper(Personnage p) {

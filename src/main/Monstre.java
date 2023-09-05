@@ -11,6 +11,10 @@ public class Monstre extends Personnage{
         this.type = MonstreType.random();
     }
 
+    public Monstre(String name){
+        super(name);
+    }
+
     public int getDanger() {
         return danger;
     }

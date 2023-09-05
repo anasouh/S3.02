@@ -63,6 +63,9 @@ public class Jeu {
         
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
             
+            System.out.println("Livreur : " + livreur);
+            System.out.println("Monstre : " + monstre);
+            
             System.out.print("Que voulez vous faire ? ");
             System.out.println("Attaque Physique - 'P' ; Attaque  Magique - 'M' ; Bloquer - 'B' ; Utiliser un objet - 'O' ");
 
@@ -89,15 +92,14 @@ public class Jeu {
                     break;
 
                 default:
-                    System.out.println("conard");
+                    System.out.println("feur");
 
                 }
                 
                 // monstre attaque
                 monstre.frapper(livreur);
-                
-                System.out.println("Livreur : " + livreur);
-                System.out.println("Monstre : " + monstre);
+
+                livreur.setImmune(false);
         }
 
         sc.close();
@@ -125,7 +127,7 @@ public class Jeu {
         int nbSalle = lstSalle.size();
         Salle current = lstSalle.get(0);
         lstSalle.remove(0);
-        System.out.println("Vous arriver en face de "+current.getName().toString()"\n" +);
+        System.out.println("Vous arriver en face de " + current.getName().toString() + "\n");
         if (current.hasEvent())
         {
             current.lancerEvent(l);

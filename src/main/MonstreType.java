@@ -3,13 +3,13 @@ package main;
 import java.util.Random;
 
 public enum MonstreType {
-    A("Monstre A"),
-    B("Monstre B"),
-    C("Monstre C"),
-    D("Monstre D");
+    Magicien("Magicien"), // mana upgradée
+    Guerrier("Guerrier"), // atk upgradée
+    Defense("Defense"), // défense upgradée
+    Boss("Boss"); // tout upgradé
 
     private String name;
-
+    
     private MonstreType(String name) {
         this.name = name;
     }
@@ -20,9 +20,9 @@ public enum MonstreType {
 
     public static MonstreType random() {
         double val = new Random().nextDouble();
-        if (val < 0.25) return A;
-        else if (val < 0.5) return B;
-        else if (val < 0.75) return C;
-        return D;
+        if (val < 0.35) return Magicien; //35% de chance d'avoir un magicien
+        else if (val < 0.70) return Guerrier; //35% de chance d'avoir un guerrier
+        else if (val < 0.95) return Defense; //25% de chance d'avoir un defense
+        return Boss; //5% de chance d'avoir un boss
     }
 }
