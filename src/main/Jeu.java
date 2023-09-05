@@ -57,7 +57,7 @@ public class Jeu {
 
     public static void actionJoueur(Livreur livreur, Monstre monstre, char choix, Scanner sc){
         
-        switch (choix) {
+        switch (Character.toUpperCase(choix)) {
             case 'P': //attaque physique
                 livreur.frapper(monstre);
                 break;
@@ -77,6 +77,41 @@ public class Jeu {
                 break;
 
             default: System.out.println("feur");
+        }
+    }
+
+    public static void actionMonstre(Livreur livreur, Monstre monstre){
+        double proba = new Random().nextDouble();
+        if (monstre.getMonstreType().equals(MonstreType.Guerrier) || monstre.getMonstreType().equals(MonstreType.MiniBoss)){
+            if (proba < 0.60){
+                monstre.frapper(livreur);
+            }
+            else if (proba < 0.90){
+                monstre.setImmune(true);
+            }
+            else {
+                monstre.lancerSort(livreur);
+            }
+        } else if (monstre.getMonstreType().equals(MonstreType.Defense)){
+            if (proba < 0.30){
+                monstre.frapper(livreur);
+            }
+            else if (proba < 0.75){
+                monstre.setImmune(true);
+            }
+            else {
+                monstre.lancerSort(livreur);
+            }
+        } else if (monstre.getMonstreType().equals(MonstreType.Magicien)){
+            if (proba < 0.15){
+                monstre.frapper(livreur);
+            }
+            else if (proba < 0.40){
+                monstre.setImmune(true);
+            }
+            else {
+                monstre.lancerSort(livreur);
+            }
         }
     }
 
@@ -109,6 +144,7 @@ public class Jeu {
             }
             
             livreur.setImmune(false);
+            monstre.setImmune(false);
         }
         
         System.out.println("Livreur : " + livreur);
@@ -120,6 +156,10 @@ public class Jeu {
             livreur.setDef(ancienneDef); livreur.setPhysAtk(ancienneAtq);
             livreur.setSpeed(ancienneSpeed); livreur.setStealth(ancienneStealth);
             return true;
+        }
+
+        else if (monstre.getHp() <= 0 && livreur.getHp() <= 0){
+            if (monstre.getSpeed() <= livreur.getSpeed()) return true;
         }
 
         return false;
@@ -195,9 +235,14 @@ public class Jeu {
 
     
     
-    
     public static void main(String[] args)
     {
+        System.out.println(Color.RED + "________     __________                   _____________      _____     \n" +
+                                       "___  __ \\_______  /__(_)__   ______________( )__  ____/_____ __  /_   \n" +
+                                       "__  / / /  _ \\_  /__  /__ | / /  _ \\_  ___/|/__  __/  _  __ `/  __/  \n" +
+                                       "_  /_/ //  __/  / _  / __ |/ //  __/  /      _  /___  / /_/ // /_      \n" +
+                                       "/_____/ \\___//_/  /_/  _____/ \\___//_/       /_____/  \\__,_/ \\__/  \n" +
+                                       "                                                                   " + Color.RESET);
 
         // Debuter Partie
         Livreur joueur = creerLivreur();

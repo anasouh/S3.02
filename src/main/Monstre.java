@@ -98,13 +98,19 @@ public class Monstre extends Personnage{
         return type.getName();
     }
 
+<<<<<<< HEAD
     public MonstreType getType()
     {return this.type;}
+=======
+    public MonstreType getMonstreType(){
+        return type;
+    }
+>>>>>>> fc7b7456fe9e937572a4cfb67c98dea723cb381b
 
     @Override
     public String toString(){
-        String result = super.toString();
-        result = result + "Type : " + this.type + " - Danger : " + this.danger;
+        String result = Color.RED + super.toString();
+        result = result + "Type : " + this.type + " - Danger : " + this.danger + Color.RESET;
         return result;
     }
 

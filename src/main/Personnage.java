@@ -13,6 +13,7 @@ public abstract class Personnage {
     protected double mana;
     protected double def;
     protected double speed;
+    private boolean immune = false; //during fight or using an item, livreur can be immune to the enemy's physical attacks
     
     public Personnage(String name, int hp, int physAtk, int mana, int def, int speed) {
         this.name = name;
@@ -82,6 +83,14 @@ public abstract class Personnage {
         this.speed = d;
     }
 
+    public boolean isImmune() {
+        return immune;
+    }
+
+    public void setImmune(boolean immune) {
+        this.immune = immune;
+    }
+
     public double calculerReduction() {
         // Calculer la réduction de dégât produite par notre défense
         return 100 / (100 + this.def);
@@ -89,7 +98,7 @@ public abstract class Personnage {
 
     public int calculerDegats(Personnage p) {
         // Calculer les dégâts émis à un personnage en prenant compte de sa défense
-        if (p instanceof Livreur && ((Livreur)p).isImmune()){
+        if (p.isImmune()){
             return 0;
         }
         return (int)(this.physAtk * p.calculerReduction());
@@ -123,9 +132,14 @@ public abstract class Personnage {
     public abstract void dire(String replique);
     
     @Override
+<<<<<<< HEAD
     public String toString() 
     {
         return "Personnage [name=" + name + ", hp=" + hp + ", physAtk=" + physAtk + ", mana=" + mana + ", def=" + def
+=======
+    public String toString() {
+        return "[name=" + name + ", hp=" + hp + ", physAtk=" + physAtk + ", mana=" + mana + ", def=" + def
+>>>>>>> fc7b7456fe9e937572a4cfb67c98dea723cb381b
                 + ", speed=" + speed + "]";
     }
 
