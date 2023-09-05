@@ -14,7 +14,7 @@ public class Monstre extends Personnage{
     }
 
     public Monstre(String name){ //monstre random
-        super(name,100,(random.nextInt(49) + 1),100,(random.nextInt(49) + 1),(random.nextInt(49) + 1));
+        super(name,100,(random.nextInt(24) + 1),100,(random.nextInt(24) + 1),(random.nextInt(24) + 1));
         this.danger = random.nextInt(100); //si le danger du monstre est + grand que le stealth du Livreur alors il voit le Livreur
         this.type = MonstreType.random();
         if (this.type.equals(MonstreType.Magicien)) this.mana *= 1.5;
@@ -34,6 +34,13 @@ public class Monstre extends Personnage{
 
     public String getName() {
         return type.getName();
+    }
+
+    @Override
+    public String toString(){
+        String result = super.toString();
+        result = result + this.type + this.danger;
+        return result;
     }
 
     
