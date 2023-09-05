@@ -42,12 +42,6 @@ public class Livreur extends Personnage{
     {
         System.out.println(this.getName()+" : "+replique);
     }
-
-    @Override
-    public String toString() {
-        return Color.GREEN + "[hp=" + this.hp + ", name=" + this.name + ", mana=" + this.mana + ", atk=" + this.physAtk + ", def=" + this.def
-                + ", stealth=" + this.stealth + ", speed=" + this.speed + ", societe=" + this.societe + "]" + Color.RESET;
-    }
     
     public static void main(String[] args) {
         Livreur joueur = creerJoueur("Marcel",Societe.Deliveroo);

@@ -132,10 +132,8 @@ public abstract class Personnage {
     public abstract void dire(String replique);
     
     @Override
-    public String toString() 
-    {
-        return "Personnage [name=" + name + ", hp=" + hp + ", physAtk=" + physAtk + ", mana=" + mana + ", def=" + def
-                + ", speed=" + speed + "]";
+    public String toString() {
+        return "\t" + Color.RED + ((int) hp) + " HP | " + Color.RESET + Color.BLUE + ((int) physAtk) + " ATK | " + Color.RESET + Color.GREEN + ((int) def) + " DEF | " + Color.YELLOW + ((int) mana) + " MANA " + Color.RESET;
     }
 
 

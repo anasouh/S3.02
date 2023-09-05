@@ -26,13 +26,34 @@ public class Jeu {
         return listeObjet;
     }
 
+    public static void clear() {
+        System.out.println("\033c");
+    }
+
+    public static String bold(String s) {
+        return Color.BLACK_BOLD + s + Color.RESET;
+    }
+
+    public static char demanderLettre() {
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine().charAt(0);
+    }
+
+    public static void sleep(double s) {
+        try {
+            Thread.sleep(((long) s) * 1000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
     public static Livreur creerLivreur()
     {
         Scanner sc = new Scanner(System.in);
         System.out.print("Entrez le nom de votre personnage: ");
         String nom = sc.nextLine();
-        System.out.println("Choisissez votre societe : 'U' pour Uber eat, 'D' pour Deliveroo, " +
-                "'K' pour KingDelivery, autre caractère pour Indépendant");
+        clear();
+        System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats\n ['D'] Deliveroo\n ['K'] KingDelivery \n autre caractère pour être Indépendant"));
         char choix = sc.next().charAt(0);
         Societe societe;
 
@@ -76,13 +97,13 @@ public class Jeu {
                 livreur.useItem(consommables, consommables.get(conso));
                 break;
 
-            default: System.out.println("feur");
+            default: System.out.print("");
         }
     }
 
     public static void actionMonstre(Livreur livreur, Monstre monstre){
         double proba = new Random().nextDouble();
-        if (monstre.getMonstreType().equals(MonstreType.Guerrier) || monstre.getMonstreType().equals(MonstreType.MiniBoss)){
+        if (monstre.getType().equals(MonstreType.Guerrier) || monstre.getType().equals(MonstreType.MiniBoss)){
             if (proba < 0.60){
                 monstre.frapper(livreur);
             }
@@ -92,7 +113,7 @@ public class Jeu {
             else {
                 monstre.lancerSort(livreur);
             }
-        } else if (monstre.getMonstreType().equals(MonstreType.Defense)){
+        } else if (monstre.getType().equals(MonstreType.Defense)){
             if (proba < 0.30){
                 monstre.frapper(livreur);
             }
@@ -102,7 +123,7 @@ public class Jeu {
             else {
                 monstre.lancerSort(livreur);
             }
-        } else if (monstre.getMonstreType().equals(MonstreType.Magicien)){
+        } else if (monstre.getType().equals(MonstreType.Magicien)){
             if (proba < 0.15){
                 monstre.frapper(livreur);
             }
@@ -125,14 +146,16 @@ public class Jeu {
         double ancienneSpeed = livreur.getSpeed(); double ancienneStealth = livreur.getStealth(); 
         
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
+            clear();
+            System.out.println(Color.RED_BOLD_BRIGHT + "COMBAAAAAT !\n" + Color.RESET);
             
-            System.out.println("Livreur : " + livreur);
-            System.out.println("Monstre : " + monstre);
+            System.out.println(bold(livreur.getName()) + " : " + livreur);
+            System.out.println(bold(monstre.getName()) + " : " + monstre);
+            System.out.println("\nQue voulez vous faire ?");
+            System.out.println(bold(" ['P'] Attaque physique \n ['M'] Attaque magique\n ['B'] Bloquer\n ['O'] Utiliser un objet\n"));
             
-            System.out.print("Que voulez vous faire ? ");
-            System.out.println("Attaque Physique - 'P' ; Attaque  Magique - 'M' ; Bloquer - 'B' ; Utiliser un objet - 'O' ");
-            
-            choix = sc.next().charAt(0);
+            choix = sc.next().toLowerCase().charAt(0);
+            sleep(0.5);
             
             if (livreur.getSpeed() > monstre.getSpeed()){
                 actionJoueur(livreur, monstre, choix, sc);
@@ -142,9 +165,10 @@ public class Jeu {
                 monstre.frapper(livreur);
                 actionJoueur(livreur, monstre, choix, sc);
             }
+
+            sleep(2.5);
             
             livreur.setImmune(false);
-            monstre.setImmune(false);
         }
         
         System.out.println("Livreur : " + livreur);
@@ -180,12 +204,11 @@ public class Jeu {
 
 
 
-    public static void jouerTour(Livreur l)
-    {
-        int nbSalle = lstSalle.size();
+    public static void jouerTour(Livreur l) {
+        clear();
         Salle current = lstSalle.get(0);
         lstSalle.remove(0);
-        System.out.println("Vous arriver en face de "+current.getName().toString()+"\n" );
+        System.out.println("Vous arrivez en face de " + current.getName().toString() + "\n");
         if (current.hasEvent())
         {
             current.lancerEvent(l);
@@ -198,14 +221,12 @@ public class Jeu {
         
     }
 
-    public static void finirTour(Livreur l)
-    {
+    public static void finirTour(Livreur l) {
         if(l.getHp()>0)
         {
           int currentTour = nbSalle-lstSalle.size();
-          System.out.println("Vous etes à la salle "+currentTour+" sur "+nbSalle);
-          
-          System.out.println("Tapper 'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant." );
+          // System.out.println("Vous êtes à la salle "+currentTour+" sur "+nbSalle);
+          System.out.println("Tapez :\n "+ bold("'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant.") );
           Scanner sc = new Scanner(System.in);
           char selec = sc.next().toLowerCase().charAt(0);
           if(selec == 'p')
@@ -215,14 +236,13 @@ public class Jeu {
 
           while (selec!='p') 
           {
-            System.out.println("Tapper 'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant." );
             if(selec == 'a')
             {
-             l.toString();
+             System.out.println(l);
             }
             if(selec == 'i')
             {
-               l.seeInventory(); 
+               System.out.println(l.seeInventory());
             }
             if(selec == 'p')
             {
@@ -237,6 +257,7 @@ public class Jeu {
     
     public static void main(String[] args)
     {
+        clear();
         System.out.println(Color.RED + "________     __________                   _____________      _____     \n" +
                                        "___  __ \\_______  /__(_)__   ______________( )__  ____/_____ __  /_   \n" +
                                        "__  / / /  _ \\_  /__  /__ | / /  _ \\_  ___/|/__  __/  _  __ `/  __/  \n" +
@@ -253,8 +274,6 @@ public class Jeu {
             jouerTour(joueur);
             finirTour(joueur);
         }
-
-      
 
         joueur.inventory.add(Item.KEBAB);
         joueur.inventory.add(Item.BURGER);

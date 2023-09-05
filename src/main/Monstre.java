@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -8,22 +9,11 @@ public class Monstre extends Personnage{
     private int danger;
     private MonstreType type;
     private static Random random = new Random();
-    private static List<String> lstNoms = new ArrayList<>();
-
-    String noms = "Blanche graisse et les 7 daleux,La belle au bras pendant,Ali kebab et les 40 violeurs";
-
-    String[] tbnoms = noms.split(",");
-
-    private void chargNom()
-    {
-         for(String n : tbnoms)
-    {
-        lstNoms.add(n);
-    }
-    
-    }
+    private static String noms = "Blanche graisse et les 7 daleux,La belle au bras pendant,Ali kebab et les 40 violeurs";
+    private static List<String> lstNoms = new ArrayList<>(Arrays.asList(noms.split(",")));
 
     public Monstre(String name, int pv, int physAtk, int magicAtk, int mana, int def, int danger){
+        
         super(name,pv,physAtk,magicAtk,mana,def);
         this.danger = danger;
         this.type = MonstreType.random();
@@ -100,13 +90,6 @@ public class Monstre extends Personnage{
 
     public MonstreType getType()
     {return this.type;}
-
-    @Override
-    public String toString(){
-        String result = Color.RED + super.toString();
-        result = result + "Type : " + this.type + " - Danger : " + this.danger + Color.RESET;
-        return result;
-    }
 
     
 }
