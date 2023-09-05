@@ -111,6 +111,9 @@ public class Livreur extends Personnage{
         for (Item item : inventory){
             result = result + item.toString() + "\n";
         }
+        if (result.equals("")){
+            return ("Votre inventaire est vide.");
+        }
         return result;
     }
 
@@ -148,9 +151,6 @@ public class Livreur extends Personnage{
                     break;
                 case "hp":
                     this.setHp(this.getHp() + item.getpoints());
-                    if (this.getHp() > 100){
-                        this.setHp(100);
-                    }
                     break;
                 case "mana":
                     this.setMana(this.getMana() + item.getpoints());

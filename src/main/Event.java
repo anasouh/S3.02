@@ -193,6 +193,7 @@ public class Event{
             System.out.println("Vous tombez dans un piège en marchant vous perdez de la vie ");
             livreur.setHp(livreur.getHp() - (livreur.getHp()*0.05)+5);
         }
+        Password for 'https://selim.hamza.etu@gitlab.univ-lille.fr': 
 
 
      public static void aleatoire(Livreur livreur){

@@ -6,16 +6,16 @@ import java.util.Random;
 
 public enum Item {
     //Equipements
-    BATON("Baton", "Arme", "atk", 5),
-    MATRAQUE("Matraque", "Arme", "atk", 20),
-    PISTOLET("Pistolet", "Arme", "atk", 35),
-    OREILLERS("Tenue en oreillers", "Armure", "def", 5),
-    GILET("Gilet", "Armure", "def", 15),
-    SUIT("Tenue oficielle de livreur", "Armure", "def", 25),
-    CHAUSSETTES("Chaussettes", "Accessoire", "speed", 20),
-    SCOOTER("Scooter", "Accessoire", "speed", 45),
-    LUNETTES("Lunettes de soleil", "Accessoire", "stealth", 15),
-    CARTON("Carto,", "Accessoire", "stealth", 35),
+    BATON("Baton", ItemType.ARME, "atk", 5),
+    MATRAQUE("Matraque", ItemType.ARME, "atk", 20),
+    PISTOLET("Pistolet", ItemType.ARME, "atk", 35),
+    OREILLERS("Tenue en oreillers", ItemType.ARMURE, "def", 5),
+    GILET("Gilet", ItemType.ARMURE, "def", 15),
+    SUIT("Tenue oficielle de livreur", ItemType.ARMURE, "def", 25),
+    CHAUSSETTES("Chaussettes", ItemType.ACCESSOIRE, "speed", 20),
+    SCOOTER("Scooter", ItemType.ACCESSOIRE, "speed", 45),
+    LUNETTES("Lunettes de soleil", ItemType.ACCESSOIRE, "stealth", 15),
+    CARTON("Carton", ItemType.ACCESSOIRE, "stealth", 35),
     //Consommables
     CHAMPIGNON("Champignon", "hp", 30),
     POMME("Pomme", "mana", 20),
@@ -31,12 +31,12 @@ public enum Item {
 
     private String nom;
     private boolean cons;
-    private String type;
+    private ItemType type;
     private String modifiedStat;
     private int points;
 
     //Constructeur d'Item équipement
-    private Item(String nom, String type, String modifiedStat, int points){
+    private Item(String nom, ItemType type, String modifiedStat, int points){
         this.nom = nom;
         this.cons = false;
         this.type = type;
@@ -60,7 +60,7 @@ public enum Item {
         return cons;
     }
 
-    public String getType(){
+    public ItemType getType(){
         if (!cons){
             return type;
         }
