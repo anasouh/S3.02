@@ -129,7 +129,7 @@ public class Jeu {
 
 
 
-    public void jouerTour(Livreur l)
+    public static void jouerTour(Livreur l)
     {
         int nbSalle = lstSalle.size();
         Salle current = lstSalle.get(0);
@@ -147,22 +147,27 @@ public class Jeu {
         
     }
 
-    public void finirTour(Livreur l)
+    public static void finirTour(Livreur l)
     {
         if(l.getHp()>0)
         {
           int currentTour = nbSalle-lstSalle.size();
           System.out.println("Vous etes à la salle "+currentTour+" sur "+nbSalle);
-
+          
+          System.out.println("Tapper 'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant." );
           Scanner sc = new Scanner(System.in);
           char selec = sc.next().toLowerCase().charAt(0);
+          if(selec == 'p')
+            {
+               jouerTour(l);; 
+            }
 
           while (selec!='p') 
           {
             System.out.println("Tapper 'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant." );
             if(selec == 'a')
             {
-
+             l.toString();
             }
             if(selec == 'i')
             {
@@ -186,6 +191,8 @@ public class Jeu {
         // Debuter Partie
         Livreur joueur = creerLivreur();
         lstSalle = genererSalles();
+        jouerTour(joueur);
+        finirTour(joueur);
 
         joueur.inventory.add(Item.KEBAB);
         joueur.inventory.add(Item.BURGER);
