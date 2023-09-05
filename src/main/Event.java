@@ -147,7 +147,7 @@ public class Event{
                 int bonus = (rep.length()%3)+1;
                 System.out.println("Vous vous sentez en meilleur forme");
                 if(bonus == 1){livreur.setPhysAtk(livreur.getPhysAtk()*1.2);}
-                if(bonus == 2){livreur.setdef(livreur.getDef()*1.2);}
+                if(bonus == 2){livreur.setDef(livreur.getDef()*1.2);}
                 if(bonus == 3){livreur.setMana(livreur.getMana()*1.2);}
                 System.out.println("vous sortez de la grotte");
             }
@@ -159,7 +159,11 @@ public class Event{
 
         public static void eventCombat(Livreur livreur){
             System.out.println("Un monstre vous attaque !");
-            Thread.sleep(1000);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e){
+                System.out.println("Erreur");
+            }
             Monstre monstre = new Monstre();
             Jeu.Combat(livreur, monstre);
             //combat livreur/monstre random
@@ -177,7 +181,7 @@ public class Event{
             System.out.println(monstre);
 
             int rdm = (int)Event.rng.nextInt(101);
-            int proba = monstre.getDanger() * livreur.getStealth() / 100;
+            int proba = (int)(monstre.getDanger() * livreur.getStealth() / 100);
 
              if(rdm <= proba){
                 System.out.println("oh non le monstre vous a reperé !");
