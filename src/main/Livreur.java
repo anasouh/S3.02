@@ -41,8 +41,8 @@ public class Livreur extends Personnage{
 
     @Override
     public String toString() {
-        return "\u001B[32m"+ "Livreur [hp=" + this.hp + ", name=" + this.name + ", mana=" + this.mana + ", atk=" + this.physAtk + ", def=" + this.def
-                + ", stealth=" + this.stealth + ", speed=" + this.speed + ", societe=" + this.societe + "]" + "\u001B[0m";
+        return Color.GREEN + "Livreur [hp=" + this.hp + ", name=" + this.name + ", mana=" + this.mana + ", atk=" + this.physAtk + ", def=" + this.def
+                + ", stealth=" + this.stealth + ", speed=" + this.speed + ", societe=" + this.societe + "]" + Color.RESET;
     }
     
     public static void main(String[] args) {
@@ -122,7 +122,7 @@ public class Livreur extends Personnage{
         while (it.hasNext()) {
             item = it.next();
             if (item.getCons()){
-                System.out.println("[" + cpt + "] " + item.toString() + "\n");
+                System.out.println("[" + cpt + "] " + item.toString());
                 result.add(item);
             }
             cpt++;
