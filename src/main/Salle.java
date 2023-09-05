@@ -54,7 +54,7 @@ public class Salle {
         return hasEvent;
     }
 
-    public void lancerEvent() {
+    public void lancerEvent(Livreur l) {
     }
 
     public String toString() {

@@ -123,11 +123,18 @@ public class Jeu {
     public void jouerTour(Livreur l)
     {
         int nbSalle = lstSalle.size();
-        for (int i = 0; i < nbSalle; i++)
+        Salle current = lstSalle.get(0);
+        lstSalle.remove(0);
+        System.out.println("Vous arriver en face de "+current.getName().toString()"\n" +);
+        if (current.hasEvent())
         {
-            Salle current = lstSalle.get(0);
-            lstSalle.remove(0);
+            current.lancerEvent(l);
         }
+        else
+        {
+            System.out.println("Cette salle est vide...");
+        }
+        
     }
 
     
