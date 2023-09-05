@@ -181,7 +181,7 @@ public class Jeu {
         int nbSalle = lstSalle.size();
         Salle current = lstSalle.get(0);
         lstSalle.remove(0);
-        System.out.println("Vous arriver en face de " + current.getName().toString() + "\n");
+        System.out.println("Vous arriver en face de "+current.getName().toString()+"\n" );
         if (current.hasEvent())
         {
             current.lancerEvent(l);

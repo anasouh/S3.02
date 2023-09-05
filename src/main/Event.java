@@ -137,9 +137,12 @@ public class Event{
                 System.out.println("vous explorer la grotte avant de tomber sur ce qui semble etre un sanctuaire ");
                 System.out.println("Ecrivez le mot auquel vous penser");
                 rep=scgrotte.nextLine();
-                int bonus = (rep.length()%4) +1;
+                int bonus = (rep.length()%3)+1;
                 System.out.println("Vous vous sentez en meilleur forme");
-                livreur.setHp(livreur.getHp() + 5* bonus);
+                if(bonus == 1){livreur.setPhysAtk(livreur.getPhysAtk()*1.2);}
+                if(bonus == 2){livreur.setdef(livreur.getDef()*1.2);}
+                if(bonus == 3){livreur.setMana(livreur.getMana()*1.2);}
+                System.out.println("vous sortez de la grotte");
             }
             if(rep.equals("non")){
                 System.out.println("vous vous éloigner de la grotte");
@@ -165,32 +168,49 @@ public class Event{
 
             int rdm = (int)Event.rng.nextInt(101);
             //int proba = danger du mob * stealh / 100
-            if(rdm <= proba){
+          /*   if(rdm <= proba){
                 //faire un combat contre le monstre
             }
             else{
                 System.out.println("que voulez vous faire ? \n 1) attaquer \n 2) fuir");
                 while(!(rep.equals("attaquer") || rep.equals("fuir"))){
             rep = scmonstredos.nextLine();
-            }
+            } !!!!!!!!!!!!!!*
             if(rep.equals("attaquer")){
                 //lancer un combat contre le monstre
             }
             if(rep.equals("fuir")){
                 System.out.println("vous arrivez a vous echapper sans combattre ");
             }
+        }*/
         }
+        scmonstredos.close();
         }
+
+        public static void eventTrap(Livreur livreur){
+            Scanner sctrap = new Scanner(System.in);
+            String rep ="";
+            System.out.println("Vous tombez dans un piège en marchant vous perdez de la vie ");
+            livreur.setHp(livreur.getHp() - (livreur.getHp()*0.05)+5);
         }
         Password for 'https://selim.hamza.etu@gitlab.univ-lille.fr': 
 
 
-     public void aleatoire(){
-        
+     public static void aleatoire(Livreur livreur){
+        int rmd = Event.rng.nextInt(101);
+        if(rmd<8){Event.eventTrap(livreur);}
+        if(rmd>7 && rmd <13){Event.eventGrotte(livreur);}
+        if(rmd>12 && rmd <22){Event.eventCabane(livreur);}
+        if(rmd>21 && rmd <36){Event.eventCombat(livreur);}
+        if(rmd>35 && rmd <65){Event.eventMonstreDos(livreur);}
+        if(rmd>64 && rmd <78){Event.eventPerson(livreur);}
+        if(rmd>77 && rmd <93){Event.eventBush(livreur);}
+        if(rmd>92 && rmd <100){Event.eventCoffre(livreur);}
     }
 
-    public static void main(String[] args) {
-        
-    }
+   /*  public static void main(String[] args) {
+        Livreur liv = new Livreur("zegera", Societe.Deliveroo);
+        Event.aleatoire(liv);
+    } */
     
 }
