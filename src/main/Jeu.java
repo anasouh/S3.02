@@ -1,11 +1,13 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Jeu {
     private static List<Item> listeObjet;
-    private static List<Salle> lstSalle;
+    private static List<Salle> lstSalle = new ArrayList<>();
 //t
      public static void setListeObjet(List<Item> listeObjet) {
         Jeu.listeObjet = listeObjet;
@@ -54,44 +56,39 @@ public class Jeu {
         sc.close();
         return perso;
     }
-<<<<<<< HEAD
 
-    public static Salle genererSalle()
+    public static List<Salle> genererSalles()
     {
-
+        List<Salle> res = new ArrayList<>();
+        int rnd = new Random().nextInt(10)+1;
+        for (int i = 0; i<rnd; i++)
+        {
+            res.add(new Salle());
+        }
+        return res;
     }
 
-=======
-    
->>>>>>> 2a70b608e4b7e72672cbff116674972f0eff3662
-    public static void jouerTour(Livreur l)
+
+
+
+    public static void DebuterPartie()
     {
-        
+        Livreur joueur = creerLivreur();
+        lstSalle = genererSalles();
+        int nbSalle = lstSalle.size();
+        for (int i = 0; i < nbSalle; i++)
+        {
+            Salle current = lstSalle.get(0);
+            lstSalle.remove(0);
+        }
     }
+
     
     
     
     public static void main(String[] args)
     {
-<<<<<<< HEAD
-        Livreur joueur = creerLivreur();
-        int nbSalle = lstSalle.size();
-        for (int i = 0; i < nbSalle; i++)
-        {
-            Salle current = lstSalle[0];
-            lstSalle.remove(0);
-
-=======
-        Livreur perso = creerLivreur();
-        perso.addItem(Item.BATON);
-        perso.addItem(Item.KEBAB);
-        perso.addItem(Item.CHAUSSETTES);
-        System.out.println(perso.seeInventory());
-        
->>>>>>> 2a70b608e4b7e72672cbff116674972f0eff3662
-
-
-        }
+        DebuterPartie();
     }
 
 
