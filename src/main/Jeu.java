@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Jeu {
     private static List<Item> listeObjet;
     private static List<Salle> lstSalle = new ArrayList<>();
+    private static int nbSalle;
 //t
      public static void setListeObjet(List<Item> listeObjet) {
         Jeu.listeObjet = listeObjet;
@@ -113,6 +114,7 @@ public class Jeu {
     {
         List<Salle> res = new ArrayList<>();
         int rnd = new Random().nextInt(10)+1;
+        nbSalle = rnd;
         for (int i = 0; i<rnd; i++)
         {
             res.add(new Salle());
@@ -137,6 +139,37 @@ public class Jeu {
             System.out.println("Cette salle est vide...");
         }
         
+        
+    }
+
+    public void finirTour(Livreur l)
+    {
+        if(l.getHp()>0)
+        {
+          int currentTour = nbSalle-lstSalle.size();
+          System.out.println("Vous etes à la salle "+currentTour+" sur "+nbSalle);
+
+          Scanner sc = new Scanner(System.in);
+          char selec = sc.next().toLowerCase().charAt(0);
+
+          while (selec!='p') 
+          {
+            System.out.println("Tapper 'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant." );
+            if(selec == 'a')
+            {
+
+            }
+            if(selec == 'i')
+            {
+               l.seeInventory(); 
+            }
+            if(selec == 'p')
+            {
+               jouerTour(l);; 
+            }
+            selec = sc.next().toLowerCase().charAt(0);
+          }
+        }
     }
 
     
