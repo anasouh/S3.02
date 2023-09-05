@@ -182,6 +182,7 @@ public class Event{
         }
         }
         }
+        Password for 'https://selim.hamza.etu@gitlab.univ-lille.fr': 
 
 
      public void aleatoire(){

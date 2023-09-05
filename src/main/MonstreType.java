@@ -6,7 +6,7 @@ public enum MonstreType {
     Magicien("Magicien"), // mana upgradée
     Guerrier("Guerrier"), // atk upgradée
     Defense("Defense"), // défense upgradée
-    Boss("Boss"); // tout upgradé
+    MiniBoss("MiniBoss"); // tout upgradé
 
     private String name;
     
@@ -23,6 +23,6 @@ public enum MonstreType {
         if (val < 0.35) return Magicien; //35% de chance d'avoir un magicien
         else if (val < 0.70) return Guerrier; //35% de chance d'avoir un guerrier
         else if (val < 0.95) return Defense; //25% de chance d'avoir un defense
-        return Boss; //5% de chance d'avoir un boss
+        return MiniBoss; //5% de chance d'avoir un boss
     }
 }

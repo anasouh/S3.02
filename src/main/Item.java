@@ -23,7 +23,7 @@ public enum Item {
     MOUNTAINDEW("Mountain Dew", "mana", 75),
     STEROIDES("Stéroïdes", "atk", 10),
     TACOS("Tacos","def",15),
-    KEBAB("Kebab","atk",50),
+    KEBAB("Kebab","atk",20),
     BURGER("Burger","mana",30),
     RIZ("Un seul grain de riz","hp",1),
     SUSHI("Sushi","stealth",20),
