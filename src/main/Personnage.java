@@ -1,22 +1,26 @@
 package main;
 
 public abstract class Personnage {
+
+    //changed all the attributes to protected because of issues with Livreur (which extends Personnage)
+    //changed the attributes to double because of issues with Livreur and Societe which do calculations in percentage (needing double)
+
     private final static int MANA_MAGIC = 20;
     
-    private String name;
-    private int pv;
-    private int physAtk;
-    private int magicAtk;
-    private int mana;
-    private int def;
+    protected String name;
+    protected double hp;
+    protected double physAtk;
+    protected double mana;
+    protected double def;
+    protected double speed;
     
-    public Personnage(String name, int pv, int physAtk, int magicAtk, int mana, int def) {
+    public Personnage(String name, int hp, int physAtk, int mana, int def, int speed) {
         this.name = name;
-        this.pv = pv;
+        this.hp = hp;
         this.physAtk = physAtk;
-        this.magicAtk = magicAtk;
         this.mana = mana;
         this.def = def;
+        this.speed = speed;
     }
 
     public String getName() {
@@ -27,44 +31,44 @@ public abstract class Personnage {
         this.name = name;
     }
 
-    public int getPv() {
-        return pv;
+    public double getHp() {
+        return hp;
     }
 
-    public void setPv(int pv) {
-        this.pv = pv;
+    public void setHp(double d) {
+        this.hp = d;
     }
 
-    public int getPhysAtk() {
+    public double getPhysAtk() {
         return physAtk;
     }
 
-    public void setPhysAtk(int physAtk) {
-        this.physAtk = physAtk;
+    public void setPhysAtk(double d) {
+        this.physAtk = d;
     }
 
-    public int getMagicAtk() {
-        return magicAtk;
-    }
-
-    public void setMagicAtk(int magicAtk) {
-        this.magicAtk = magicAtk;
-    }
-
-    public int getMana() {
+    public double getMana() {
         return mana;
     }
 
-    public void setMana(int mana) {
+    public void setMana(double mana) {
         this.mana = mana;
     }
 
-    public int getDef() {
+    public double getDef() {
         return def;
     }
 
-    public void setDef(int def) {
-        this.def = def;
+    public void setDef(double d) {
+        this.def = d;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double d) {
+        this.speed = d;
     }
 
     public double calculerReduction() {
@@ -79,12 +83,15 @@ public abstract class Personnage {
 
     public void frapper(Personnage p) {
         // Attaque phyisque
-        p.setPv(p.pv - calculerDegats(p));
+        p.setHp(p.hp - calculerDegats(p));
     }
 
     public void lancerSort(Personnage p) {
         // Attaque magique
-        p.setPv(p.pv - this.magicAtk);
+        p.setHp(p.hp - this.physAtk);
         this.setMana(this.mana - MANA_MAGIC);
     }
+
+    //calculer qui attaque en premier (avec speed, nouvel attribut) + changer lancerSort pour infliger + de dégâts en % 
+
 }

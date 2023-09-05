@@ -1,37 +1,36 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.lang.Math;
 
-class Livreur{
-    int hp = 100; //max=100
-    String name;
-    
-    double mana = 100; //max=100
-    double atk; //the damage you do to the enemy
-    double def; //reducts the damage taken
-    double stealth; //the enemy detects you if you don't have stealth
-    double speed; //who has more speed plays first
+public class Livreur extends Personnage{
 
-    Societe societe; //decides of the multiplier for all the double characteristics
-    
+    private String name;
+    private int hp = 100; //max=100
+    private double mana = 100; //max=100
+    private double stealth; //the enemy detects you if you don't have stealth
 
-    Livreur(String name, Societe societe){
+    private Societe societe; //decides of the multiplier for all the double characteristics
+    
+    private static Random random = new Random();
+
+    ArrayList<Item> inventory = new ArrayList<Item>();
+
+    public Livreur(String name, Societe societe){
+        //name,hp,physAtk,mana,def,speed
+        super(name,100,(random.nextInt(49) + 1),100,(random.nextInt(49) + 1),(random.nextInt(49) + 1));
         this.name = name;
         this.societe = societe;
-
-        Random random = new Random(); //attributes are a random number between 1 and 50 included
-        this.atk = random.nextInt(49) + 1;
-        this.def = random.nextInt(49) + 1;
+        
         this.stealth = random.nextInt(49) + 1;
-        this.speed = random.nextInt(49) + 1;
         
         //depending on societe, multiplies the attributes by a certain %;
 
-        this.atk = Math.ceil(this.atk * societe.getAtkMult());
-        this.def = Math.ceil(this.def * societe.getDefMult());
+        this.physAtk = Math.ceil(this.physAtk * societe.getAtkMult());
+        this.def = (Math.ceil(this.def * societe.getDefMult()));
         this.stealth = Math.ceil(this.stealth * societe.getStealthMult());
-        this.speed = Math.ceil(this.speed * societe.getSpeedMult());
+        this.speed = (Math.ceil(this.speed * societe.getSpeedMult()));
         this.mana = Math.ceil(this.mana * societe.getManaMult());
     }
 
@@ -42,12 +41,69 @@ class Livreur{
 
     @Override
     public String toString() {
-        return "Livreur [hp=" + hp + ", name=" + name + ", mana=" + mana + ", atk=" + atk + ", def=" + def
-                + ", stealth=" + stealth + ", speed=" + speed + ", societe=" + societe + "]";
+        return "Livreur [hp=" + this.hp + ", name=" + this.name + ", mana=" + this.mana + ", atk=" + this.physAtk + ", def=" + this.def
+                + ", stealth=" + this.stealth + ", speed=" + this.speed + ", societe=" + this.societe + "]";
     }
     
     public static void main(String[] args) {
         Livreur joueur = creerJoueur("Marcel",Societe.Deliveroo);
         System.out.println(joueur);
     }
+    
+    //getters and setters
+
+    public double getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getMana() {
+        return mana;
+    }
+
+    public void setMana(double mana) {
+        this.mana = mana;
+    }
+
+
+    public double getStealth() {
+        return stealth;
+    }
+
+    public void setStealth(double stealth) {
+        this.stealth = stealth;
+    }
+
+
+    public Societe getSociete() {
+        return societe;
+    }
+
+    public void setSociete(Societe societe) {
+        this.societe = societe;
+    }
+    
+    public void addItem(Item item){
+        inventory.add(item);
+    }
+
+    public String seeInventory(){
+        String result;
+        for (Item item : inventory){
+            result = result + item.toString() + "\n";
+        }
+        return result;
+    }
+    
 }
