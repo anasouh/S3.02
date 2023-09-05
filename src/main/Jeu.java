@@ -156,7 +156,7 @@ public class Jeu {
 
         joueur.inventory.add(Item.KEBAB);
         joueur.inventory.add(Item.BURGER);
-        joueur.inventory.add(Item.POMME);
+        joueur.inventory.add(Item.PIZZA);
 
         Monstre monstre = new Monstre("pas Maxime");
 
