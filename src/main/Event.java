@@ -108,15 +108,88 @@ public class Event{
             System.out.println("vous apercevez une cabane dans la zone voulez vous la visiter ?");
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = sccabane.nextLine();
+            int rdm = Event.rng.nextInt(101);
+            if(rdm<60){
+                System.out.println("Cette cabane est v ide il n'y a rien d'interessant");
+            }
+            if(rdm<80 && rdm > 59){
+                System.out.println("Vous trouver un objet par terre");
+                Item objet = Item.randomObjet();
+                System.out.println("c'est :\n" + objet);
+                livreur.addItem(objet);
+
+            }
+            if(rdm>80){
+                System.out.println("oh non un monstre est présent ");
+                //combat monstre / livreur a faire 
+            }
         }
-            
+            sccabane.close();
         }
+
+        public static void eventGrotte(Livreur livreur){
+            Scanner scgrotte = new Scanner(System.in);
+            String rep ="";
+            System.out.println("vous trouver une entrée de grotte de l'energie semble en sortir voulez vous entrer dedans ?");
+            while(!(rep.equals("oui") || rep.equals("non"))){
+            rep = scgrotte.nextLine();
+            if(rep.equals("oui")){
+                System.out.println("vous explorer la grotte avant de tomber sur ce qui semble etre un sanctuaire ");
+                System.out.println("Ecrivez le mot auquel vous penser");
+                rep=scgrotte.nextLine();
+                int bonus = (rep.length()%4) +1;
+                System.out.println("Vous vous sentez en meilleur forme");
+                livreur.setHp(livreur.getHp() + 5* bonus);
+            }
+            if(rep.equals("non")){
+                System.out.println("vous vous éloigner de la grotte");
+            }
+        }
+        }
+
+        public static void eventCombat(Livreur livreur){
+            System.out.println("Un monstre vous attaque !");
+            //timer 
+            //combat livreur/monstre random
+            System.out.println("Vous avez réussi a vaince le monstre");
+        }
+
+        public static void eventMonstreDos(Livreur livreur){
+            Scanner scmonstredos = new Scanner(System.in);
+            String rep ="";
+            //generer un monstre
+            System.out.println("Vous reperez un monstre au loin voulez vous l'analyser ?");
+            while(!(rep.equals("oui") || rep.equals("non"))){
+            rep = scmonstredos.nextLine();
+            System.out.println(/*afficher monstre*/);
+
+            int rdm = (int)Event.rng.nextInt(101);
+            //int proba = danger du mob * stealh / 100
+            if(rdm <= proba){
+                //faire un combat contre le monstre
+            }
+            else{
+                System.out.println("que voulez vous faire ? \n 1) attaquer \n 2) fuir");
+                while(!(rep.equals("attaquer") || rep.equals("fuir"))){
+            rep = scmonstredos.nextLine();
+            }
+            if(rep.equals("attaquer")){
+                //lancer un combat contre le monstre
+            }
+            if(rep.equals("fuir")){
+                System.out.println("vous arrivez a vous echapper sans combattre ");
+            }
+        }
+        }
+        }
+
 
      public void aleatoire(){
         
     }
 
     public static void main(String[] args) {
-        eventCoffre();
+        
     }
+    
 }
