@@ -120,11 +120,15 @@ public abstract class Personnage {
         else return this;
     }
 
+    public abstract void dire(String replique);
+    
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "Personnage [name=" + name + ", hp=" + hp + ", physAtk=" + physAtk + ", mana=" + mana + ", def=" + def
                 + ", speed=" + speed + "]";
     }
+
 
     
 

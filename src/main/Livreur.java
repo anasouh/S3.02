@@ -39,6 +39,11 @@ public class Livreur extends Personnage{
         return joueur;
     }
 
+    public void dire(String replique)
+    {
+        System.out.println(this.getName()+" : "+replique);
+    }
+
     @Override
     public String toString() {
         return Color.GREEN + "Livreur [hp=" + this.hp + ", name=" + this.name + ", mana=" + this.mana + ", atk=" + this.physAtk + ", def=" + this.def
