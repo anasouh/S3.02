@@ -41,8 +41,8 @@ public class Livreur extends Personnage{
 
     @Override
     public String toString() {
-        return "Livreur [hp=" + this.hp + ", name=" + this.name + ", mana=" + this.mana + ", atk=" + this.physAtk + ", def=" + this.def
-                + ", stealth=" + this.stealth + ", speed=" + this.speed + ", societe=" + this.societe + "]";
+        return Color.GREEN + "Livreur [hp=" + this.hp + ", name=" + this.name + ", mana=" + this.mana + ", atk=" + this.physAtk + ", def=" + this.def
+                + ", stealth=" + this.stealth + ", speed=" + this.speed + ", societe=" + this.societe + "]" + Color.RESET;
     }
     
     public static void main(String[] args) {
@@ -122,7 +122,7 @@ public class Livreur extends Personnage{
         while (it.hasNext()) {
             item = it.next();
             if (item.getCons()){
-                System.out.println("[" + cpt + "] " + item.toString() + "\n");
+                System.out.println("[" + cpt + "] " + item.toString());
                 result.add(item);
             }
             cpt++;
@@ -137,8 +137,29 @@ public class Livreur extends Personnage{
                 case "atk":
                     this.setPhysAtk(this.getPhysAtk() + item.getpoints());
                     break;
+                case "def":
+                    this.setDef(this.getDef() + item.getpoints());
+                    break;
+                case "stealh":
+                    this.setStealth(this.getStealth() + item.getpoints());
+                    break;
+                case "speed":
+                    this.setSpeed(this.getSpeed() + item.getpoints());
+                    break;
+                case "hp":
+                    this.setHp(this.getHp() + item.getpoints());
+                    if (this.getHp() > 100){
+                        this.setHp(100);
+                    }
+                    break;
+                case "mana":
+                    this.setMana(this.getMana() + item.getpoints());
+                    if (this.getMana() > (100 * societe.getManaMult())){
+                        this.setMana((100 * societe.getManaMult()));
+                    }
+                    break;
                 default:
-                    System.out.println("nique");
+                    System.out.println("non :)");
             }
             consommables.remove(item);
             this.inventory.addAll(consommables);
