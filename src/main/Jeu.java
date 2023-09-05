@@ -36,13 +36,13 @@ public class Jeu {
         {
             case 'U':
                 societe = Societe.UberEats;
-                //break;
+                break;
             case 'D':
                 societe = Societe.Deliveroo;
-                //break;
+                break;
             case 'K':
                 societe = Societe.KingDelivery;
-                //break;
+                break;
             default:
                 societe = Societe.Indépendant;
         }

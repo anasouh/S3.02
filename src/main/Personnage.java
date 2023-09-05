@@ -89,7 +89,7 @@ public abstract class Personnage {
     public boolean lancerSort(Personnage p) {
         // Attaque magique
         if (mana < MANA_MAGIC) {
-            p.setHp(p.hp - this.physAtk);
+            p.setHp(p.hp - this.physAtk * 1.2);
             this.setMana(this.mana - MANA_MAGIC);
             return true;
         }
@@ -97,6 +97,9 @@ public abstract class Personnage {
         return false;
     }
 
-    //calculer qui attaque en premier (avec speed, nouvel attribut) + changer lancerSort pour infliger + de dégâts en % 
+    public Personnage attackingFirst(Personnage p){
+        if (this.speed < p.speed) return p;
+        else return this;
+    }
 
 }
