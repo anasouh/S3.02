@@ -89,12 +89,14 @@ public class Jeu {
                     break;
 
                 default:
-                    System.out.println("conard");
+                    System.out.println("feur");
 
                 }
                 
                 // monstre attaque
                 monstre.frapper(livreur);
+
+                livreur.setImmune(false);
                 
                 System.out.println("Livreur : " + livreur);
                 System.out.println("Monstre : " + monstre);

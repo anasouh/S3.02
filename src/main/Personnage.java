@@ -78,7 +78,10 @@ public abstract class Personnage {
 
     public int calculerDegats(Personnage p) {
         // Calculer les dégâts émis à un personnage en prenant compte de sa défense
-        return (int) (this.physAtk * p.calculerReduction());
+        if (p instanceof Livreur && ((Livreur)p).isImmune()){
+            return 0;
+        }
+        return (int)(this.physAtk * p.calculerReduction());
     }
 
     public void frapper(Personnage p) {
