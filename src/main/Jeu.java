@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Jeu {
     private static List<Item> listeObjet;
+    private static List<Salle> lstSalle;
 //t
      public static void setListeObjet(List<Item> listeObjet) {
         Jeu.listeObjet = listeObjet;
@@ -36,13 +37,13 @@ public class Jeu {
         {
             case 'U':
                 societe = Societe.UberEats;
-                //break;
+                break;
             case 'D':
                 societe = Societe.Deliveroo;
-                //break;
+                break;
             case 'K':
                 societe = Societe.KingDelivery;
-                //break;
+                break;
             default:
                 societe = Societe.Indépendant;
         }
@@ -50,12 +51,13 @@ public class Jeu {
         System.out.println();
         System.out.println("Ok " + perso.getName() + ", voici vos statistiques : ");
         System.out.println(perso);
-        perso.addItem(Item.BATON);
-        perso.addItem(Item.KEBAB);
-        perso.addItem(Item.CHAUSSETTES);
-        System.out.println(perso.seeInventory());
         sc.close();
         return perso;
+    }
+
+    public static Salle genererSalle()
+    {
+
     }
 
     public static void jouerTour(Livreur l)
@@ -68,8 +70,15 @@ public class Jeu {
     public static void main(String[] args)
     {
         Livreur joueur = creerLivreur();
+        int nbSalle = lstSalle.size();
+        for (int i = 0; i < nbSalle; i++)
+        {
+            Salle current = lstSalle[0];
+            lstSalle.remove(0);
 
+            
 
+        }
     }
 
 
