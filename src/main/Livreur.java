@@ -99,7 +99,7 @@ public class Livreur extends Personnage{
     }
 
     public String seeInventory(){
-        String result;
+        String result = "";
         for (Item item : inventory){
             result = result + item.toString() + "\n";
         }
