@@ -83,9 +83,9 @@ public class Jeu {
                     break;
 
                 case 'O': //utiliser un objet
-                    livreur.seeConsumable(); //afficher la liste des item consommables possédés
-                    int conso = sc.next().charAt(0);
-                    livreur.removeItem(livreur.inventory.get(conso));
+                    List<Item> consommables = livreur.listeCons(); //afficher la liste des item consommables possédés
+                    int conso = sc.nextInt();
+                    livreur.useItem(consommables, consommables.get(conso));
                     break;
 
                 default:
@@ -139,6 +139,10 @@ public class Jeu {
         // Debuter Partie
         Livreur joueur = creerLivreur();
         lstSalle = genererSalles();
+
+        joueur.inventory.add(Item.KEBAB);
+        joueur.inventory.add(Item.BURGER);
+        joueur.inventory.add(Item.POMME);
 
         Monstre monstre = new Monstre("Maxime",100,10,100,10,1,10);
 

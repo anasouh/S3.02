@@ -1,6 +1,8 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 import java.lang.Math;
 
@@ -13,7 +15,7 @@ public class Livreur extends Personnage{
     
     private static Random random = new Random();
 
-    ArrayList<Item> inventory = new ArrayList<Item>();
+    List<Item> inventory = new ArrayList<Item>();
 
     public Livreur(String name, Societe societe){
         //name,hp,physAtk,mana,def,speed
@@ -112,21 +114,34 @@ public class Livreur extends Personnage{
         return result;
     }
 
-    public String seeConsumable(){
+    public List<Item> listeCons(){
         int cpt = 0;
-        String result = "";
-        for (Item item : inventory){
+        List<Item> result = new ArrayList<>();
+        Iterator<Item> it = inventory.iterator();
+        Item item;
+        while (it.hasNext()) {
+            item = it.next();
             if (item.getCons()){
-                result = cpt + " : " + result + item.toString() + "\n";
+                System.out.println("[" + cpt + "] " + item.toString() + "\n");
+                result.add(item);
             }
             cpt++;
+            it.remove();
         }
         return result;
     }
 
-    public boolean removeItem(Item item){
-        if (this.inventory.contains(item)){
-            this.inventory.remove(item);
+    public boolean useItem(List<Item> consommables, Item item){ //Faire en sort que la stat redevienne normal au tour suivant
+        if (consommables.contains(item)){
+            switch (item.getModifiedStat()) {
+                case "atk":
+                    this.setPhysAtk(this.getPhysAtk() + item.getpoints());
+                    break;
+                default:
+                    System.out.println("nique");
+            }
+            consommables.remove(item);
+            this.inventory.addAll(consommables);
             return true;
         }
         else return false;
