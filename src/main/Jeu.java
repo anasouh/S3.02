@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Jeu {
     private static List<Item> listeObjet;
-
+//t
      public static void setListeObjet(List<Item> listeObjet) {
         Jeu.listeObjet = listeObjet;
     }
