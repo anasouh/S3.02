@@ -111,6 +111,9 @@ public class Livreur extends Personnage{
         for (Item item : inventory){
             result = result + item.toString() + "\n";
         }
+        if (result.equals("")){
+            return ("Votre inventaire est vide.");
+        }
         return result;
     }
 
