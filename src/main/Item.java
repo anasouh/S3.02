@@ -19,7 +19,11 @@ public enum Item {
     POMME("Pomme", "mana", 20),
     PIZZA("Pizza", "hp", 75),
     MOUNTAINDEW("Mountain Dew", "mana", 75),
-    STEROIDES("Stéroïdes", "atk", 10);
+    STEROIDES("Stéroïdes", "atk", 10),
+    TACOS("Tacos","def",50),
+    KEBAB("Kebab","atk",50),
+    BURGER("Burger","mana",30);
+
 
     private String nom;
     private boolean cons;
