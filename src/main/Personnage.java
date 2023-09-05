@@ -23,6 +23,16 @@ public abstract class Personnage {
         this.speed = speed;
     }
 
+    public Personnage(String name){ //monstre générique
+        this.name = name;
+        this.hp = 100;
+        this.physAtk = 20;
+        this.mana = 100;
+        this.def = 20;
+        this.speed = 15;
+    }
+
+
     public String getName() {
         return name;
     }
@@ -86,13 +96,17 @@ public abstract class Personnage {
 
     public void frapper(Personnage p) {
         // Attaque physique
-        p.setHp(p.hp - calculerDegats(p));
+        int degats = calculerDegats(p);
+        System.out.println(p.getName() + " perd " + degats + "HP!");
+        p.setHp(p.hp - degats);
     }
 
     public boolean lancerSort(Personnage p) {
         // Attaque magique
         if (mana > MANA_MAGIC) {
-            p.setHp(p.hp - this.physAtk * 1.2);
+            int degats = (int)(this.physAtk * 1.2);
+            System.out.println(p.getName() + " perd " + degats + "HP!");
+            p.setHp(p.hp - degats);
             this.setMana(this.mana - MANA_MAGIC);
             return true;
         }
