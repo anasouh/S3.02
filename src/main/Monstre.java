@@ -9,4 +9,10 @@ public class Monstre extends Personnage{
         this.danger = danger;
     }
 
+    public int getDanger() {
+        return danger;
+    }
+
+    
+
 }
