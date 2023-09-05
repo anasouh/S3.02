@@ -1,5 +1,7 @@
 package main;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 
 public enum Item {
@@ -86,5 +88,16 @@ public enum Item {
 
     public static Item randomObjet(){
         return Item.values()[new Random().nextInt(Item.values().length)];
+    }
+
+    public static Item randomCons(){
+        List<Item> cons = new ArrayList<>();
+        Item[] items = Item.values();
+        for (Item i : items){
+            if (i.getCons()){
+                cons.add(i);
+            }
+        }
+        return cons.get(new Random().nextInt(cons.size()));
     }
 }

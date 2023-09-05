@@ -54,21 +54,26 @@ public class Jeu {
         sc.close();
         return perso;
     }
+<<<<<<< HEAD
 
     public static Salle genererSalle()
     {
 
     }
 
+=======
+    
+>>>>>>> 2a70b608e4b7e72672cbff116674972f0eff3662
     public static void jouerTour(Livreur l)
     {
         
     }
-
+    
     
     
     public static void main(String[] args)
     {
+<<<<<<< HEAD
         Livreur joueur = creerLivreur();
         int nbSalle = lstSalle.size();
         for (int i = 0; i < nbSalle; i++)
@@ -76,6 +81,14 @@ public class Jeu {
             Salle current = lstSalle[0];
             lstSalle.remove(0);
 
+=======
+        Livreur perso = creerLivreur();
+        perso.addItem(Item.BATON);
+        perso.addItem(Item.KEBAB);
+        perso.addItem(Item.CHAUSSETTES);
+        System.out.println(perso.seeInventory());
+        
+>>>>>>> 2a70b608e4b7e72672cbff116674972f0eff3662
 
 
         }
