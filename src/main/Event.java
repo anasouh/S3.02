@@ -32,7 +32,7 @@ public class Event{
         if(rep.equals("non")){
           System.out.println(  "Vous vous eloignez du coffre sans y pretez attention");
         }
-        sccoffre.close();
+        
 
     }
 
@@ -67,7 +67,7 @@ public class Event{
         if(rep.equals("non")){
             System.out.println("vous décidez de partir sans faire attention");
         }
-        scbush.close();
+       
 
 
     }
@@ -103,7 +103,7 @@ public class Event{
                 }
             }
 
-            scperson.close();
+            
             
         }
 
@@ -131,7 +131,7 @@ public class Event{
                 //combat monstre / livreur a faire 
             }
         }
-            sccabane.close();
+           
         }
 
         public static void eventGrotte(Livreur livreur){
@@ -201,7 +201,7 @@ public class Event{
             }
         }
         }
-        scmonstredos.close();
+       
         }
 
         public static void eventTrap(Livreur livreur){
