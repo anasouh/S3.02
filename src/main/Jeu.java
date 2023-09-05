@@ -63,6 +63,9 @@ public class Jeu {
         
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
             
+            System.out.println("Livreur : " + livreur);
+            System.out.println("Monstre : " + monstre);
+            
             System.out.print("Que voulez vous faire ? ");
             System.out.println("Attaque Physique - 'P' ; Attaque  Magique - 'M' ; Bloquer - 'B' ; Utiliser un objet - 'O' ");
 
@@ -97,9 +100,6 @@ public class Jeu {
                 monstre.frapper(livreur);
 
                 livreur.setImmune(false);
-                
-                System.out.println("Livreur : " + livreur);
-                System.out.println("Monstre : " + monstre);
         }
 
         sc.close();
