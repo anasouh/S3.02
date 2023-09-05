@@ -132,14 +132,9 @@ public abstract class Personnage {
     public abstract void dire(String replique);
     
     @Override
-<<<<<<< HEAD
     public String toString() 
     {
         return "Personnage [name=" + name + ", hp=" + hp + ", physAtk=" + physAtk + ", mana=" + mana + ", def=" + def
-=======
-    public String toString() {
-        return "[name=" + name + ", hp=" + hp + ", physAtk=" + physAtk + ", mana=" + mana + ", def=" + def
->>>>>>> fc7b7456fe9e937572a4cfb67c98dea723cb381b
                 + ", speed=" + speed + "]";
     }
 

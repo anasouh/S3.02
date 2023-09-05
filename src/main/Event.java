@@ -177,7 +177,7 @@ public class Event{
             System.out.println(monstre);
 
             int rdm = (int)Event.rng.nextInt(101);
-            int proba = monstre.getDanger() * livreur.getStealth() / 100;
+            int proba = (int)(monstre.getDanger() * livreur.getStealth() / 100);
 
              if(rdm <= proba){
                 System.out.println("oh non le monstre vous a reperé !");

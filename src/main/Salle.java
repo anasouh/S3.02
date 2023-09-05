@@ -55,6 +55,7 @@ public class Salle {
     }
 
     public void lancerEvent(Livreur l) {
+        Event.aleatoire(l);
     }
 
     public String toString() {

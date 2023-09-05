@@ -247,8 +247,14 @@ public class Jeu {
         // Debuter Partie
         Livreur joueur = creerLivreur();
         lstSalle = genererSalles();
-        jouerTour(joueur);
-        finirTour(joueur);
+        int tour = 0;
+        
+        while (tour < lstSalle.size() && joueur.hp > 0) {
+            jouerTour(joueur);
+            finirTour(joueur);
+        }
+
+      
 
         joueur.inventory.add(Item.KEBAB);
         joueur.inventory.add(Item.BURGER);
