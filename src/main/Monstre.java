@@ -36,6 +36,10 @@ public class Monstre extends Personnage{
         return type.getName();
     }
 
+    public MonstreType getMonstreType(){
+        return type;
+    }
+
     @Override
     public String toString(){
         String result = super.toString();

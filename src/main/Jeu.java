@@ -80,6 +80,41 @@ public class Jeu {
         }
     }
 
+    public static void actionMonstre(Livreur livreur, Monstre monstre){
+        double proba = new Random().nextDouble();
+        if (monstre.getMonstreType().equals(MonstreType.Guerrier) || monstre.getMonstreType().equals(MonstreType.MiniBoss)){
+            if (proba < 0.60){
+                monstre.frapper(livreur);
+            }
+            else if (proba < 0.90){
+                monstre.setImmune(true);
+            }
+            else {
+                monstre.lancerSort(livreur);
+            }
+        } else if (monstre.getMonstreType().equals(MonstreType.Defense)){
+            if (proba < 0.30){
+                monstre.frapper(livreur);
+            }
+            else if (proba < 0.75){
+                monstre.setImmune(true);
+            }
+            else {
+                monstre.lancerSort(livreur);
+            }
+        } else if (monstre.getMonstreType().equals(MonstreType.Magicien)){
+            if (proba < 0.15){
+                monstre.frapper(livreur);
+            }
+            else if (proba < 0.40){
+                monstre.setImmune(true);
+            }
+            else {
+                monstre.lancerSort(livreur);
+            }
+        }
+    }
+
 
     public static boolean Combat(Livreur livreur, Monstre monstre){ //retourne true si Livreur gagne
         Scanner sc = new Scanner(System.in);
@@ -109,6 +144,7 @@ public class Jeu {
             }
             
             livreur.setImmune(false);
+            monstre.setImmune(false);
         }
         
         System.out.println("Livreur : " + livreur);

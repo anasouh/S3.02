@@ -10,7 +10,6 @@ public class Livreur extends Personnage{
 
     private String name;
     private double stealth; //the enemy detects you if you don't have stealth
-    private boolean immune = false; //during fight or using an item, livreur can be immune to the enemy's physical attacks
     private Societe societe; //decides of the multiplier for all the double characteristics
     
     private static Random random = new Random();
@@ -92,14 +91,6 @@ public class Livreur extends Personnage{
 
     public void setSociete(Societe societe) {
         this.societe = societe;
-    }
-
-    public boolean isImmune() {
-        return immune;
-    }
-
-    public void setImmune(boolean immune) {
-        this.immune = immune;
     }
 
     public void addItem(Item item){
