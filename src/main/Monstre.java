@@ -39,7 +39,7 @@ public class Monstre extends Personnage{
     @Override
     public String toString(){
         String result = super.toString();
-        result = result + "Type : " + this.type + "Danger : " + this.danger;
+        result = result + "Type : " + this.type + " - Danger : " + this.danger;
         return result;
     }
 
