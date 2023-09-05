@@ -86,10 +86,15 @@ public abstract class Personnage {
         p.setHp(p.hp - calculerDegats(p));
     }
 
-    public void lancerSort(Personnage p) {
+    public boolean lancerSort(Personnage p) {
         // Attaque magique
-        p.setHp(p.hp - this.physAtk);
-        this.setMana(this.mana - MANA_MAGIC);
+        if (mana < MANA_MAGIC) {
+            p.setHp(p.hp - this.physAtk);
+            this.setMana(this.mana - MANA_MAGIC);
+            return true;
+        }
+        System.out.println("Vous n'avez pas assez de mana pour lancer ce sort");
+        return false;
     }
 
     //calculer qui attaque en premier (avec speed, nouvel attribut) + changer lancerSort pour infliger + de dégâts en % 

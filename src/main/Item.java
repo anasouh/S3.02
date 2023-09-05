@@ -1,12 +1,13 @@
 package main;
 
+import java.util.Random;
 
 public enum Item {
     //Equipements
     BATON("Baton", "Arme", "atk", 5),
     MATRAQUE("Matraque", "Arme", "atk", 20),
     PISTOLET("Pistolet", "Arme", "atk", 35),
-    LEATHERARMOR("Leather Armor", "Armure", "def", 5),
+    OREILLERS("Tenue en oreillers", "Armure", "def", 5),
     GILET("Gilet", "Armure", "def", 15),
     SUIT("Tenue oficielle de livreur", "Armure", "def", 25),
     CHAUSSETTES("Chaussettes", "Accessoire", "speed", 20),
@@ -18,7 +19,13 @@ public enum Item {
     POMME("Pomme", "mana", 20),
     PIZZA("Pizza", "hp", 75),
     MOUNTAINDEW("Mountain Dew", "mana", 75),
-    STEROIDES("Stéroïdes", "atk", 10);
+    STEROIDES("Stéroïdes", "atk", 10),
+    TACOS("Tacos","def",15),
+    KEBAB("Kebab","atk",50),
+    BURGER("Burger","mana",30),
+    RIZ("Un seul grain de riz","hp",1),
+    SUSHI("Sushi","stealth",20),
+    CAFE("Café","speed",25);
 
     private String nom;
     private boolean cons;
@@ -75,5 +82,9 @@ public enum Item {
             str += " [" + type + "]";
         }
         return str;
+    }
+
+    public static Item randomObjet(){
+        return Item.values()[new Random().nextInt(Item.values().length)];
     }
 }
