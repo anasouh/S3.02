@@ -12,7 +12,7 @@ classes/
 *.ctxt
 
 #IntelliJ files
-*.idea
+.idea/
 out/
 *.xml
 
