@@ -21,7 +21,7 @@ public class Monstre extends Personnage{
 
     public Monstre()//Nom aleatoir
     {
-      super(generNom(),100,(random.nextInt(24) + 1),100,(random.nextInt(24) + 1),(random.nextInt(24) + 1));
+      super(generNom(),100,(random.nextInt(7) + 15),100,(random.nextInt(10) + 5),(random.nextInt(30) + 20));
         this.danger = random.nextInt(100); //si le danger du monstre est + grand que le stealth du Livreur alors il voit le Livreur
         this.type = MonstreType.random();
         if (this.type.equals(MonstreType.Magicien)) this.mana *= 1.5;
