@@ -51,6 +51,14 @@ public class Jeu {
         }
     }
 
+    public static int getNbSalle() {
+        return nbSalle;
+    }
+
+    public static List<Salle> getLstSalle() {
+        return lstSalle;
+    }
+
     public static Livreur creerLivreur()
     {
         System.out.print("Entrez le nom de votre personnage: ");
@@ -264,6 +272,8 @@ public class Jeu {
 
         }
     }
+
+
 
     
     
