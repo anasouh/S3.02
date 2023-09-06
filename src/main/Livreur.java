@@ -238,12 +238,11 @@ public class Livreur extends Personnage implements Serializable
                 result.add(item);
             }
             cpt++;
-            it.remove();
         }
         return result;
     }
 
-    public boolean useItem(List<Item> consommables, Item item){ //Faire en sort que la stat redevienne normal au tour suivant
+    public boolean useItem(List<Item> consommables, Item item){
         if (consommables.contains(item)){
             switch (item.getModifiedStat()) {
                 case "atk":
@@ -270,10 +269,7 @@ public class Livreur extends Personnage implements Serializable
                 default:
                     //
             }
-            consommables.remove(item);
-            if (!consommables.equals(inventory)){
-                this.inventory.addAll(consommables);
-            }
+            inventory.remove(item);
             return true;
         }
         else return false;
