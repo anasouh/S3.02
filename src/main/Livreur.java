@@ -233,7 +233,9 @@ public class Livreur extends Personnage
                     System.out.println("non :)");
             }
             consommables.remove(item);
-            this.inventory.addAll(consommables);
+            if (!consommables.equals(inventory)){
+                this.inventory.addAll(consommables);
+            }
             return true;
         }
         else return false;
@@ -278,5 +280,9 @@ public class Livreur extends Personnage
             str += equipmentsSlots[2].getNom();
         }
         return str + "\n\n";
+    }
+
+    public String combatStats(){
+        return super.toString();
     }
 }
