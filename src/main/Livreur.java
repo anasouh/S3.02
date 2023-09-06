@@ -33,6 +33,10 @@ public class Livreur extends Personnage{
         this.stealth = Math.ceil(this.stealth * societe.getStealthMult());
         this.speed = (Math.ceil(this.speed * societe.getSpeedMult()));
         this.mana = Math.ceil(this.mana * societe.getManaMult());
+
+        for (int i = 0; i < 5; i += 1){
+            inventory.add(Item.COMMANDE);
+        }
     }
 
     static Livreur creerJoueur(String name, Societe societe){
