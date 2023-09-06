@@ -49,6 +49,7 @@ public class Event{
             if(rdm < 25){
                 Item objet = Item.randomCons();
                 System.out.println("vous avez trouvez un objet dans le buisson !" + objet);
+                livreur.addItem(objet);
             }
 
             if(rdm >24 && rdm <75){
