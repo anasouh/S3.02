@@ -16,6 +16,8 @@ public class Livreur extends Personnage{
 
     List<Item> inventory = new ArrayList<Item>();
 
+    private static Item[] equipmentsSlots = new Item[3];
+
     public Livreur(String name, Societe societe){
         //name,hp,physAtk,mana,def,speed
         super(name,100,(random.nextInt(49) + 1),100,(random.nextInt(49) + 1),(random.nextInt(49) + 1));
@@ -94,6 +96,61 @@ public class Livreur extends Personnage{
 
     public void addItem(Item item){
         inventory.add(item);
+    }
+
+    public Item[] getEquipmentSlots(){
+        return this.equipmentsSlots;
+    }
+
+    public void equipItem(Item item){
+        if (ItemType.estArme(item)){
+            equipItem(item, 0);
+        } else if (ItemType.estArmure(item)){
+            equipItem(item, 1);
+        } else if (ItemType.estAccessoire(item)){
+            equipItem(item, 2);
+        } else {
+            System.out.println("Cet objet ne peut pas être équipé");
+        }
+    }
+
+    public void equipItem(Item item, int slot){
+        if (equipmentsSlots[slot] != null){
+            inventory.add(equipmentsSlots[slot]);
+            switch (equipmentsSlots[slot].getModifiedStat()) {
+                case "atk":
+                    this.setPhysAtk(this.getPhysAtk() - equipmentsSlots[slot].getpoints());
+                    break;
+                case "def":
+                    this.setDef(this.getDef() - equipmentsSlots[slot].getpoints());
+                    break;
+                case "stealh":
+                    this.setStealth(this.getStealth() - equipmentsSlots[slot].getpoints());
+                    break;
+                case "speed":
+                    this.setSpeed(this.getSpeed() - equipmentsSlots[slot].getpoints());
+                    break;
+                default:
+                    System.out.println("non :)");
+            }
+        }
+        equipmentsSlots[slot] = item;
+        switch (item.getModifiedStat()) {
+            case "atk":
+                this.setPhysAtk(this.getPhysAtk() + item.getpoints());
+                break;
+            case "def":
+                this.setDef(this.getDef() + item.getpoints());
+                break;
+            case "stealh":
+                this.setStealth(this.getStealth() + item.getpoints());
+                break;
+            case "speed":
+                this.setSpeed(this.getSpeed() + item.getpoints());
+                break;
+            default:
+                System.out.println("uwu");
+        }
     }
 
     public String seeInventory(){
