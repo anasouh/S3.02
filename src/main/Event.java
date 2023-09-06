@@ -110,12 +110,12 @@ public class Event{
         public static void eventCabane(Livreur livreur){
             Scanner sccabane = new Scanner(System.in);
             String rep ="";
-            System.out.println("vous apercevez une cabane dans la zone voulez vous la visiter ?");
-            while(!(rep.equals("oui") || rep.equals("non"))){
+            System.out.println("Vous apercevez une cabane dans la zone. Voulez vous la visiter? (o/n)");
+            while(!(rep.toLowerCase().equals("o") || rep.toLowerCase().equals("n"))){
             rep = sccabane.nextLine();
             int rdm = Event.rng.nextInt(101);
             if(rdm<60){
-                System.out.println("Cette cabane est v ide il n'y a rien d'interessant");
+                System.out.println("Cette cabane est vide");
             }
             if(rdm<80 && rdm > 59){
                 System.out.println("Vous trouver un objet par terre");
