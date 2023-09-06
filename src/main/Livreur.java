@@ -157,6 +157,10 @@ public class Livreur extends Personnage implements Serializable
         return this.equipmentsSlots;
     }
 
+    public boolean isAlive() {
+        return getHp() > 0;
+    }
+
     public void equipItem(Item item){
         if (ItemType.estArme(item)){
             equipItemSlot(item, 0);

@@ -6,7 +6,8 @@ public enum MonstreType {
     Magicien("Magicien"), // mana upgradée
     Guerrier("Guerrier"), // atk upgradée
     Kim_Jung_Un("Kim_Jung_Un"), // défense upgradée
-    MiniBoss("MiniBoss"); // tout upgradé
+    MiniBoss("MiniBoss"), // tout upgradé
+    Boss("AlanFoodChallenge");
 
     private String name;
     

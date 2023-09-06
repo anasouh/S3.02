@@ -70,7 +70,10 @@ public class Jeu {
         String currentDir = new File(System.getProperty("user.dir")).getAbsolutePath();
         String[] dirSplitted = System.getProperty("user.dir").split("/");
         if (dirSplitted[dirSplitted.length-1].equals("src")) currentDir += "/main";
+        else if (dirSplitted[dirSplitted.length-1].equals("main")) currentDir = currentDir + "";
+        else currentDir += "/src/main";
         String path = currentDir + "/ascii/" + dessin + ".txt";
+        System.out.println(path);
         File f = new File(path);
         if (f.exists() && f.canRead()) {
             try (BufferedReader br = new BufferedReader(new FileReader(f))) {
@@ -216,8 +219,6 @@ public class Jeu {
         return res;
     }
 
-
-
     public static void jouerTour(Livreur l) {
         clear();
         if (!lstSalle.isEmpty()){
@@ -302,11 +303,45 @@ public class Jeu {
         lstSalle = genererSalles();
         int tour = 0;
         
-        while (tour < lstSalle.size() && joueur.hp > 0)
+        while (tour < lstSalle.size() && joueur.isAlive())
         {
             jouerTour(joueur);
             finirTour(joueur);
         }
+
+        if (joueur.isAlive()) {
+            clear();
+            printFile("chemin");
+            joueur.dire("La forêt semble se terminer !");
+            sleep(3.5);
+            joueur.dire("Vous pouvez enfin...");
+            sleep(3);
+            clear();
+            printFile("chateau");
+            joueur.dire("QU'EST-CE QUE C'EST QUE CE CHÂTEAU !!!");
+            sleep(3.5);
+            joueur.dire("Vous vous rapprochez tout doucement...\n");
+            sleep(3.5);
+            clear();
+            printFile("alan");
+            joueur.dire("OH NON C'EST ALANFOODCHALLENGE LE VORACE");
+            sleep(3.5);
+            
+            clear();
+            Monstre boss = new Monstre("Boss final", 200, 30, 100, 100, 252);
+            boolean win = Combat(joueur, boss);
+            clear();
+
+            if (win) {
+                joueur.dire("VOUS AVEZ VAINCU LE BOSS !!!");
+                sleep(2);
+                joueur.dire("IL NE VOUS RESTE PLUS QU'À LIVRER VOTRE COMMANDE À QUELQUES PAS D'ICI");
+                sleep(2);
+                joueur.dire("EN SELLE !");
+                printFile("cycling");
+            }
+        }
+        
         joueur.save();
         sc.close();
     }
