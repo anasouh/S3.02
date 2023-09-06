@@ -7,6 +7,20 @@ public class Event{
 
     private static Random rng = new Random(); 
 
+    public static void noEvent(Livreur livreur){
+        System.out.println("faire text de base pour chaque salle");
+        int rdm = Event.rng.nextInt(101);
+        if(rdm < 21){
+            Item item = Item.randomCons();
+            System.out.println("texte trouver objet"+objet);
+
+        }
+        else{
+            System.out.println("texte en rouge pour regen 5hp");
+            livreur.setHp(livreur.getHp()+5);
+        }
+    }
+
     public static void eventCoffre(Livreur livreur){
         Scanner sccoffre = new Scanner(System.in);
         
@@ -68,7 +82,7 @@ public class Event{
                 Jeu.sleep(2);
             }
 
-            if(rdm >73){
+            if(rdm >74){
                 System.out.println("oh non monstre");
                 Jeu.sleep(2);
                 Monstre monstre = new Monstre();
