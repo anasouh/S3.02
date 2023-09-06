@@ -193,7 +193,8 @@ public class Event{
                 System.out.println("oh non le monstre vous a reperé !");
                 Jeu.Combat(livreur, monstre);
                 //faire un combat contre le monstre
-            }}
+            }
+        
             else{
                 System.out.println("que voulez vous faire ? \n 1) attaquer \n 2) fuir");
                 while(!(rep.equals("attaquer") || rep.equals("fuir"))){
@@ -205,6 +206,7 @@ public class Event{
             if(rep.equals("fuir")){
                 System.out.println("vous arrivez a vous echapper sans combattre ");
             }
+        }
         }
         
        
