@@ -91,6 +91,13 @@ public class Monstre extends Personnage{
         return type.getName();
     }
 
+    @Override
+    public void interagir(Personnage truc)
+    {
+        Livreur l = (Livreur) truc;
+        dire("Petit livreur "+l.getSociete().toString()+" ,nourris moi ou bats toi !!!",Color.RED);
+    }
+
     public MonstreType getType()
     {return this.type;}
 
