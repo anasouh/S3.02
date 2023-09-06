@@ -119,7 +119,6 @@ public class Livreur extends Personnage implements Serializable
     public void interagir(Personnage p)
     {
         Monstre m = (Monstre) p;
-<<<<<<< HEAD
         if (m.getType().equals(MonstreType.Kim_Jung_Un))
         {
             this.dire("Kim Jung Un veut son tacos...",Color.BLUE_BOLD);
@@ -128,9 +127,6 @@ public class Livreur extends Personnage implements Serializable
             this.dire("Au non ! , "+m.getName()+" à la dalle...",Color.BLUE);
         }
 
-=======
-        this.dire("Oh non ! , "+m.getName()+" à la dalle...",Color.BLUE);
->>>>>>> c1563a4f719b2a2ec7b828b45afa5ad0a8eed342
         m.afficheImage();
 
     }
