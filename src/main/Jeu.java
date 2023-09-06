@@ -179,7 +179,10 @@ public class Jeu {
 
         //during fight these stats can change, after combat they're reverted back to its original value
         double ancienneDef = livreur.getDef() ; double ancienneAtq = livreur.getPhysAtk(); 
-        double ancienneSpeed = livreur.getSpeed(); double ancienneStealth = livreur.getStealth(); 
+        double ancienneSpeed = livreur.getSpeed(); double ancienneStealth = livreur.getStealth();
+
+        livreur.interagir(monstre);
+        monstre.interagir(livreur);
         
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
             clear();
@@ -323,7 +326,8 @@ public class Jeu {
         lstSalle = genererSalles();
         int tour = 0;
         
-        while (tour < lstSalle.size() && joueur.hp > 0) {
+        while (tour < lstSalle.size() && joueur.hp > 0)
+        {
             jouerTour(joueur);
             finirTour(joueur);
         }
