@@ -149,41 +149,6 @@ public class Jeu {
         }
     }
 
-    public static void actionMonstre(Livreur livreur, Monstre monstre){
-        double proba = new Random().nextDouble();
-        if (monstre.getType().equals(MonstreType.Guerrier) || monstre.getType().equals(MonstreType.MiniBoss)){
-            if (proba < 0.60){
-                monstre.frapper(livreur);
-            }
-            else if (proba < 0.90){
-                monstre.setImmune(true);
-            }
-            else {
-                monstre.lancerSort(livreur);
-            }
-        } else if (monstre.getType().equals(MonstreType.Kim_Jung_Un)){
-            if (proba < 0.30){
-                monstre.frapper(livreur);
-            }
-            else if (proba < 0.75){
-                monstre.setImmune(true);
-            }
-            else {
-                monstre.lancerSort(livreur);
-            }
-        } else if (monstre.getType().equals(MonstreType.Magicien)){
-            if (proba < 0.15){
-                monstre.frapper(livreur);
-            }
-            else if (proba < 0.40){
-                monstre.setImmune(true);
-            }
-            else {
-                monstre.lancerSort(livreur);
-            }
-        }
-    }
-
 
     public static boolean Combat(Livreur livreur, Monstre monstre){ //retourne true si Livreur gagne
         char choix;
@@ -231,7 +196,7 @@ public class Jeu {
         if (livreur.getHp() > 0) {
             livreur.setDef(ancienneDef); livreur.setPhysAtk(ancienneAtq);
             livreur.setSpeed(ancienneSpeed); livreur.setStealth(ancienneStealth);
-            System.out.println("Vous avez réussi a vaincre le monste");
+            System.out.println("Vous avez réussi a vaincre le monstre");
             return true;
         }
         System.out.println("Oh non le monstre vous a vaincu");

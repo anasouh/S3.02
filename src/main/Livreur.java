@@ -186,7 +186,7 @@ public class Livreur extends Personnage implements Serializable
                     this.setSpeed(this.getSpeed() - equipmentsSlots[slot].getpoints());
                     break;
                 default:
-                    System.out.println("non :)");
+                    //
             }
         }
         inventory.remove(item);
@@ -205,7 +205,7 @@ public class Livreur extends Personnage implements Serializable
                 this.setSpeed(this.getSpeed() + item.getpoints());
                 break;
             default:
-                System.out.println("uwu");
+                //
         }
     }
 
@@ -262,7 +262,7 @@ public class Livreur extends Personnage implements Serializable
                     }
                     break;
                 default:
-                    System.out.println("non :)");
+                    //
             }
             consommables.remove(item);
             if (!consommables.equals(inventory)){
@@ -278,7 +278,7 @@ public class Livreur extends Personnage implements Serializable
     }
 
     public boolean isEmptyInventory() {
-        return (inventory.size() == 0);
+        return (inventory.isEmpty());
     }
     
     public int commandeRestante(){
