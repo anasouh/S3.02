@@ -205,10 +205,4 @@ public class Monstre extends Personnage {
 
 
   }
-
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 056b75bea91678c471f385c8406befea2b0a77b7
 }
