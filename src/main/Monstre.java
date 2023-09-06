@@ -36,17 +36,17 @@ public class Monstre extends Personnage{
     }
 
     public Monstre(String name){ //monstre random
-        super(name,100,(random.nextInt(24) + 1),100,(random.nextInt(24) + 1),(random.nextInt(24) + 1));
-        this.danger = random.nextInt(100); //si le danger du monstre est + grand que le stealth du Livreur alors il voit le Livreur
+        super(name,100,(random.nextInt(7) + 15),100,(random.nextInt(10) + 5),(random.nextInt(30) + 20));
+        this.danger = random.nextInt(70); //si le danger du monstre est + grand que le stealth du Livreur alors il voit le Livreur
         this.type = MonstreType.random();
         if (this.type.equals(MonstreType.Magicien)) this.mana *= 1.5;
-        if (this.type.equals(MonstreType.Guerrier)) this.physAtk *= 1.5;
-        if (this.type.equals(MonstreType.Defense)) this.def *= 1.5;
+        if (this.type.equals(MonstreType.Guerrier)) this.physAtk *= 1.3;
+        if (this.type.equals(MonstreType.Defense)) this.def *= 1.3;
         if (this.type.equals(MonstreType.MiniBoss)) {
             this.mana *= 1.5;
-            this.physAtk *= 1.5;
-            this.def *= 1.5;
-            this.danger *= 1.5;
+            this.physAtk *= 1.3;
+            this.def *= 1.3;
+            this.danger *= 1.7;
         }
     }
 
@@ -73,11 +73,14 @@ public class Monstre extends Personnage{
 
     private static String generNom()
     {
-      Random rnd = new Random();
-      int rndIndex = rnd.nextInt(lstNoms.size());
-      String res = lstNoms.get(rndIndex);
-      lstNoms.remove(rndIndex);
-      return res;
+      if (lstNoms.size() > 0){
+        Random rnd = new Random();
+        int rndIndex = rnd.nextInt(lstNoms.size());
+        String res = lstNoms.get(rndIndex);
+        lstNoms.remove(rndIndex);
+        return res;
+      }
+      return "null";
     }
 
     public int getDanger() {

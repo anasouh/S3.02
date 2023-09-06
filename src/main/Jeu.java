@@ -57,18 +57,18 @@ public class Jeu {
         String nom = sc.nextLine();
         clear();
         System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats\n ['D'] Deliveroo\n ['K'] KingDelivery \n autre caractère pour être Indépendant"));
-        char choix = sc.next().charAt(0);
+        char choix = sc.next().toLowerCase().charAt(0);
         Societe societe;
 
         switch (choix)
         {
-            case 'U':
+            case 'u':
                 societe = Societe.UberEats;
                 break;
-            case 'D':
+            case 'd':
                 societe = Societe.Deliveroo;
                 break;
-            case 'K':
+            case 'k':
                 societe = Societe.KingDelivery;
                 break;
             default:
@@ -286,16 +286,6 @@ public class Jeu {
             jouerTour(joueur);
             finirTour(joueur);
         }
-
-        joueur.inventory.add(Item.KEBAB);
-        joueur.inventory.add(Item.BURGER);
-        joueur.inventory.add(Item.PIZZA);
-
-        Monstre monstre = new Monstre("pas Maxime");
-
-        boolean win = Combat(joueur,monstre);
-        System.out.println(win);
-
         sc.close();
     }
 

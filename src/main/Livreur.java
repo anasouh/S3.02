@@ -20,11 +20,11 @@ public class Livreur extends Personnage{
 
     public Livreur(String name, Societe societe){
         //name,hp,physAtk,mana,def,speed
-        super(name,100,(random.nextInt(49) + 1),100,(random.nextInt(49) + 1),(random.nextInt(49) + 1));
+        super(name,100,(random.nextInt(10) + 30),100,(random.nextInt(10) + 10),(random.nextInt(15) + 30));
         this.name = name;
         this.societe = societe;
         
-        this.stealth = random.nextInt(49) + 1;
+        this.stealth = random.nextInt(20) + 30;
         
         //depending on societe, multiplies the attributes by a certain %;
 
@@ -217,4 +217,13 @@ public class Livreur extends Personnage{
         return (inventory.size() == 0);
     }
     
+    public int commandeRestante(){
+        int tailleCommande = 0;
+        for (Item item : inventory){
+            if (item.estCommande()){
+                tailleCommande += 1;
+            }
+        }
+        return tailleCommande;
+    }
 }
