@@ -178,7 +178,10 @@ public class Event{
             System.out.println("Vous repérez un monstre au loin voulez vous l'analyser ?");
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scmonstredos.nextLine();
+            }
+            if(rep.equals("oui")){
             System.out.println(monstre);
+
 
             int rdm = (int)Event.rng.nextInt(101);
             int proba = (int)(monstre.getDanger() * livreur.getStealth() / 100);
@@ -187,7 +190,7 @@ public class Event{
                 System.out.println("oh non le monstre vous a reperé !");
                 Jeu.Combat(livreur, monstre);
                 //faire un combat contre le monstre
-            }
+            }}
             else{
                 System.out.println("que voulez vous faire ? \n 1) attaquer \n 2) fuir");
                 while(!(rep.equals("attaquer") || rep.equals("fuir"))){
@@ -200,7 +203,7 @@ public class Event{
                 System.out.println("vous arrivez a vous echapper sans combattre ");
             }
         }
-        }
+        
        
         }
 
