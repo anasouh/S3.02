@@ -177,9 +177,18 @@ public class Event{
                 rep=scgrotte.nextLine();
                 int bonus = (rep.length()%3)+1;
                 System.out.println("Vous vous sentez en meilleur forme");
-                if(bonus == 1){livreur.setPhysAtk(livreur.getPhysAtk()*1.4);}
-                if(bonus == 2){livreur.setDef(livreur.getDef()*1.4);}
-                if(bonus == 3){livreur.setMana(livreur.getMana()*1.4);}
+                if(bonus == 1){
+                    livreur.setPhysAtk(livreur.getPhysAtk()*1.4);
+                    System.out.println("Vous vous sentez plus fort...");
+                }
+                if(bonus == 2){
+                    livreur.setDef(livreur.getDef()*1.4);
+                    System.out.println("Vous sentez que vous êtes plus résistant...");
+                }
+                if(bonus == 3){
+                    livreur.setMana(livreur.getMana()*1.4);
+                    System.out.println("Vous sentez la magie s'accumuler...");
+                }
                 System.out.println("Vous sortez de la grotte");
                 Jeu.sleep(2);
             }
