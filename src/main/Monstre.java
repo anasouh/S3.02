@@ -121,13 +121,18 @@ public class Monstre extends Personnage {
     dire("Petit livreur " + l.getSociete().toString() + " ,nourris moi ou bats toi !!!", Color.RED);
   }
 
-  public MonstreType getType() {
+  public MonstreType getType()
+  {
     return this.type;
   }
 
+<<<<<<< HEAD
+
+=======
   public void afficheImage()
   {
       MonstreType type = this.getType();
+>>>>>>> 056b75bea91678c471f385c8406befea2b0a77b7
 
       //CAS MAGIC
       if (type.equals(MonstreType.Magicien))
@@ -151,6 +156,81 @@ public class Monstre extends Personnage {
                   "                          '-'   '-'"+Color.RESET);
       }
 
+<<<<<<< HEAD
+        //CAS MAGIC
+        if (type.equals(MonstreType.Magicien))
+        {
+            System.out.println(Color.BLUE+
+                    "                             /\\\n" +
+                    "                            /  \\\n" +
+                    "                           |    |\n" +
+                    "                         --:'''':--\n" +
+                    "                           :'_' :\n" +
+                    "                           _:\"\":\\___\n" +
+                    "            ' '      ____.' :::     '._\n" +
+                    "           . *=====<<=)           \\    :\n" +
+                    "            .  '      '-'-'\\_      /'._.'\n" +
+                    "                             \\====:_ \"\"\n" +
+                    "                            .'     \\\\\n" +
+                    "                           :       :\n" +
+                    "                          /   :    \\\n" +
+                    "                         :   .      '.\n" +
+                    "                         :  : :      :\n" +
+                    "                         :__:-:__.;--'\n" +
+                    "                          '-'   '-'"+Color.RESET);
+        }
+
+        //CAS GUERRIER
+        if (type.equals(MonstreType.Guerrier))
+        {
+            System.out.println(Color.RED+"/ \\\n" +
+                    "  | |\n" +
+                    "  |.|\n" +
+                    "  |.|\n" +
+                    "  |:|      __\n" +
+                    ",_|:|_,   /  )\n" +
+                    "  (Oo    / _I_\n" +
+                    "   +\\ \\  || __|\n" +
+                    "      \\ \\||___|\n" +
+                    "        \\ /.:.\\-\\\n" +
+                    "         |.:. /-----\\\n" +
+                    "         |___|::oOo::|\n" +
+                    "         /   |:<_T_>:|\n" +
+                    "        |_____\\ ::: /\n" +
+                    "         | |  \\ \\:/\n" +
+                    "         | |   | |\n" +
+                    "         \\ /   | \\___\n" +
+                    "         / |   \\_____\\\n" +
+                    "         `-'"+Color.RESET);
+        }
+        //MINI BOSS
+        if (type.equals(MonstreType.MiniBoss))
+        {
+            System.out.println(Color.CYAN_BOLD+"_________________________ \n" +
+                    "|<><><>     |  |    <><><>|\n" +
+                    "|<>         |  |        <>|\n" +
+                    "|           |  |          |\n" +
+                    "|  (______ <\\-/> ______)  |\n" +
+                    "|  /_.-=-.\\| \" |/.-=-._\\  | \n" +
+                    "|   /_    \\(o_o)/    _\\   |\n" +
+                    "|    /_  /\\/ ^ \\/\\  _\\    |\n" +
+                    "|      \\/ | / \\ | \\/      |\n" +
+                    "|_______ /((( )))\\ _______|\n" +
+                    "|      __\\ \\___/ /__      |\n" +
+                    "|--- (((---'   '---))) ---|\n" +
+                    "|           |  |          |\n" +
+                    "|           |  |          |\n" +
+                    ":           |  |          :     \n" +
+                    " \\<>        |  |       <>/      \n" +
+                    "  \\<>       |  |      <>/       \n" +
+                    "   \\<>      |  |     <>/       \n" +
+                    "    `\\<>    |  |   <>/'         \n" +
+                    "      `\\<>  |  |  <>/'         \n" +
+                    "        `\\<>|  |<>/'         \n" +
+                    "          `-.  .-`           \n" +
+                    "            '--'"+Color.RESET);
+        }
+=======
       //CAS GUERRIER
       if (type.equals(MonstreType.Guerrier))
       {
@@ -201,9 +281,14 @@ public class Monstre extends Personnage {
                   "          `-.  .-`           \n" +
                   "            '--'"+Color.RESET);
       }
+>>>>>>> 056b75bea91678c471f385c8406befea2b0a77b7
 
 
   }
 
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 056b75bea91678c471f385c8406befea2b0a77b7
 }
