@@ -26,15 +26,18 @@ public class Event{
            // System.out.println("Voulez vous prendre cet objet il vous reste " + Item.afficherNombreObjet());       
             livreur.addItem(objet);
             livreur.addItem(objet2);
+            Jeu.sleep(2);
             }
             else{
                 System.out.println("c'etait un monstre");
+                Jeu.sleep(2);
                 Monstre mimick = new Monstre("Mimick");
                 Jeu.Combat(livreur, mimick);
             }
         }
         if(rep.equals("non")){
           System.out.println("Vous vous éloignez du coffre sans y prêter attention");
+          Jeu.sleep(2);
         }
         
 
@@ -54,13 +57,17 @@ public class Event{
                 Item objet = Item.randomCons();
                 System.out.println("Vous avez trouvé un objet dans le buisson !" + objet);
                 livreur.addItem(objet);
+                Jeu.sleep(2);
             }
 
             if(rdm >24 && rdm <75){
                 System.out.println("Vous ne trouvez rien ");
+                Jeu.sleep(2);
             }
 
             if(rdm >73){
+                System.out.println("oh non monstre");
+                Jeu.sleep(2);
                 Monstre monstre = new Monstre();
                 Jeu.Combat(livreur, monstre);
                 //créer un monstre aléatoire et faire un combat avec le livreur
@@ -71,6 +78,7 @@ public class Event{
         }
         if(rep.equals("non")){
             System.out.println("Vous décidez de partir sans faire attention");
+            Jeu.sleep(2);
         }
        
 
@@ -92,6 +100,7 @@ public class Event{
                 int rdm2 = Event.rng.nextInt(25)+10;
                 livreur.setHp(livreur.getHp()+rdm2);
                 System.out.println(Color.RED+"Vous avez récupéré "+ rdm2 +" points de vie !"+Color.RESET);
+                Jeu.sleep(2);
             }
             else{
                 System.out.println("La personne sort un couteau !");
@@ -102,6 +111,7 @@ public class Event{
                 }
                 if(rep.equals("oui")){
                     System.out.println("Vous donnez un de vos tacos à la personne pour la calmer et vous partez");
+                    Jeu.sleep(2);
                 }
                 if(rep.equals("non")){
                     Monstre pnj = new Monstre("etrange");
@@ -128,12 +138,14 @@ public class Event{
             int rdm = Event.rng.nextInt(101);
             if(rdm<60){
                 System.out.println("Cette cabane est vide");
+                Jeu.sleep(2);
             }
             if(rdm<80 && rdm > 59){
                 System.out.println("Vous trouvez un objet par terre");
                 Item objet = Item.randomObjet();
                 System.out.println("c'est :\n" + objet);
                 livreur.addItem(objet);
+                Jeu.sleep(2);
 
             }
             if(rdm>79){
@@ -146,6 +158,7 @@ public class Event{
         }
         if(rep.equals("non")){
             System.out.println("vous n'explorer pas la cabane");
+            Jeu.sleep(2);
         }
         }
            
@@ -164,13 +177,15 @@ public class Event{
                 rep=scgrotte.nextLine();
                 int bonus = (rep.length()%3)+1;
                 System.out.println("Vous vous sentez en meilleur forme");
-                if(bonus == 1){livreur.setPhysAtk(livreur.getPhysAtk()*1.2);}
-                if(bonus == 2){livreur.setDef(livreur.getDef()*1.2);}
-                if(bonus == 3){livreur.setMana(livreur.getMana()*1.2);}
+                if(bonus == 1){livreur.setPhysAtk(livreur.getPhysAtk()*1.4);}
+                if(bonus == 2){livreur.setDef(livreur.getDef()*1.4);}
+                if(bonus == 3){livreur.setMana(livreur.getMana()*1.4);}
                 System.out.println("Vous sortez de la grotte");
+                Jeu.sleep(2);
             }
             if(rep.equals("non")){
                 System.out.println("Vous vous éloignez de la grotte");
+                Jeu.sleep(2);
             }
         
         }
@@ -233,6 +248,7 @@ public class Event{
             String rep ="";
             System.out.println("Vous tombez dans un piège en marchant. Vous perdez de la vie " + Color.RED_BOLD + ((livreur.getHp()*0.05)+5) + Color.RESET);
             livreur.setHp(livreur.getHp() - ((livreur.getHp()*0.05)+5));
+            Jeu.sleep(2);
         }
         
 
