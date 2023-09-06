@@ -27,7 +27,8 @@ public enum Item {
     BURGER("Burger","mana",30),
     RIZ("Un seul grain de riz","hp",1),
     SUSHI("Sushi","stealth",20),
-    CAFE("Café","speed",25);
+    CAFE("Café","speed",25),
+    COMMANDE("Commande","hp",25);
 
     private String nom;
     private boolean cons;
@@ -108,5 +109,9 @@ public enum Item {
         catch (Exception e){
             return null;
         }
+    }
+
+    public boolean estCommande(){
+        return this.equals(Item.COMMANDE);
     }
 }

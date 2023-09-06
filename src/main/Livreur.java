@@ -217,4 +217,13 @@ public class Livreur extends Personnage{
         return (inventory.size() == 0);
     }
     
+    public int commandeRestante(){
+        int tailleCommande = 0;
+        for (Item item : inventory){
+            if (item.estCommande()){
+                tailleCommande += 1;
+            }
+        }
+        return tailleCommande;
+    }
 }
