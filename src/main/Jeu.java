@@ -36,7 +36,11 @@ public class Jeu {
     }
 
     public static char demanderLettre() {
-        return sc.nextLine().charAt(0);
+        String line = sc.nextLine();
+        while (line.equals("")) {
+            line = sc.nextLine();
+        }
+        return line.charAt(0);
     }
 
     public static void sleep(double s) {
@@ -177,6 +181,7 @@ public class Jeu {
         
         //System.out.println("Livreur : " + livreur);
         //System.out.println("Monstre : " + monstre);
+        clear();
         
         if (livreur.getHp() > 0) {
             livreur.setDef(ancienneDef); livreur.setPhysAtk(ancienneAtq);
@@ -184,8 +189,7 @@ public class Jeu {
             System.out.println("Vous avez réussi a vaincre le monste");
             return true;
         }
-
-        System.out.println("oh non le monstre vous a vaincu");
+        System.out.println("Oh non le monstre vous a vaincu");
         return false;
         }
     
@@ -224,41 +228,40 @@ public class Jeu {
     }
 
     public static void finirTour(Livreur l) {
-        if(l.getHp()>0)
-        {
-          int currentTour = nbSalle-lstSalle.size();
-          // System.out.println("Vous êtes à la salle "+currentTour+" sur "+nbSalle);
-          System.out.println("Tapez :\n "+ bold("'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant.") );
-          char selec = sc.next().toLowerCase().charAt(0);
-          if(selec == 'p')
-            {
-               jouerTour(l);; 
-            }
+        if (l.getHp() > 0) {
+            int currentTour = nbSalle - lstSalle.size();
+            // System.out.println("Vous êtes à la salle "+currentTour+" sur "+nbSalle);
+            System.out.println("Tapez :\n " + bold(
+                    "'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant."));
 
-          while (selec!='p') 
-          {
-            if(selec == 'a')
-            {
-             System.out.println(l);
-             selec = ' ';
-            }
-            if(selec == 'i')
-            {
-                List<Item> consommables = l.listeCons(); //afficher la liste des item consommables possédés
-                System.out.println(l.seeInventory());
-                int conso = sc.nextInt();
-                String nomConso = consommables.get(conso).getNom();
-                l.useItem(consommables, consommables.get(conso));
-                System.out.println("Vous avez utilisé 1x " + nomConso);
-                selec = ' ';
-            }
-            
-        }
-        if(selec == 'p')
-        {
+            boolean continuer = false;
+            char selec;
+
+            do {
+                selec = demanderLettre();
+                if (selec == 'a') {
+                    System.out.println(l);
+                } else if (selec == 'i') {
+                    System.out.println(l.seeInventory());
+                    if (!l.isEmptyInventory()) {
+                        List<Item> consommables = l.listeCons();
+                        int toUse = sc.nextInt();
+                        Item item = consommables.get(toUse);
+                        l.useItem(consommables, item);
+                        System.out.println("Vous avez utilisé 1x " + item.getNom());
+                    }
+                } else if (selec == 'p') {
+                    continuer = true;
+                    break;
+                }
+                sleep(1.5);
+                clear();
+                System.out.println("Tapez :\n " + bold("'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant."));
+                
+            } while (!continuer);
+
             jouerTour(l);
-        }
-        selec = sc.next().toLowerCase().charAt(0);
+
         }
     }
 
