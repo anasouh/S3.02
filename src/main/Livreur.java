@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Random;
 import java.lang.Math;
 
-public class Livreur extends Personnage{
+public class Livreur extends Personnage
+{
 
     private String name;
     private double stealth; //the enemy detects you if you don't have stealth
@@ -83,6 +84,12 @@ public class Livreur extends Personnage{
         this.mana = mana;
     }
 
+    @Override
+    public void interagir(Personnage m)
+    {
+        this.dire("Au non ! , "+m.getName()+" à la dalle...",Color.BLUE);
+    }
+
 
     public double getStealth() {
         return stealth;
@@ -111,17 +118,17 @@ public class Livreur extends Personnage{
 
     public void equipItem(Item item){
         if (ItemType.estArme(item)){
-            equipItem(item, 0);
+            equipItemSlot(item, 0);
         } else if (ItemType.estArmure(item)){
-            equipItem(item, 1);
+            equipItemSlot(item, 1);
         } else if (ItemType.estAccessoire(item)){
-            equipItem(item, 2);
+            equipItemSlot(item, 2);
         } else {
             System.out.println("Cet objet ne peut pas être équipé");
         }
     }
 
-    public void equipItem(Item item, int slot){
+    public void equipItemSlot(Item item, int slot){
         if (equipmentsSlots[slot] != null){
             inventory.add(equipmentsSlots[slot]);
             switch (equipmentsSlots[slot].getModifiedStat()) {
@@ -218,6 +225,10 @@ public class Livreur extends Personnage{
             return true;
         }
         else return false;
+    }
+
+    public boolean useItem(Item item){
+        return useItem(inventory, item);
     }
 
     public boolean isEmptyInventory() {

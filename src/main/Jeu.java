@@ -87,7 +87,7 @@ public class Jeu {
         String nom = sc.nextLine();
         clear();
         printFile("cycling");
-        System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats\n ['D'] Deliveroo\n ['K'] KingDelivery \n autre caractère pour être Indépendant"));
+        System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats (Guerrier)\n ['D'] Deliveroo (Magicien)\n ['K'] KingDelivery (Voleur)\n autre caractère pour être Indépendant (Vierge)"));
         char choix = sc.next().toLowerCase().charAt(0);
         Societe societe;
 
@@ -279,11 +279,17 @@ public class Jeu {
                 } else if (selec == 'i') {
                     System.out.println(l.seeInventory() );
                     if (!l.isEmptyInventory()) {
-                        List<Item> consommables = l.listeCons();
-                        int toUse = sc.nextInt();
-                        Item item = consommables.get(toUse);
-                        l.useItem(consommables, item);
-                        System.out.println("Vous avez utilisé 1x " + item.getNom());
+                        char toUse = demanderLettre();
+                        if (toUse >= '0' && toUse <= '9'){
+                            Item item = l.inventory.get(toUse);
+                            if (item.getCons()){
+                                l.useItem(item);
+                                System.out.println("Vous avez utilisé 1x " + item.getNom());
+                            } else {
+                                l.equipItem(item);
+                                System.out.println("Vous avez équipé 1x " + item.getNom());
+                            }
+                        }
                     }
                     System.out.println(""+Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
                     demanderLettre();

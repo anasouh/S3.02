@@ -189,9 +189,18 @@ public class Event{
                 rep=scgrotte.nextLine();
                 int bonus = (rep.length()%3)+1;
                 System.out.println("Vous vous sentez en meilleur forme");
-                if(bonus == 1){livreur.setPhysAtk(livreur.getPhysAtk()*1.4);}
-                if(bonus == 2){livreur.setDef(livreur.getDef()*1.4);}
-                if(bonus == 3){livreur.setMana(livreur.getMana()*1.4);}
+                if(bonus == 1){
+                    livreur.setPhysAtk(livreur.getPhysAtk()*1.4);
+                    System.out.println("Vous vous sentez plus fort...");
+                }
+                if(bonus == 2){
+                    livreur.setDef(livreur.getDef()*1.4);
+                    System.out.println("Vous sentez que vous êtes plus résistant...");
+                }
+                if(bonus == 3){
+                    livreur.setMana(livreur.getMana()*1.4);
+                    System.out.println("Vous sentez la magie s'accumuler...");
+                }
                 System.out.println("Vous sortez de la grotte");
                 Jeu.sleep(2);
             }
@@ -239,7 +248,7 @@ public class Event{
             }
         }
         
-            else{
+                Jeu.sleep(1.5);
                 System.out.println("Que voulez-vous faire ? \n 1) attaquer \n 2) fuir");
                 while(!(rep.equals("attaquer") || rep.equals("fuir"))){
             rep = scmonstredos.nextLine();
@@ -250,7 +259,7 @@ public class Event{
             if(rep.equals("fuir")){
                 System.out.println("Vous arrivez à vous faufiler sans que le monstre ne vous voie ");
             }
-        }
+        
         }
         
        
