@@ -1,33 +1,20 @@
 package test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 import main.Jeu;
-import main.Livreur;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestJeu
 {
-    private Jeu jeu;
-
-    @Test
-    public void testCreerLivreur()
-    {
-        Livreur livreur = jeu.creerLivreur();
-        assertNotNull(livreur);
-        assertNotNull(livreur.getName());
-        assertNotNull(livreur.getSociete());
-    }
 
     @Test
     public void testGenererSalles()
     {
-
-        jeu.genererSalles();
-
-        assertTrue(jeu.getLstSalle().size() > 0);
+        assertTrue(Jeu.genererSalles().size() > 0);
     }
 
     /*

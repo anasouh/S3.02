@@ -143,7 +143,7 @@ public abstract class Personnage implements Interactable<Personnage>, Serializab
     
     @Override
     public String toString() {
-        return "\t" + Color.WHITE_BOLD + this.getName().toUpperCase() + " " + Color.RESET + Color.RED + ((int) hp) + " HP | " + Color.RESET + Color.BLUE + ((int) physAtk) + " ATK | " + Color.RESET + Color.GREEN + ((int) def) + " DEF | " + Color.YELLOW + ((int) mana) + " MANA " + Color.RESET;
+        return "\t" + Color.WHITE_BOLD + this.getName().toUpperCase() + " " + Color.RED + ((int) hp) + " HP | " + Color.BLUE + ((int) physAtk) + " ATK | " + Color.GREEN + ((int) def) + " DEF | " + Color.YELLOW + ((int) mana) + " MANA | " + Color.CYAN + ((int)speed) + " SPEED" + Color.RESET;
     }
 
 

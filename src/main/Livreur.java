@@ -77,6 +77,8 @@ public class Livreur extends Personnage implements Serializable
         return joueur;
     }
 
+    
+
     public void dire(String replique)
     {
         System.out.println(this.getName()+" : "+replique);
@@ -114,9 +116,12 @@ public class Livreur extends Personnage implements Serializable
     }
 
     @Override
-    public void interagir(Personnage m)
+    public void interagir(Personnage p)
     {
+        Monstre m = (Monstre) p;
         this.dire("Oh non ! , "+m.getName()+" à la dalle...",Color.BLUE);
+        m.afficheImage();
+
     }
 
 
@@ -167,7 +172,7 @@ public class Livreur extends Personnage implements Serializable
                 case "def":
                     this.setDef(this.getDef() - equipmentsSlots[slot].getpoints());
                     break;
-                case "stealh":
+                case "stealth":
                     this.setStealth(this.getStealth() - equipmentsSlots[slot].getpoints());
                     break;
                 case "speed":
@@ -281,7 +286,7 @@ public class Livreur extends Personnage implements Serializable
 
     @Override
     public String toString() {
-        String str = super.toString() + "\n\tArme: ";
+        String str = super.toString() + Color.CYAN + " | " + Color.PURPLE + ((int)stealth) + " STEALTH" + Color.RESET + "\n\tArme: ";
         if (equipmentsSlots[0] == null){
             str += Color.BLACK + "Aucun" + Color.RESET;
         } else {
@@ -329,6 +334,6 @@ public class Livreur extends Personnage implements Serializable
     }
 
     public String combatStats(){
-        return super.toString();
+        return super.toString() + Color.CYAN + " | " + Color.PURPLE + ((int)stealth) + " STEALTH" + Color.RESET;
     }
 }

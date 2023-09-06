@@ -34,7 +34,7 @@ public class Salle {
         Passage caché,
         Arche antique,
         Banc de brume,
-        Étang marécageux,
+        Étang marécageux
     """;
     private static ArrayList<String> NAMES = new ArrayList<>(Arrays.asList(NAMES_LIST.split(",")));
     
@@ -56,6 +56,10 @@ public class Salle {
 
     public void lancerEvent(Livreur l) {
         Event.aleatoire(l);
+    }
+
+    public void noEvent(Livreur l){
+        Event.noEvent(l);
     }
 
     public String toString() {
