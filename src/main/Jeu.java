@@ -182,12 +182,10 @@ public class Jeu {
         double ancienneSpeed = livreur.getSpeed(); double ancienneStealth = livreur.getStealth();
 
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
+            clear();
             livreur.interagir(monstre);
             monstre.interagir(livreur);
 
-            sleep(2);
-
-            clear();
             
             System.out.print(Color.RED_BOLD_BRIGHT);
             printFile("combat");
