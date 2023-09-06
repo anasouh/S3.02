@@ -160,11 +160,14 @@ public class Jeu {
             
             if (livreur.getSpeed() > monstre.getSpeed()){
                 actionJoueur(livreur, monstre, choix, sc);
-                //actionMonstre();
+                if(monstre.getHp()<=0){
                 monstre.frapper(livreur);
+                }
             } else {
                 monstre.frapper(livreur);
+                if(livreur.getHp()<=0){
                 actionJoueur(livreur, monstre, choix, sc);
+                }
             }
 
             sleep(2.5);
@@ -172,19 +175,17 @@ public class Jeu {
             livreur.setImmune(false);
         }
         
-        System.out.println("Livreur : " + livreur);
-        System.out.println("Monstre : " + monstre);
+        //System.out.println("Livreur : " + livreur);
+        //System.out.println("Monstre : " + monstre);
         
         if (livreur.getHp() > 0) {
             livreur.setDef(ancienneDef); livreur.setPhysAtk(ancienneAtq);
             livreur.setSpeed(ancienneSpeed); livreur.setStealth(ancienneStealth);
+            System.out.println("Vous avez réussi a vaincre le monste");
             return true;
         }
 
-        else if (monstre.getHp() <= 0 && livreur.getHp() <= 0){
-            if (monstre.getSpeed() <= livreur.getSpeed()) return true;
-        }
-
+        System.out.println("oh non le monstre vous a vaincu");
         return false;
         }
     
