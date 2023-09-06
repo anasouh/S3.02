@@ -73,11 +73,14 @@ public class Monstre extends Personnage{
 
     private static String generNom()
     {
-      Random rnd = new Random();
-      int rndIndex = rnd.nextInt(lstNoms.size());
-      String res = lstNoms.get(rndIndex);
-      lstNoms.remove(rndIndex);
-      return res;
+      if (lstNoms.size() > 0){
+        Random rnd = new Random();
+        int rndIndex = rnd.nextInt(lstNoms.size());
+        String res = lstNoms.get(rndIndex);
+        lstNoms.remove(rndIndex);
+        return res;
+      }
+      return "null";
     }
 
     public int getDanger() {
