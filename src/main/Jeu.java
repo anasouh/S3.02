@@ -271,14 +271,14 @@ public class Jeu {
             do {
                 selec = demanderLettre();
                 if (selec == 'a') {
-                    System.out.println(""+l + Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
+                    System.out.println("" + l + Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
                     demanderLettre();
                 } else if (selec == 'i') {
                     System.out.println(l.seeInventory() );
                     if (!l.isEmptyInventory()) {
                         char toUse = demanderLettre();
                         if (toUse >= '0' && toUse <= '9'){
-                            Item item = l.inventory.get(toUse);
+                            Item item = l.inventory.get(toUse - '0');
                             if (item.getCons()){
                                 l.useItem(item);
                                 System.out.println("Vous avez utilisé 1x " + item.getNom());
