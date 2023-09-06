@@ -179,16 +179,21 @@ public class Jeu {
 
         //during fight these stats can change, after combat they're reverted back to its original value
         double ancienneDef = livreur.getDef() ; double ancienneAtq = livreur.getPhysAtk(); 
-        double ancienneSpeed = livreur.getSpeed(); double ancienneStealth = livreur.getStealth(); 
-        
+        double ancienneSpeed = livreur.getSpeed(); double ancienneStealth = livreur.getStealth();
+
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
+            livreur.interagir(monstre);
+            monstre.interagir(livreur);
+
+            sleep(2);
+
             clear();
             
             System.out.print(Color.RED_BOLD_BRIGHT);
             printFile("combat");
             System.out.print("\n\n\n"+Color.RESET);
             
-            System.out.println(livreur);
+            System.out.println(livreur.combatStats());
             System.out.println(monstre);
             System.out.println("\nQue voulez vous faire ?");
             System.out.println(bold(" ['P'] Attaque physique \n ['M'] Attaque magique\n ['B'] Bloquer\n ['O'] Utiliser un objet\n"));
@@ -212,9 +217,6 @@ public class Jeu {
             
             livreur.setImmune(false);
         }
-        
-        //System.out.println("Livreur : " + livreur);
-        //System.out.println("Monstre : " + monstre);
         clear();
         
         if (livreur.getHp() > 0) {
@@ -274,14 +276,14 @@ public class Jeu {
             do {
                 selec = demanderLettre();
                 if (selec == 'a') {
-                    System.out.println(""+l + Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
+                    System.out.println("" + l + Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
                     demanderLettre();
                 } else if (selec == 'i') {
                     System.out.println(l.seeInventory() );
                     if (!l.isEmptyInventory()) {
                         char toUse = demanderLettre();
                         if (toUse >= '0' && toUse <= '9'){
-                            Item item = l.inventory.get(toUse);
+                            Item item = l.inventory.get(toUse - '0');
                             if (item.getCons()){
                                 l.useItem(item);
                                 System.out.println("Vous avez utilisé 1x " + item.getNom());
@@ -326,7 +328,8 @@ public class Jeu {
         lstSalle = genererSalles();
         int tour = 0;
         
-        while (tour < lstSalle.size() && joueur.hp > 0) {
+        while (tour < lstSalle.size() && joueur.hp > 0)
+        {
             jouerTour(joueur);
             finirTour(joueur);
         }
