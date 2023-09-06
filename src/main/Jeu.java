@@ -248,9 +248,10 @@ public class Jeu {
             do {
                 selec = demanderLettre();
                 if (selec == 'a') {
-                    System.out.println(l);
+                    System.out.println(""+l + Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
+                    demanderLettre();
                 } else if (selec == 'i') {
-                    System.out.println(l.seeInventory());
+                    System.out.println(l.seeInventory() );
                     if (!l.isEmptyInventory()) {
                         List<Item> consommables = l.listeCons();
                         int toUse = sc.nextInt();
@@ -258,11 +259,12 @@ public class Jeu {
                         l.useItem(consommables, item);
                         System.out.println("Vous avez utilisé 1x " + item.getNom());
                     }
+                    System.out.println(""+Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
+                    demanderLettre();
                 } else if (selec == 'p') {
                     continuer = true;
                     break;
                 }
-                sleep(1.5);
                 clear();
                 System.out.println("Tapez :\n " + bold("'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant."));
                 
