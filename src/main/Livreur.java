@@ -61,7 +61,7 @@ public class Livreur extends Personnage
 
     public void dire(String replique)
     {
-        System.out.println(this.getName()+" : "+replique);
+        System.out.println(Color.BLACK_BOLD+" ~ "+replique+Color.RESET);
     }
     
     public static void main(String[] args) {

@@ -8,15 +8,26 @@ public class Event{
     private static Random rng = new Random(); 
 
     public static void noEvent(Livreur livreur){
-        System.out.println("faire text de base pour chaque salle");
+
+        Jeu.sleep(2);
+        livreur.dire("Vous explorez la zone à la recherche de quelque chose ");
+        Jeu.sleep(1);
+        livreur.dire("Cette zone est calme, il n'y a rien de spécial à premiere vue");
         int rdm = Event.rng.nextInt(101);
         if(rdm < 21){
             Item item = Item.randomCons();
-            System.out.println("texte trouver objet"+objet);
+            Jeu.sleep(1);
+            livreur.dire("Oh ?");
+            Jeu.sleep(0.5);
+            livreur.dire("Un objet est à terre");
+            Jeu.sleep(1);
+            livreur.dire("Vous avez obtenue "+item, Color.GREEN);
 
         }
         else{
-            System.out.println("texte en rouge pour regen 5hp");
+            livreur.dire("Vous avez pu vous reposer.");
+            Jeu.sleep(0.8);
+            livreur.dire("Vous récuperez 5 points de vie",Color.RED);
             livreur.setHp(livreur.getHp()+5);
         }
     }
@@ -25,7 +36,8 @@ public class Event{
         Scanner sccoffre = new Scanner(System.in);
         
         Jeu.printFile("chest");
-        System.out.println("Vous apercevez un coffre. Voulez vous l'ouvrir ?\n");
+        Jeu.sleep(1);
+        livreur.dire("Vous apercevez un coffre. Voulez vous l'ouvrir ?\n");
         String rep = "";
         while(!(rep.equals("oui") || rep.equals("non"))){
             rep = sccoffre.nextLine();
@@ -35,16 +47,14 @@ public class Event{
             if(rdm>20){
             Item objet = Item.randomEquip();
             Item objet2 = Item.randomEquip();
-            System.out.println("Vous trouvez dans le coffre cet objet : ");
-            System.out.println(objet);
-            System.out.println(objet2);
-           // System.out.println("Voulez vous prendre cet objet il vous reste " + Item.afficherNombreObjet());       
+            Jeu.sleep(1);
+            livreur.dire("Vous trouvez dans le coffre ces objets : \n"+objet+"\n"+objet2 );       
             livreur.addItem(objet);
             livreur.addItem(objet2);
             Jeu.sleep(2);
             }
             else{
-                System.out.println("c'etait un monstre");
+                livreur.dire("Le coffre etait en réalité un monstre !",Color.RED);
                 Jeu.sleep(2);
                 Monstre mimick = new Monstre("Mimick");
                 Jeu.Combat(livreur, mimick);

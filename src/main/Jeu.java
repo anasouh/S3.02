@@ -249,14 +249,14 @@ public class Jeu {
         if (!lstSalle.isEmpty()){
             Salle current = lstSalle.get(0);
             lstSalle.remove(0);
-            System.out.println("Vous arrivez en face de " + current.getName().toString() + "\n");
+            l.dire("Vous arrivez en face de " + current.getName().toString() + "\n");
             if (current.hasEvent())
             {
                 current.lancerEvent(l);
             }
             else
             {
-                System.out.println("Cette salle est vide...");
+                current.noEvent(l);
             }
         } else {
             System.out.println("Salle du boss");
