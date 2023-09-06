@@ -142,6 +142,7 @@ public class Event{
             System.out.println("vous trouver une entrée de grotte de l'energie semble en sortir voulez vous entrer dedans ?");
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scgrotte.nextLine();
+            }
             if(rep.equals("oui")){
                 System.out.println("vous explorer la grotte avant de tomber sur ce qui semble etre un sanctuaire ");
                 System.out.println("Ecrivez le mot auquel vous penser");
@@ -156,7 +157,7 @@ public class Event{
             if(rep.equals("non")){
                 System.out.println("vous vous éloigner de la grotte");
             }
-        }
+        
         }
 
         public static void eventCombat(Livreur livreur){
