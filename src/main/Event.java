@@ -116,9 +116,11 @@ public class Event{
         public static void eventCabane(Livreur livreur){
             Scanner sccabane = new Scanner(System.in);
             String rep ="";
-            System.out.println("Vous apercevez une cabane dans la zone. Voulez vous la visiter? (o/n)");
-            while(!(rep.toLowerCase().equals("o") || rep.toLowerCase().equals("n"))){
+            System.out.println("Vous apercevez une cabane dans la zone. Voulez vous la visiter? (oui/non)");
+            while(!(rep.toLowerCase().equals("oui") || rep.toLowerCase().equals("non"))){
             rep = sccabane.nextLine();
+            }
+            if(rep.equals("oui")){
             int rdm = Event.rng.nextInt(101);
             if(rdm<60){
                 System.out.println("Cette cabane est vide");
@@ -137,8 +139,12 @@ public class Event{
                 //combat monstre / livreur a faire 
             }
         }
-           
+        if(rep.equals("non")){
+            System.out.println("vous n'explorer pas la cabane");
         }
+        }
+           
+        
 
         public static void eventGrotte(Livreur livreur){
             Scanner scgrotte = new Scanner(System.in);
