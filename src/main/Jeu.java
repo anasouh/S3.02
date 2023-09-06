@@ -240,7 +240,7 @@ public class Jeu {
             if(selec == 'a')
             {
              System.out.println(l);
-             selec = "";
+             selec = ' ';
             }
             if(selec == 'i')
             {
@@ -250,7 +250,7 @@ public class Jeu {
                 String nomConso = consommables.get(conso).getNom();
                 l.useItem(consommables, consommables.get(conso));
                 System.out.println("Vous avez utilisé 1x " + nomConso);
-                selec = "";
+                selec = ' ';
             }
             
         }
