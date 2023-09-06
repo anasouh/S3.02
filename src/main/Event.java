@@ -68,7 +68,7 @@ public class Event{
                 Jeu.sleep(2);
             }
 
-            if(rdm >73){
+            if(rdm >74){
                 System.out.println("oh non monstre");
                 Jeu.sleep(2);
                 Monstre monstre = new Monstre();
