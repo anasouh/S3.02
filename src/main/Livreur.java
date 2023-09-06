@@ -57,6 +57,8 @@ public class Livreur extends Personnage
         return joueur;
     }
 
+    
+
     public void dire(String replique)
     {
         System.out.println(this.getName()+" : "+replique);
@@ -150,7 +152,7 @@ public class Livreur extends Personnage
                 case "def":
                     this.setDef(this.getDef() - equipmentsSlots[slot].getpoints());
                     break;
-                case "stealh":
+                case "stealth":
                     this.setStealth(this.getStealth() - equipmentsSlots[slot].getpoints());
                     break;
                 case "speed":
