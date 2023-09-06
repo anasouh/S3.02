@@ -276,11 +276,17 @@ public class Jeu {
                 } else if (selec == 'i') {
                     System.out.println(l.seeInventory() );
                     if (!l.isEmptyInventory()) {
-                        List<Item> consommables = l.listeCons();
-                        int toUse = sc.nextInt();
-                        Item item = consommables.get(toUse);
-                        l.useItem(consommables, item);
-                        System.out.println("Vous avez utilisé 1x " + item.getNom());
+                        char toUse = demanderLettre();
+                        if (toUse >= '0' && toUse <= '9'){
+                            Item item = l.inventory.get(toUse);
+                            if (item.getCons()){
+                                l.useItem(item);
+                                System.out.println("Vous avez utilisé 1x " + item.getNom());
+                            } else {
+                                l.equipItem(item);
+                                System.out.println("Vous avez équipé 1x " + item.getNom());
+                            }
+                        }
                     }
                     System.out.println(""+Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
                     demanderLettre();
