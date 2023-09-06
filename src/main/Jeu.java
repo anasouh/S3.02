@@ -181,10 +181,12 @@ public class Jeu {
         double ancienneDef = livreur.getDef() ; double ancienneAtq = livreur.getPhysAtk(); 
         double ancienneSpeed = livreur.getSpeed(); double ancienneStealth = livreur.getStealth();
 
-        livreur.interagir(monstre);
-        monstre.interagir(livreur);
-        
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
+            livreur.interagir(monstre);
+            monstre.interagir(livreur);
+
+            sleep(2);
+
             clear();
             
             System.out.print(Color.RED_BOLD_BRIGHT);
