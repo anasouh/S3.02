@@ -279,7 +279,7 @@ public class Event{
             String rep ="";
             Monstre monstre = new Monstre();
             //generer un monstre
-            Jeu.printFile("monstre" + (new Random().nextInt(5) + 1));
+            Jeu.printFile("monstre" + (new Random().nextInt(4) + 1));
             Jeu.sleep(0.8);
             livreur.dire("Vous repérez un monstre au loin. Voulez vous l'analyser ?");
             while(!(rep.equals("oui") || rep.equals("non"))){
