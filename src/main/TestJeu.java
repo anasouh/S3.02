@@ -8,11 +8,6 @@ public class TestJeu
 {
     private Jeu jeu;
 
-    @BeforeEach
-    public void setUp() {
-        jeu = new Jeu();
-    }
-
     @Test
     public void testCreerLivreur()
     {
@@ -27,7 +22,7 @@ public class TestJeu
     {
 
         jeu.genererSalles();
-      
+
         assertTrue(jeu.getLstSalle().size() > 0);
     }
 

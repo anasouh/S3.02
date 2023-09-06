@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Random;
 import java.lang.Math;
 
-public class Livreur extends Personnage{
+public class Livreur extends Personnage
+{
 
     private String name;
     private double stealth; //the enemy detects you if you don't have stealth
@@ -78,6 +79,12 @@ public class Livreur extends Personnage{
 
     public void setMana(double mana) {
         this.mana = mana;
+    }
+
+    @Override
+    public void interagir(Personnage m)
+    {
+        this.dire("Au non ! , "+m.getName()+" à la dalle...",Color.BLUE);
     }
 
 

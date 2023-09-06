@@ -1,9 +1,7 @@
 package main;
 
-public abstract class Personnage {
-
-    //changed all the attributes to protected because of issues with Livreur (which extends Personnage)
-    //changed the attributes to double because of issues with Livreur and Societe which do calculations in percentage (needing double)
+public abstract class Personnage implements Interactable<Personnage>
+{
 
     private final static double MANA_MAGIC = 20;
     
@@ -95,6 +93,16 @@ public abstract class Personnage {
         // Calculer la réduction de dégât produite par notre défense
         return 100 / (100 + this.def);
     }
+
+    @Override
+    public void dire(String txt, Color c)
+    {
+        System.out.println(c+txt+Color.RESET);
+    }
+
+    @Override
+    public abstract void interagir(Personnage truc);
+
 
     public int calculerDegats(Personnage p) {
         // Calculer les dégâts émis à un personnage en prenant compte de sa défense
