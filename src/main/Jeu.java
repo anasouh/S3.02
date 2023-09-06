@@ -193,7 +193,7 @@ public class Jeu {
     public static List<Salle> genererSalles()
     {
         List<Salle> res = new ArrayList<>();
-        int rnd = new Random().nextInt(10)+1;
+        int rnd = new Random().nextInt(10)+10;
         nbSalle = rnd;
         for (int i = 0; i<rnd; i++)
         {
