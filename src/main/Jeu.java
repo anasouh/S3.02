@@ -283,16 +283,6 @@ public class Jeu {
             jouerTour(joueur);
             finirTour(joueur);
         }
-
-        joueur.inventory.add(Item.KEBAB);
-        joueur.inventory.add(Item.BURGER);
-        joueur.inventory.add(Item.PIZZA);
-
-        Monstre monstre = new Monstre("pas Maxime");
-
-        boolean win = Combat(joueur,monstre);
-        System.out.println(win);
-
         sc.close();
     }
 
