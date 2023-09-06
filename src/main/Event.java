@@ -10,7 +10,7 @@ public class Event{
     public static void eventCoffre(Livreur livreur){
         Scanner sccoffre = new Scanner(System.in);
         
-        System.out.println("Vous apercevez un coffre Voulez vous l'ouvrir ?");
+        System.out.println("Vous apercevez un coffre. Voulez vous l'ouvrir ?");
         String rep = "";
         while(!(rep.equals("oui") || rep.equals("non"))){
             rep = sccoffre.nextLine();
@@ -30,7 +30,7 @@ public class Event{
             }
         }
         if(rep.equals("non")){
-          System.out.println(  "Vous vous eloignez du coffre sans y pretez attention");
+          System.out.println("Vous vous éloignez du coffre sans y prêter attention");
         }
         
 
@@ -39,7 +39,7 @@ public class Event{
     public static void eventBush(Livreur livreur){
         Scanner scbush = new Scanner(System.in);
         String rep="";
-        System.out.println("Vous apercevez un buisson avec du mouvement a l'interieur , \n souhaitez vous fouiller ?");
+        System.out.println("Vous apercevez un buisson qui semble bouger, \n Souhaitez-vous fouiller ?");
 
         while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scbush.nextLine();
@@ -48,7 +48,7 @@ public class Event{
             int rdm = Event.rng.nextInt(101);
             if(rdm < 25){
                 Item objet = Item.randomCons();
-                System.out.println("vous avez trouvez un objet dans le buisson !" + objet);
+                System.out.println("Vous avez trouvé un objet dans le buisson !" + objet);
                 livreur.addItem(objet);
             }
 
@@ -66,7 +66,7 @@ public class Event{
 
         }
         if(rep.equals("non")){
-            System.out.println("vous décidez de partir sans faire attention");
+            System.out.println("Vous décidez de partir sans faire attention");
         }
        
 
@@ -76,7 +76,7 @@ public class Event{
         public static void eventPerson(Livreur livreur){
             Scanner scperson = new Scanner(System.in);
             String rep ="";
-            System.out.println("Vous apercevez une personne de dos voulez vous allez la voir ?");
+            System.out.println("Vous apercevez une personne de dos, voulez vous lui dire bonjour ?");
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scperson.nextLine();
         }
