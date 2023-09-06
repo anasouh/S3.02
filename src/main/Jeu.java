@@ -87,7 +87,7 @@ public class Jeu {
         String nom = sc.nextLine();
         clear();
         printFile("cycling");
-        System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats\n ['D'] Deliveroo\n ['K'] KingDelivery \n autre caractère pour être Indépendant"));
+        System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats (Guerrier)\n ['D'] Deliveroo (Magicien)\n ['K'] KingDelivery (Voleur)\n autre caractère pour être Indépendant (Vierge)"));
         char choix = sc.next().toLowerCase().charAt(0);
         Societe societe;
 
