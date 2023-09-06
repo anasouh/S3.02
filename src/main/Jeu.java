@@ -1,5 +1,10 @@
 package main;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -51,11 +56,26 @@ public class Jeu {
         }
     }
 
+    public static void printFile(String path) {
+        File f = new File(path);
+        if (f.exists() && f.canRead()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } catch (IOException ioe) {
+                System.err.println("Fichier " + path + " illisible");
+            }
+        }
+    }
+
     public static Livreur creerLivreur()
     {
         System.out.print("Entrez le nom de votre personnage: ");
         String nom = sc.nextLine();
         clear();
+        printFile("src/main/ascii/cycling.txt");
         System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats\n ['D'] Deliveroo\n ['K'] KingDelivery \n autre caractère pour être Indépendant"));
         char choix = sc.next().toLowerCase().charAt(0);
         Societe societe;
