@@ -81,7 +81,7 @@ public class Event{
             rep = scperson.nextLine();
         }
             int rdm = Event.rng.nextInt(101);
-
+            if(rep.equals(oui)){
             if(rdm<70){
                 System.out.println("La personne vous redonne un peu de vie...");
                 System.out.println("Vous commencez à vous sentir mieux !");
@@ -105,7 +105,10 @@ public class Event{
                     //faire un combat entre un pnj et le livreur
                 }
             }
-
+        }
+        if(rep.equals("non")){
+            System.out.println("vous partez");
+        }
             
             
         }
