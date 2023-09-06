@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import main.exceptions.LivreurIntrouvable;
+
 public class Jeu {
     private static List<Item> listeObjet;
     private static List<Salle> lstSalle = new ArrayList<>();
@@ -85,27 +87,36 @@ public class Jeu {
     {
         System.out.print("Entrez le nom de votre personnage: ");
         String nom = sc.nextLine();
+        Livreur perso;
         clear();
         printFile("cycling");
-        System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats (Guerrier)\n ['D'] Deliveroo (Magicien)\n ['K'] KingDelivery (Voleur)\n autre caractère pour être Indépendant (Vierge)"));
-        char choix = sc.next().toLowerCase().charAt(0);
-        Societe societe;
+        try {
+            perso = Livreur.importer(nom);
+            System.out.println("Te revoilà " + bold(nom) + " !");
+            sleep(2);
+        } catch (LivreurIntrouvable e) {
+            System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats (Guerrier)\n ['D'] Deliveroo (Magicien)\n ['K'] KingDelivery (Voleur)\n autre caractère pour être Indépendant (Vierge)"));
+            char choix = sc.next().toLowerCase().charAt(0);
+            Societe societe;
 
-        switch (choix)
-        {
-            case 'u':
-                societe = Societe.UberEats;
-                break;
-            case 'd':
-                societe = Societe.Deliveroo;
-                break;
-            case 'k':
-                societe = Societe.KingDelivery;
-                break;
-            default:
-                societe = Societe.Indépendant;
+            switch (choix)
+            {
+                case 'u':
+                    societe = Societe.UberEats;
+                    break;
+                case 'd':
+                    societe = Societe.Deliveroo;
+                    break;
+                case 'k':
+                    societe = Societe.KingDelivery;
+                    break;
+                default:
+                    societe = Societe.Indépendant;
+            }
+            perso = new Livreur(nom, societe);
+            perso.save();
         }
-        Livreur perso = new Livreur(nom, societe);
+        
         System.out.println();
         return perso;
     }
@@ -182,12 +193,10 @@ public class Jeu {
         double ancienneSpeed = livreur.getSpeed(); double ancienneStealth = livreur.getStealth();
 
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
+            clear();
             livreur.interagir(monstre);
             monstre.interagir(livreur);
 
-            sleep(2);
-
-            clear();
             
             System.out.print(Color.RED_BOLD_BRIGHT);
             printFile("combat");
@@ -333,6 +342,7 @@ public class Jeu {
             jouerTour(joueur);
             finirTour(joueur);
         }
+        joueur.save();
         sc.close();
     }
 

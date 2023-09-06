@@ -120,10 +120,11 @@ public class Monstre extends Personnage {
     Livreur l = (Livreur) truc;
     dire("Petit livreur " + l.getSociete().toString() + " ,nourris moi ou bats toi !!!", Color.RED);
   }
-  
 
-    public MonstreType getType()
-    {return this.type;}
+  public MonstreType getType()
+  {
+    return this.type;
+  }
 
     public void afficheImage()
     {
@@ -205,5 +206,9 @@ public class Monstre extends Personnage {
 
   }
 
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 056b75bea91678c471f385c8406befea2b0a77b7
 }

@@ -4,9 +4,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.lang.Math;
+import main.exceptions.LivreurIntrouvable;
 
-public class Livreur extends Personnage
+public class Livreur extends Personnage implements Serializable
 {
 
     private String name;
@@ -18,6 +26,18 @@ public class Livreur extends Personnage
     List<Item> inventory = new ArrayList<Item>();
 
     private Item[] equipmentsSlots = new Item[3];
+
+    
+
+    private Livreur(String name, int hp, int physAtk, int mana, int def, int speed, String name2, double stealth,
+            Societe societe, List<Item> inventory, Item[] equipmentsSlots) {
+        super(name, hp, physAtk, mana, def, speed);
+        name = name2;
+        this.stealth = stealth;
+        this.societe = societe;
+        this.inventory = inventory;
+        this.equipmentsSlots = equipmentsSlots;
+    }
 
     public Livreur(String name, Societe societe){
         //name,hp,physAtk,mana,def,speed
@@ -99,7 +119,7 @@ public class Livreur extends Personnage
     public void interagir(Personnage p)
     {
         Monstre m = (Monstre) p;
-        this.dire("Au non ! , "+m.getName()+" à la dalle...",Color.BLUE);
+        this.dire("Oh non ! , "+m.getName()+" à la dalle...",Color.BLUE);
         m.afficheImage();
 
     }
@@ -285,6 +305,32 @@ public class Livreur extends Personnage
             str += equipmentsSlots[2].getNom();
         }
         return str + "\n\n";
+    }
+
+    public static Livreur importer(String name) throws LivreurIntrouvable {
+        String currentDir = new File(System.getProperty("user.dir")).getAbsolutePath();
+        if (!System.getProperty("user.dir").split("/")[0].equals("src")) currentDir += "/src";
+        String path = currentDir + "/main/data/" + name + ".bin";
+        System.out.println(path);
+        File f = new File(path);
+        if (f.exists() && f.canRead()) {
+            try (ObjectInputStream ois =  new ObjectInputStream(new FileInputStream(path))) {
+                Livreur livreur = (Livreur)ois.readObject();
+                return livreur;
+            } catch (Exception e) {}
+        }
+        throw new LivreurIntrouvable();
+    }
+
+    public void save() {
+        String currentDir = new File(System.getProperty("user.dir")).getAbsolutePath();
+        if (!System.getProperty("user.dir").split("/")[0].equals("src")) currentDir += "/src";
+        String path = currentDir + "/main/data/" + name + ".bin";
+        try (ObjectOutputStream oos =  new ObjectOutputStream(new FileOutputStream(path))) {
+            oos.writeObject(this);
+        } catch (IOException ioe) {
+            System.err.println("Impossible de sauvagerder ce livreur");
+        }
     }
 
     public String combatStats(){
