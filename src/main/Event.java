@@ -209,6 +209,7 @@ public class Event{
                 Jeu.Combat(livreur, monstre);
                 //faire un combat contre le monstre
             }
+        }
         
             else{
                 System.out.println("Que voulez-vous faire ? \n 1) attaquer \n 2) fuir");
@@ -225,7 +226,7 @@ public class Event{
         }
         
        
-        }
+        
 
         public static void eventTrap(Livreur livreur){
             Scanner sctrap = new Scanner(System.in);
@@ -250,7 +251,7 @@ public class Event{
      public static void main(String[] args) {
         Livreur liv = new Livreur("bug", Societe.Deliveroo);
         System.out.println(liv);
-        Event.eventCoffre(liv);
+        Event.eventMonstreDos(liv);
         System.out.println(liv);
     } 
     
