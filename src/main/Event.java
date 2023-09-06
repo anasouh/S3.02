@@ -25,6 +25,7 @@ public class Event{
 
         }
         else{
+            Jeu.sleep(0.7);
             livreur.dire("Vous avez pu vous reposer.");
             Jeu.sleep(0.8);
             livreur.dire("Vous récuperez 5 points de vie",Color.RED);
@@ -61,7 +62,7 @@ public class Event{
             }
         }
         if(rep.equals("non")){
-          System.out.println("Vous vous éloignez du coffre sans y prêter attention");
+          livreur.dire("Vous vous éloignez du coffre sans y prêter attention");
           Jeu.sleep(2);
         }
         
@@ -73,7 +74,8 @@ public class Event{
         String rep="";
 
         Jeu.printFile("bush");
-        System.out.println("Vous apercevez un buisson qui semble bouger, \n Souhaitez-vous fouiller ?");
+        Jeu.sleep(1);
+        livreur.dire("Vous apercevez un buisson qui semble bouger, \n Souhaitez-vous fouiller ?");
 
         while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scbush.nextLine();
@@ -82,19 +84,22 @@ public class Event{
             int rdm = Event.rng.nextInt(101);
             if(rdm < 25){
                 Item objet = Item.randomCons();
-                System.out.println("Vous avez trouvé un objet dans le buisson !" + objet);
+                
+                Jeu.sleep(1);
+                System.out.println(Color.GREEN+"Vous avez trouvé un objet dans le buisson !" + objet+Color.RESET);
                 livreur.addItem(objet);
                 Jeu.sleep(2);
             }
 
             if(rdm >24 && rdm <75){
-                System.out.println("Vous ne trouvez rien ");
+                livreur.dire("Vous ne trouvez rien ");
                 Jeu.sleep(2);
             }
 
             if(rdm >74){
-                System.out.println("oh non monstre");
+                livreur.dire("Oh non un monstre est dans le buisson !");
                 Jeu.sleep(2);
+                
                 Monstre monstre = new Monstre();
                 Jeu.Combat(livreur, monstre);
                 //créer un monstre aléatoire et faire un combat avec le livreur
@@ -104,7 +109,7 @@ public class Event{
 
         }
         if(rep.equals("non")){
-            System.out.println("Vous décidez de partir sans faire attention");
+            livreur.dire("Vous décidez de partir sans faire attention");
             Jeu.sleep(2);
         }
        
@@ -117,7 +122,7 @@ public class Event{
             String rep ="";
 
             Jeu.printFile("man" + (new Random().nextInt(4) + 1));
-            System.out.println("Vous apercevez une personne de dos, voulez vous lui dire bonjour ?");
+            livreur.dire("Vous apercevez une personne de dos, voulez vous lui dire bonjour ?");
             
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scperson.nextLine();
@@ -125,25 +130,30 @@ public class Event{
             int rdm = Event.rng.nextInt(101);
             if(rep.equals("oui")){
             if(rdm<70){
-                System.out.println("La personne vous redonne un peu de vie...");
-                System.out.println("Vous commencez à vous sentir mieux !");
+                livreur.dire("La personne vous redonne un peu de vie...");
+                Jeu.sleep(2);
                 int rdm2 = Event.rng.nextInt(25)+10;
                 livreur.setHp(livreur.getHp()+rdm2);
+                Jeu.sleep(2);
                 System.out.println(Color.RED+"Vous avez récupéré "+ rdm2 +" points de vie !"+Color.RESET);
                 Jeu.sleep(2);
             }
             else{
-                System.out.println("La personne sort un couteau !");
-                System.out.println("Voulez-vous lui donner un tacos pour la calmer ?");
+                livreur.dire("La personne sort un couteau !");
+                Jeu.sleep(2);
+                livreur.dire("Voulez-vous lui donner un tacos pour la calmer ?");
                 rep ="";
                 while(!(rep.equals("oui") || rep.equals("non"))){
                 rep = scperson.nextLine();
                 }
                 if(rep.equals("oui")){
-                    System.out.println("Vous donnez un de vos tacos à la personne pour la calmer et vous partez");
+                    Jeu.sleep(0.5);
+                    livreur.dire("Vous donnez un de vos tacos à la personne pour la calmer et vous partez");
                     Jeu.sleep(2);
                 }
                 if(rep.equals("non")){
+                    Jeu.sleep(0.5);
+                    livreur.dire("La personne vous agresse !");
                     Monstre pnj = new Monstre("etrange");
                     Jeu.Combat(livreur, pnj);
                     //faire un combat entre un pnj et le livreur
@@ -151,7 +161,8 @@ public class Event{
             }
         }
         if(rep.equals("non")){
-            System.out.println("vous partez");
+            Jeu.sleep(0.5);
+            livreur.dire("vous trouvez plus judicieux de partir discretement");
         }
             
             
@@ -162,7 +173,8 @@ public class Event{
             String rep ="";
 
             Jeu.printFile("cahutte");
-            System.out.println("Vous apercevez une cabane dans la zone. Voulez vous la visiter? (oui/non)");
+            Jeu.sleep(1);
+            livreur.dire("Vous apercevez une cabane dans la zone. Voulez vous la visiter? (oui/non)");
 
             while(!(rep.toLowerCase().equals("oui") || rep.toLowerCase().equals("non"))){
             rep = sccabane.nextLine();
@@ -170,19 +182,23 @@ public class Event{
             if(rep.equals("oui")){
             int rdm = Event.rng.nextInt(101);
             if(rdm<60){
-                System.out.println("Cette cabane est vide");
+                Jeu.sleep(0.8);
+                livreur.dire("Apres avoir bien chercher vous ne trouvez rien dans cette cabane dommage");
                 Jeu.sleep(2);
             }
             if(rdm<80 && rdm > 59){
-                System.out.println("Vous trouvez un objet par terre");
+                Jeu.sleep(0.8);
+                livreur.dire("Vous trouvez un objet par terre");
                 Item objet = Item.randomObjet();
-                System.out.println("c'est :\n" + objet);
+                Jeu.sleep(0.8);
+                System.out.println(Color.GREEN+"c'est :\n" + objet+Color.RESET);
                 livreur.addItem(objet);
                 Jeu.sleep(2);
 
             }
             if(rdm>79){
-                System.out.println("Oh non ! Un monstre est présent !");
+                Jeu.sleep(0.8);
+                livreur.dire("Oh non ! Un monstre est présent !");
                 Jeu.sleep(2);
                 Monstre monstre = new Monstre();
                 Jeu.Combat(livreur, monstre);
@@ -190,6 +206,7 @@ public class Event{
             }
         }
         if(rep.equals("non")){
+            Jeu.sleep(0.8);
             System.out.println("vous n'explorer pas la cabane");
             Jeu.sleep(2);
         }
@@ -202,41 +219,50 @@ public class Event{
             String rep ="";
 
             Jeu.printFile("couloir");
-            System.out.println("Vous trouvez une entrée de grotte. De l'énergie semble en sortir... Voulez vous entrer ?");
+            Jeu.sleep(1);
+            livreur.dire("Vous trouvez une entrée de grotte. De l'énergie semble en sortir... Voulez vous entrer ?");
             
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scgrotte.nextLine();
             }
             if(rep.equals("oui")){
-                System.out.println("Vous explorez la grotte avant de tomber sur ce qui semble être un sanctuaire");
-                System.out.println("Ecrivez le mot auquel vous penser");
+                Jeu.sleep(0.5);
+                livreur.dire("Vous explorez la grotte avant de tomber sur ce qui semble être un sanctuaire");
+                Jeu.sleep(1);
+                livreur.dire("Ecrivez le mot auquel vous penser");
                 rep=scgrotte.nextLine();
                 int bonus = (rep.length()%3)+1;
-                System.out.println("Vous vous sentez en meilleur forme");
+                Jeu.sleep(0.8);
+                livreur.dire("Vous vous sentez en meilleur forme");
+                Jeu.sleep(1);
                 if(bonus == 1){
                     livreur.setPhysAtk(livreur.getPhysAtk()*1.4);
-                    System.out.println("Vous vous sentez plus fort...");
+                    System.out.println(Color.RED_UNDERLINED+"Vous vous sentez plus fort..."+Color.RESET);
                 }
                 if(bonus == 2){
                     livreur.setDef(livreur.getDef()*1.4);
-                    System.out.println("Vous sentez que vous êtes plus résistant...");
+                    System.out.println(Color.YELLOW_UNDERLINED+"Vous sentez que vous êtes plus résistant..."+Color.RESET);
                 }
                 if(bonus == 3){
                     livreur.setMana(livreur.getMana()*1.4);
-                    System.out.println("Vous sentez la magie s'accumuler...");
+                    System.out.println(Color.BLUE_UNDERLINED+"Vous sentez la magie s'accumuler..."+Color.RESET);
                 }
-                System.out.println("Vous sortez de la grotte");
+                Jeu.sleep(1);
+                livreur.dire("Vous sortez de la grotte");
                 Jeu.sleep(2);
             }
             if(rep.equals("non")){
-                System.out.println("Vous vous éloignez de la grotte");
+                Jeu.sleep(0.6);
+                livreur.dire("Vous vous éloignez de la grotte");
                 Jeu.sleep(2);
             }
         
         }
 
         public static void eventCombat(Livreur livreur){
-            System.out.println("Un monstre vous attaque !");
+            Jeu.sleep(0.8);
+            livreur.dire("Un monstre vous attaque !");
+            Jeu.sleep(1);
             try{
                 Thread.sleep(1000);
             } catch (InterruptedException e){
@@ -254,10 +280,12 @@ public class Event{
             Monstre monstre = new Monstre();
             //generer un monstre
             Jeu.printFile("monstre" + (new Random().nextInt(5) + 1));
-            System.out.println("Vous repérez un monstre au loin. Voulez vous l'analyser ?");
+            Jeu.sleep(0.8);
+            livreur.dire("Vous repérez un monstre au loin. Voulez vous l'analyser ?");
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scmonstredos.nextLine();
             }
+            Jeu.sleep(1);
             if(rep.equals("oui")){
             System.out.println(monstre);
 
@@ -266,6 +294,7 @@ public class Event{
             int proba = (int)(monstre.getDanger() * livreur.getStealth() / 100);
 
              if(rdm <= proba){
+                Jeu.sleep(2);
                 System.out.println("Oh non ! Le monstre vous a repéré !");
                 Jeu.Combat(livreur, monstre);
                 //faire un combat contre le monstre
@@ -273,7 +302,7 @@ public class Event{
         }
         
                 Jeu.sleep(1.5);
-                System.out.println("Que voulez-vous faire ? \n 1) attaquer \n 2) fuir");
+                System.out.println("Que voulez-vous faire ? \n attaquer \n fuir");
                 while(!(rep.equals("attaquer") || rep.equals("fuir"))){
             rep = scmonstredos.nextLine();
             } 
@@ -281,6 +310,7 @@ public class Event{
                 Jeu.Combat(livreur, monstre);
             }
             if(rep.equals("fuir")){
+                Jeu.sleep(0.5);
                 System.out.println("Vous arrivez à vous faufiler sans que le monstre ne vous voie ");
             }
         
