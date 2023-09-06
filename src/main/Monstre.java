@@ -121,13 +121,12 @@ public class Monstre extends Personnage {
     dire("Petit livreur " + l.getSociete().toString() + " ,nourris moi ou bats toi !!!", Color.RED);
   }
 
-  public MonstreType getType() {
+  public MonstreType getType()
+  {
     return this.type;
   }
 
-<<<<<<< HEAD
-    public MonstreType getType()
-    {return this.type;}
+
 
     public void afficheImage()
     {
@@ -136,7 +135,8 @@ public class Monstre extends Personnage {
         //CAS MAGIC
         if (type.equals(MonstreType.Magicien))
         {
-            System.out.println(Color.BLUE+" /\\\n" +
+            System.out.println(Color.BLUE+
+                    "                             /\\\n" +
                     "                            /  \\\n" +
                     "                           |    |\n" +
                     "                         --:'''':--\n" +
@@ -209,7 +209,5 @@ public class Monstre extends Personnage {
 
     }
 
-    
-=======
->>>>>>> 1a887eea9da33d2829fa86629be2cb3fb1fc3de8
+
 }
