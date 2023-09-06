@@ -68,8 +68,9 @@ public class Jeu {
 
     public static void printFile(String dessin) {
         String currentDir = new File(System.getProperty("user.dir")).getAbsolutePath();
-        if (!System.getProperty("user.dir").split("/")[0].equals("src")) currentDir += "/src";
-        String path = currentDir + "/main/ascii/" + dessin + ".txt";
+        String[] dirSplitted = System.getProperty("user.dir").split("/");
+        if (dirSplitted[dirSplitted.length-1].equals("src")) currentDir += "/main";
+        String path = currentDir + "/ascii/" + dessin + ".txt";
         File f = new File(path);
         if (f.exists() && f.canRead()) {
             try (BufferedReader br = new BufferedReader(new FileReader(f))) {
