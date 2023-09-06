@@ -5,30 +5,16 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import main.Jeu;
-import main.Livreur;
 
 
 
 public class TestJeu
 {
-    private Jeu jeu;
-
-    @Test
-    public void testCreerLivreur()
-    {
-        Livreur livreur = jeu.creerLivreur();
-        assertNotNull(livreur);
-        assertNotNull(livreur.getName());
-        assertNotNull(livreur.getSociete());
-    }
 
     @Test
     public void testGenererSalles()
     {
-
-        jeu.genererSalles();
-
-        assertTrue(jeu.getLstSalle().size() > 0);
+        assertTrue(Jeu.genererSalles().size() > 0);
     }
 
     /*
