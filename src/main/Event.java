@@ -10,7 +10,8 @@ public class Event{
     public static void eventCoffre(Livreur livreur){
         Scanner sccoffre = new Scanner(System.in);
         
-        System.out.println("Vous apercevez un coffre. Voulez vous l'ouvrir ?");
+        Jeu.printFile("chest");
+        System.out.println("Vous apercevez un coffre. Voulez vous l'ouvrir ?\n");
         String rep = "";
         while(!(rep.equals("oui") || rep.equals("non"))){
             rep = sccoffre.nextLine();
@@ -46,6 +47,8 @@ public class Event{
     public static void eventBush(Livreur livreur){
         Scanner scbush = new Scanner(System.in);
         String rep="";
+
+        Jeu.printFile("bush");
         System.out.println("Vous apercevez un buisson qui semble bouger, \n Souhaitez-vous fouiller ?");
 
         while(!(rep.equals("oui") || rep.equals("non"))){
@@ -88,7 +91,10 @@ public class Event{
         public static void eventPerson(Livreur livreur){
             Scanner scperson = new Scanner(System.in);
             String rep ="";
+
+            Jeu.printFile("man" + (new Random().nextInt(4) + 1));
             System.out.println("Vous apercevez une personne de dos, voulez vous lui dire bonjour ?");
+            
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scperson.nextLine();
         }
@@ -130,7 +136,10 @@ public class Event{
         public static void eventCabane(Livreur livreur){
             Scanner sccabane = new Scanner(System.in);
             String rep ="";
+
+            Jeu.printFile("cahutte");
             System.out.println("Vous apercevez une cabane dans la zone. Voulez vous la visiter? (oui/non)");
+
             while(!(rep.toLowerCase().equals("oui") || rep.toLowerCase().equals("non"))){
             rep = sccabane.nextLine();
             }
@@ -167,7 +176,10 @@ public class Event{
         public static void eventGrotte(Livreur livreur){
             Scanner scgrotte = new Scanner(System.in);
             String rep ="";
+
+            Jeu.printFile("couloir");
             System.out.println("Vous trouvez une entrée de grotte. De l'énergie semble en sortir... Voulez vous entrer ?");
+            
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scgrotte.nextLine();
             }
@@ -208,6 +220,7 @@ public class Event{
             String rep ="";
             Monstre monstre = new Monstre();
             //generer un monstre
+            Jeu.printFile("monstre" + (new Random().nextInt(5) + 1));
             System.out.println("Vous repérez un monstre au loin. Voulez vous l'analyser ?");
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scmonstredos.nextLine();
@@ -266,7 +279,7 @@ public class Event{
 
      public static void main(String[] args) {
         Livreur liv = new Livreur("bug", Societe.Deliveroo);
-        System.out.println(liv);
+        System.out.println(liv); 
         Event.eventMonstreDos(liv);
         System.out.println(liv);
     } 

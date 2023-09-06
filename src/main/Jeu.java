@@ -45,7 +45,7 @@ public class Jeu {
         while (line.equals("")) {
             line = sc.nextLine();
         }
-        return line.charAt(0);
+        return line.toLowerCase().charAt(0);
     }
 
     public static void sleep(double s) {
@@ -183,7 +183,10 @@ public class Jeu {
         
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
             clear();
-            System.out.println(Color.RED_BOLD_BRIGHT + "COMBAAAAAT !\n" + Color.RESET);
+            
+            System.out.print(Color.RED_BOLD_BRIGHT);
+            printFile("combat");
+            System.out.print("\n\n\n"+Color.RESET);
             
             System.out.println(livreur);
             System.out.println(monstre);
