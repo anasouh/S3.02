@@ -171,7 +171,7 @@ public class Event{
             Monstre monstre = new Monstre();
             Jeu.Combat(livreur, monstre);
             //combat livreur/monstre random
-            System.out.println("Vous avez réussi a vaince le monstre");
+            
         }
 
         public static void eventMonstreDos(Livreur livreur){
