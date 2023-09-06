@@ -99,7 +99,14 @@ public class Livreur extends Personnage
     public void interagir(Personnage p)
     {
         Monstre m = (Monstre) p;
-        this.dire("Au non ! , "+m.getName()+" à la dalle...",Color.BLUE);
+        if (m.getType().equals(MonstreType.Kim_Jung_Un))
+        {
+            this.dire("Kim Jung Un veut son tacos...",Color.BLUE_BOLD);
+        }
+        else {
+            this.dire("Au non ! , "+m.getName()+" à la dalle...",Color.BLUE);
+        }
+
         m.afficheImage();
 
     }
