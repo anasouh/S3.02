@@ -16,7 +16,7 @@ public class Livreur extends Personnage{
 
     List<Item> inventory = new ArrayList<Item>();
 
-    private static Item[] equipmentsSlots = new Item[3];
+    private Item[] equipmentsSlots = new Item[3];
 
     public Livreur(String name, Societe societe){
         //name,hp,physAtk,mana,def,speed
