@@ -94,9 +94,12 @@ public class Livreur extends Personnage
     }
 
     @Override
-    public void interagir(Personnage m)
+    public void interagir(Personnage p)
     {
+        Monstre m = (Monstre) p;
         this.dire("Au non ! , "+m.getName()+" à la dalle...",Color.BLUE);
+        m.afficheImage();
+
     }
 
 
