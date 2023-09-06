@@ -129,27 +129,27 @@ public class Monstre extends Personnage {
     {
         MonstreType type = this.getType();
 
-        //CAS MAGIC
-        if (type.equals(MonstreType.Magicien))
-        {
-            System.out.println(Color.BLUE+" /\\\n" +
-                    "                            /  \\\n" +
-                    "                           |    |\n" +
-                    "                         --:'''':--\n" +
-                    "                           :'_' :\n" +
-                    "                           _:\"\":\\___\n" +
-                    "            ' '      ____.' :::     '._\n" +
-                    "           . *=====<<=)           \\    :\n" +
-                    "            .  '      '-'-'\\_      /'._.'\n" +
-                    "                             \\====:_ \"\"\n" +
-                    "                            .'     \\\\\n" +
-                    "                           :       :\n" +
-                    "                          /   :    \\\n" +
-                    "                         :   .      '.\n" +
-                    "                         :  : :      :\n" +
-                    "                         :__:-:__.;--'\n" +
-                    "                          '-'   '-'"+Color.RESET);
-        }
+      //CAS MAGIC
+      if (type.equals(MonstreType.Magicien))
+      {
+          System.out.println(Color.BLUE+" /\\\n" +
+                  "                            /  \\\n" +
+                  "                           |    |\n" +
+                  "                         --:'''':--\n" +
+                  "                           :'_' :\n" +
+                  "                           _:\"\":\\___\n" +
+                  "            ' '      ____.' :::     '._\n" +
+                  "           . *=====<<=)           \\    :\n" +
+                  "            .  '      '-'-'\\_      /'._.'\n" +
+                  "                             \\====:_ \"\"\n" +
+                  "                            .'     \\\\\n" +
+                  "                           :       :\n" +
+                  "                          /   :    \\\n" +
+                  "                         :   .      '.\n" +
+                  "                         :  : :      :\n" +
+                  "                         :__:-:__.;--'\n" +
+                  "                          '-'   '-'"+Color.RESET);
+      }
 
         //CAS GUERRIER
         if (type.equals(MonstreType.Guerrier))
@@ -203,7 +203,7 @@ public class Monstre extends Personnage {
         }
 
 
-    }
+  }
 
     
 }
