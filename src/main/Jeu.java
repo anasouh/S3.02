@@ -160,12 +160,12 @@ public class Jeu {
             
             if (livreur.getSpeed() > monstre.getSpeed()){
                 actionJoueur(livreur, monstre, choix, sc);
-                if(monstre.getHp()<=0){
+                if(!(monstre.getHp()<=0)){
                 monstre.frapper(livreur);
                 }
             } else {
                 monstre.frapper(livreur);
-                if(livreur.getHp()<=0){
+                if(!(livreur.getHp()<=0)){
                 actionJoueur(livreur, monstre, choix, sc);
                 }
             }
@@ -240,6 +240,7 @@ public class Jeu {
             if(selec == 'a')
             {
              System.out.println(l);
+             selec = "";
             }
             if(selec == 'i')
             {
@@ -249,7 +250,7 @@ public class Jeu {
                 String nomConso = consommables.get(conso).getNom();
                 l.useItem(consommables, consommables.get(conso));
                 System.out.println("Vous avez utilisé 1x " + nomConso);
-                break;
+                selec = "";
             }
             
         }
