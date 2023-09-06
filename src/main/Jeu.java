@@ -45,7 +45,7 @@ public class Jeu {
         while (line.equals("")) {
             line = sc.nextLine();
         }
-        return line.charAt(0);
+        return line.toLowerCase().charAt(0);
     }
 
     public static void sleep(double s) {
@@ -186,7 +186,10 @@ public class Jeu {
         
         while (livreur.getHp() > 0 && monstre.getHp() > 0){
             clear();
-            System.out.println(Color.RED_BOLD_BRIGHT + "COMBAAAAAT !\n" + Color.RESET);
+            
+            System.out.print(Color.RED_BOLD_BRIGHT);
+            printFile("combat");
+            System.out.print("\n\n\n"+Color.RESET);
             
             System.out.println(livreur);
             System.out.println(monstre);
@@ -274,14 +277,14 @@ public class Jeu {
             do {
                 selec = demanderLettre();
                 if (selec == 'a') {
-                    System.out.println(""+l + Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
+                    System.out.println("" + l + Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
                     demanderLettre();
                 } else if (selec == 'i') {
                     System.out.println(l.seeInventory() );
                     if (!l.isEmptyInventory()) {
                         char toUse = demanderLettre();
                         if (toUse >= '0' && toUse <= '9'){
-                            Item item = l.inventory.get(toUse);
+                            Item item = l.inventory.get(toUse - '0');
                             if (item.getCons()){
                                 l.useItem(item);
                                 System.out.println("Vous avez utilisé 1x " + item.getNom());

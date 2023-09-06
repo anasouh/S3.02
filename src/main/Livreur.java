@@ -23,7 +23,16 @@ public class Livreur extends Personnage
         //name,hp,physAtk,mana,def,speed
         super(name,100,(random.nextInt(10) + 30),100,(random.nextInt(10) + 10),(random.nextInt(15) + 30));
         if(name.equals("bug")){
-            this.physAtk = 999;
+            this.hp = 1000;
+            this.mana = 1000;
+            this.physAtk = 1000;
+            this.def = 100;
+            this.speed = 1000;
+            this.stealth = 1000;
+            inventory.add(Item.PISTOLET);
+            inventory.add(Item.GILET);
+            inventory.add(Item.LUNETTES);
+            inventory.add(Item.CHAUSSETTES);
         }
         this.name = name;
         this.societe = societe;
@@ -148,6 +157,7 @@ public class Livreur extends Personnage
                     System.out.println("non :)");
             }
         }
+        inventory.remove(item);
         equipmentsSlots[slot] = item;
         switch (item.getModifiedStat()) {
             case "atk":
@@ -170,8 +180,10 @@ public class Livreur extends Personnage
     public String seeInventory(){
         if (isEmptyInventory()) return "Votre inventaire est vide.";
         String result = "";
+        int cpt = 0;
         for (Item item : inventory){
-            result = result + item.toString() + "\n";
+            result = result + "[" + cpt + "] " + item.toString() + "\n";
+            cpt += 1;
         }
         return result;
     }
@@ -243,5 +255,28 @@ public class Livreur extends Personnage
             }
         }
         return tailleCommande;
+    }
+
+    @Override
+    public String toString() {
+        String str = super.toString() + "\n\tArme: ";
+        if (equipmentsSlots[0] == null){
+            str += Color.BLACK + "Aucun" + Color.RESET;
+        } else {
+            str += equipmentsSlots[0].getNom();
+        }
+        str += "\n\tArmure: ";
+        if (equipmentsSlots[1] == null){
+            str += Color.BLACK + "Aucun" + Color.RESET;
+        } else {
+            str += equipmentsSlots[1].getNom();
+        }
+        str += "\n\tAccessoire: ";
+        if (equipmentsSlots[2] == null){
+            str += Color.BLACK + "Aucun" + Color.RESET;
+        } else {
+            str += equipmentsSlots[2].getNom();
+        }
+        return str + "\n\n";
     }
 }
