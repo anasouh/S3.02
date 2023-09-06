@@ -12,11 +12,10 @@ public class Monstre extends Personnage {
   private static String noms = "Blanche graisse et les 7 daleux,La belle au bras pendant,Ali kebab et les 40 violeurs";
   private static List<String> lstNoms = new ArrayList<>(Arrays.asList(noms.split(",")));
 
-  public Monstre(String name, int pv, int physAtk, int magicAtk, int mana, int def, int danger) {
-
-    super(name, pv, physAtk, magicAtk, mana, def);
-    this.danger = danger;
-    this.type = MonstreType.random();
+  public Monstre(String name, int pv, int physAtk, int mana, int def, int speed) {
+    // Spécifique au boss
+    super(name, pv, physAtk, mana, def, speed);
+    this.type = MonstreType.Boss;
   }
 
   public Monstre()// Nom aleatoir
@@ -27,15 +26,21 @@ public class Monstre extends Personnage {
     this.type = MonstreType.random();
     if (this.type.equals(MonstreType.Magicien))
       this.mana *= 1.5;
-    if (this.type.equals(MonstreType.Guerrier))
+    else if (this.type.equals(MonstreType.Guerrier))
       this.physAtk *= 1.5;
-    if (this.type.equals(MonstreType.Defense))
+    else if (this.type.equals(MonstreType.Defense))
       this.def *= 1.5;
-    if (this.type.equals(MonstreType.MiniBoss)) {
+    else if (this.type.equals(MonstreType.MiniBoss)) {
       this.mana *= 1.5;
       this.physAtk *= 1.5;
       this.def *= 1.5;
       this.danger *= 1.5;
+    } else {
+      this.hp = 200;
+      this.physAtk = 30;
+      this.mana = 100;
+      this.speed = 100;
+      this.def = 25;
     }
   }
 
@@ -105,6 +110,8 @@ public class Monstre extends Personnage {
         PROBA_SORT = 0.75;
       else if (this.type == MonstreType.MiniBoss)
         PROBA_SORT = 0.5;
+      else if (this.type == MonstreType.Boss)
+        PROBA_SORT = 0.25;
       else
         PROBA_SORT = 0.3;
     }
@@ -126,13 +133,9 @@ public class Monstre extends Personnage {
     return this.type;
   }
 
-<<<<<<< HEAD
-
-=======
   public void afficheImage()
   {
       MonstreType type = this.getType();
->>>>>>> 056b75bea91678c471f385c8406befea2b0a77b7
 
       //CAS MAGIC
       if (type.equals(MonstreType.Magicien))
@@ -156,81 +159,6 @@ public class Monstre extends Personnage {
                   "                          '-'   '-'"+Color.RESET);
       }
 
-<<<<<<< HEAD
-        //CAS MAGIC
-        if (type.equals(MonstreType.Magicien))
-        {
-            System.out.println(Color.BLUE+
-                    "                             /\\\n" +
-                    "                            /  \\\n" +
-                    "                           |    |\n" +
-                    "                         --:'''':--\n" +
-                    "                           :'_' :\n" +
-                    "                           _:\"\":\\___\n" +
-                    "            ' '      ____.' :::     '._\n" +
-                    "           . *=====<<=)           \\    :\n" +
-                    "            .  '      '-'-'\\_      /'._.'\n" +
-                    "                             \\====:_ \"\"\n" +
-                    "                            .'     \\\\\n" +
-                    "                           :       :\n" +
-                    "                          /   :    \\\n" +
-                    "                         :   .      '.\n" +
-                    "                         :  : :      :\n" +
-                    "                         :__:-:__.;--'\n" +
-                    "                          '-'   '-'"+Color.RESET);
-        }
-
-        //CAS GUERRIER
-        if (type.equals(MonstreType.Guerrier))
-        {
-            System.out.println(Color.RED+"/ \\\n" +
-                    "  | |\n" +
-                    "  |.|\n" +
-                    "  |.|\n" +
-                    "  |:|      __\n" +
-                    ",_|:|_,   /  )\n" +
-                    "  (Oo    / _I_\n" +
-                    "   +\\ \\  || __|\n" +
-                    "      \\ \\||___|\n" +
-                    "        \\ /.:.\\-\\\n" +
-                    "         |.:. /-----\\\n" +
-                    "         |___|::oOo::|\n" +
-                    "         /   |:<_T_>:|\n" +
-                    "        |_____\\ ::: /\n" +
-                    "         | |  \\ \\:/\n" +
-                    "         | |   | |\n" +
-                    "         \\ /   | \\___\n" +
-                    "         / |   \\_____\\\n" +
-                    "         `-'"+Color.RESET);
-        }
-        //MINI BOSS
-        if (type.equals(MonstreType.MiniBoss))
-        {
-            System.out.println(Color.CYAN_BOLD+"_________________________ \n" +
-                    "|<><><>     |  |    <><><>|\n" +
-                    "|<>         |  |        <>|\n" +
-                    "|           |  |          |\n" +
-                    "|  (______ <\\-/> ______)  |\n" +
-                    "|  /_.-=-.\\| \" |/.-=-._\\  | \n" +
-                    "|   /_    \\(o_o)/    _\\   |\n" +
-                    "|    /_  /\\/ ^ \\/\\  _\\    |\n" +
-                    "|      \\/ | / \\ | \\/      |\n" +
-                    "|_______ /((( )))\\ _______|\n" +
-                    "|      __\\ \\___/ /__      |\n" +
-                    "|--- (((---'   '---))) ---|\n" +
-                    "|           |  |          |\n" +
-                    "|           |  |          |\n" +
-                    ":           |  |          :     \n" +
-                    " \\<>        |  |       <>/      \n" +
-                    "  \\<>       |  |      <>/       \n" +
-                    "   \\<>      |  |     <>/       \n" +
-                    "    `\\<>    |  |   <>/'         \n" +
-                    "      `\\<>  |  |  <>/'         \n" +
-                    "        `\\<>|  |<>/'         \n" +
-                    "          `-.  .-`           \n" +
-                    "            '--'"+Color.RESET);
-        }
-=======
       //CAS GUERRIER
       if (type.equals(MonstreType.Guerrier))
       {
@@ -281,14 +209,9 @@ public class Monstre extends Personnage {
                   "          `-.  .-`           \n" +
                   "            '--'"+Color.RESET);
       }
->>>>>>> 056b75bea91678c471f385c8406befea2b0a77b7
 
 
   }
 
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 056b75bea91678c471f385c8406befea2b0a77b7
 }

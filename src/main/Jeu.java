@@ -334,14 +334,48 @@ public class Jeu {
 
         // Debuter Partie
         Livreur joueur = creerLivreur();
-        lstSalle = genererSalles();
+        lstSalle = new ArrayList<Salle>(); //genererSalles();
         int tour = 0;
         
-        while (tour < lstSalle.size() && joueur.hp > 0)
+        while (tour < lstSalle.size() && joueur.isAlive())
         {
             jouerTour(joueur);
             finirTour(joueur);
         }
+
+        if (joueur.isAlive()) {
+            clear();
+            printFile("chemin");
+            joueur.dire("La forêt semble se terminer !");
+            sleep(3.5);
+            joueur.dire("Vous pouvez enfin...");
+            sleep(3);
+            clear();
+            printFile("chateau");
+            joueur.dire("QU'EST-CE QUE C'EST QUE CE CHÂTEAU !!!");
+            sleep(3.5);
+            joueur.dire("Vous vous rapprochez tout doucement...\n");
+            sleep(3.5);
+            clear();
+            printFile("alan");
+            joueur.dire("OH NON C'EST ALANFOODCHALLENGE LE VORACE");
+            sleep(3.5);
+            
+            clear();
+            Monstre boss = new Monstre("Boss final", 200, 30, 100, 100, 252);
+            boolean win = Combat(joueur, boss);
+            clear();
+
+            if (win) {
+                joueur.dire("VOUS AVEZ VAINCU LE BOSS !!!");
+                sleep(2);
+                joueur.dire("IL NE VOUS RESTE PLUS QU'À LIVRER VOTRE COMMANDE À QUELQUES PAS D'ICI");
+                sleep(2);
+                joueur.dire("EN SELLE !");
+                printFile("cycling");
+            }
+        }
+        
         joueur.save();
         sc.close();
     }
