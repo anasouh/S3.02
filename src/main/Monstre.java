@@ -139,18 +139,11 @@ public class Monstre extends Personnage {
     return this.type;
   }
 
-<<<<<<< HEAD
 
   public void afficheImage() {
     MonstreType type = this.getType();
-=======
-    public void afficheImage()
-    {
-        MonstreType type = this.getType();
->>>>>>> c1563a4f719b2a2ec7b828b45afa5ad0a8eed342
 
 
-<<<<<<< HEAD
     //CAS MAGIC
     if (type.equals(MonstreType.Magicien)) {
       System.out.println(Color.BLUE + " /\\\n" +
@@ -193,58 +186,6 @@ public class Monstre extends Personnage {
               "                         :__:-:__.;--'\n" +
               "                          '-'   '-'" + Color.RESET);
     }
-=======
-        //CAS GUERRIER
-        if (type.equals(MonstreType.Guerrier))
-        {
-            System.out.println(Color.RED+"/ \\\n" +
-                    "  | |\n" +
-                    "  |.|\n" +
-                    "  |.|\n" +
-                    "  |:|      __\n" +
-                    ",_|:|_,   /  )\n" +
-                    "  (Oo    / _I_\n" +
-                    "   +\\ \\  || __|\n" +
-                    "      \\ \\||___|\n" +
-                    "        \\ /.:.\\-\\\n" +
-                    "         |.:. /-----\\\n" +
-                    "         |___|::oOo::|\n" +
-                    "         /   |:<_T_>:|\n" +
-                    "        |_____\\ ::: /\n" +
-                    "         | |  \\ \\:/\n" +
-                    "         | |   | |\n" +
-                    "         \\ /   | \\___\n" +
-                    "         / |   \\_____\\\n" +
-                    "         `-'"+Color.RESET);
-        }
-        //MINI BOSS
-        if (type.equals(MonstreType.MiniBoss))
-        {
-            System.out.println(Color.CYAN_BOLD+"_________________________ \n" +
-                    "|<><><>     |  |    <><><>|\n" +
-                    "|<>         |  |        <>|\n" +
-                    "|           |  |          |\n" +
-                    "|  (______ <\\-/> ______)  |\n" +
-                    "|  /_.-=-.\\| \" |/.-=-._\\  | \n" +
-                    "|   /_    \\(o_o)/    _\\   |\n" +
-                    "|    /_  /\\/ ^ \\/\\  _\\    |\n" +
-                    "|      \\/ | / \\ | \\/      |\n" +
-                    "|_______ /((( )))\\ _______|\n" +
-                    "|      __\\ \\___/ /__      |\n" +
-                    "|--- (((---'   '---))) ---|\n" +
-                    "|           |  |          |\n" +
-                    "|           |  |          |\n" +
-                    ":           |  |          :     \n" +
-                    " \\<>        |  |       <>/      \n" +
-                    "  \\<>       |  |      <>/       \n" +
-                    "   \\<>      |  |     <>/       \n" +
-                    "    `\\<>    |  |   <>/'         \n" +
-                    "      `\\<>  |  |  <>/'         \n" +
-                    "        `\\<>|  |<>/'         \n" +
-                    "          `-.  .-`           \n" +
-                    "            '--'"+Color.RESET);
-        }
->>>>>>> c1563a4f719b2a2ec7b828b45afa5ad0a8eed342
 
     //CAS GUERRIER
     if (type.equals(MonstreType.Guerrier)) {
