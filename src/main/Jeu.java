@@ -93,8 +93,10 @@ public class Jeu {
             case 'O': //utiliser un objet
                 List<Item> consommables = livreur.listeCons(); //afficher la liste des item consommables possédés
                 System.out.println(livreur.seeInventory());
-                int conso = sc.nextInt();
-                livreur.useItem(consommables, consommables.get(conso));
+                if (!livreur.isEmptyInventory()) {
+                    int conso = sc.nextInt();
+                    livreur.useItem(consommables, consommables.get(conso));
+                }
                 break;
 
             default: System.out.print("");
@@ -148,8 +150,8 @@ public class Jeu {
             clear();
             System.out.println(Color.RED_BOLD_BRIGHT + "COMBAAAAAT !\n" + Color.RESET);
             
-            System.out.println(bold(livreur.getName()) + " : " + livreur);
-            System.out.println(bold(monstre.getName()) + " : " + monstre);
+            System.out.println(livreur);
+            System.out.println(monstre);
             System.out.println("\nQue voulez vous faire ?");
             System.out.println(bold(" ['P'] Attaque physique \n ['M'] Attaque magique\n ['B'] Bloquer\n ['O'] Utiliser un objet\n"));
             

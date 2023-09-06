@@ -157,5 +157,9 @@ public class Livreur extends Personnage{
         }
         else return false;
     }
+
+    public boolean isEmptyInventory() {
+        return (inventory.size() == 0);
+    }
     
 }
