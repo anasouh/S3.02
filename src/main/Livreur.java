@@ -281,4 +281,8 @@ public class Livreur extends Personnage
         }
         return str + "\n\n";
     }
+
+    public String combatStats(){
+        return super.toString();
+    }
 }
