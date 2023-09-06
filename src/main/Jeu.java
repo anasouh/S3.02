@@ -199,10 +199,10 @@ public class Jeu {
             if (livreur.getSpeed() > monstre.getSpeed()){
                 actionJoueur(livreur, monstre, choix, sc);
                 if(!(monstre.getHp()<=0)){
-                monstre.frapper(livreur);
+                monstre.attaquer(livreur);
                 }
             } else {
-                monstre.frapper(livreur);
+                monstre.attaquer(livreur);
                 if(!(livreur.getHp()<=0)){
                 actionJoueur(livreur, monstre, choix, sc);
                 }
