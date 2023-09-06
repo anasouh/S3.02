@@ -264,7 +264,7 @@ public class Livreur extends Personnage
 
     @Override
     public String toString() {
-        String str = super.toString() + "\n\tArme: ";
+        String str = super.toString() + Color.CYAN + " | " + Color.PURPLE + ((int)stealth) + " STEALTH" + Color.RESET + "\n\tArme: ";
         if (equipmentsSlots[0] == null){
             str += Color.BLACK + "Aucun" + Color.RESET;
         } else {
@@ -286,6 +286,6 @@ public class Livreur extends Personnage
     }
 
     public String combatStats(){
-        return super.toString();
+        return super.toString() + Color.CYAN + " | " + Color.PURPLE + ((int)stealth) + " STEALTH" + Color.RESET;
     }
 }
