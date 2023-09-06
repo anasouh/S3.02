@@ -175,7 +175,7 @@ public class Event{
             String rep ="";
             Monstre monstre = new Monstre();
             //generer un monstre
-            System.out.println("Vous reperez un monstre au loin voulez vous l'analyser ?");
+            System.out.println("Vous repérez un monstre au loin voulez vous l'analyser ?");
             while(!(rep.equals("oui") || rep.equals("non"))){
             rep = scmonstredos.nextLine();
             System.out.println(monstre);
@@ -207,7 +207,7 @@ public class Event{
         public static void eventTrap(Livreur livreur){
             Scanner sctrap = new Scanner(System.in);
             String rep ="";
-            System.out.println("Vous tombez dans un piège en marchant vous perdez de la vie ");
+            System.out.println("Vous tombez dans un piège en marchant vous perdez de la vie " + Color.RED_BOLD + (livreur.getHp()*0.05)+5 + Color.RESET);
             livreur.setHp(livreur.getHp() - (livreur.getHp()*0.05)+5);
         }
         

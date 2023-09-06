@@ -93,6 +93,7 @@ public class Jeu {
 
             case 'O': //utiliser un objet
                 List<Item> consommables = livreur.listeCons(); //afficher la liste des item consommables possédés
+                System.out.println(livreur.seeInventory());
                 int conso = sc.nextInt();
                 livreur.useItem(consommables, consommables.get(conso));
                 break;
