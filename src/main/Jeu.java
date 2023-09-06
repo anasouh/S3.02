@@ -64,7 +64,10 @@ public class Jeu {
         return lstSalle;
     }
 
-    public static void printFile(String path) {
+    public static void printFile(String dessin) {
+        String currentDir = new File(System.getProperty("user.dir")).getAbsolutePath();
+        if (!System.getProperty("user.dir").split("/")[0].equals("src")) currentDir += "/src";
+        String path = currentDir + "/main/ascii/" + dessin + ".txt";
         File f = new File(path);
         if (f.exists() && f.canRead()) {
             try (BufferedReader br = new BufferedReader(new FileReader(f))) {
@@ -83,7 +86,7 @@ public class Jeu {
         System.out.print("Entrez le nom de votre personnage: ");
         String nom = sc.nextLine();
         clear();
-        printFile("src/main/ascii/cycling.txt");
+        printFile("cycling");
         System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats\n ['D'] Deliveroo\n ['K'] KingDelivery \n autre caractère pour être Indépendant"));
         char choix = sc.next().toLowerCase().charAt(0);
         Societe societe;
