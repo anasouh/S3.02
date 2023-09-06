@@ -5,7 +5,7 @@ import java.util.Random;
 public enum MonstreType {
     Magicien("Magicien"), // mana upgradée
     Guerrier("Guerrier"), // atk upgradée
-    Defense("Defense"), // défense upgradée
+    Defense("Défenseur"), // défense upgradée
     MiniBoss("MiniBoss"); // tout upgradé
 
     private String name;
