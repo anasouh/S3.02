@@ -70,7 +70,10 @@ public class Jeu {
         String currentDir = new File(System.getProperty("user.dir")).getAbsolutePath();
         String[] dirSplitted = System.getProperty("user.dir").split("/");
         if (dirSplitted[dirSplitted.length-1].equals("src")) currentDir += "/main";
+        else if (dirSplitted[dirSplitted.length-1].equals("main")) currentDir = currentDir + "";
+        else currentDir += "/src/main";
         String path = currentDir + "/ascii/" + dessin + ".txt";
+        System.out.println(path);
         File f = new File(path);
         if (f.exists() && f.canRead()) {
             try (BufferedReader br = new BufferedReader(new FileReader(f))) {
@@ -217,8 +220,6 @@ public class Jeu {
         return res;
     }
 
-
-
     public static void jouerTour(Livreur l) {
         clear();
         if (!lstSalle.isEmpty()){
@@ -300,7 +301,7 @@ public class Jeu {
 
         // Debuter Partie
         Livreur joueur = creerLivreur();
-        lstSalle = new ArrayList<Salle>(); //genererSalles();
+        lstSalle = genererSalles();
         int tour = 0;
         
         while (tour < lstSalle.size() && joueur.isAlive())
