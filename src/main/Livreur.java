@@ -37,6 +37,9 @@ public class Livreur extends Personnage implements Serializable
         this.societe = societe;
         this.inventory = inventory;
         this.equipmentsSlots = equipmentsSlots;
+        for (int i = 0; i < 5; i++) {
+            inventory.add(Item.COMMANDE);
+        }
     }
 
     public Livreur(String name, Societe societe){
@@ -66,8 +69,7 @@ public class Livreur extends Personnage implements Serializable
         this.stealth = Math.ceil(this.stealth * societe.getStealthMult());
         this.speed = (Math.ceil(this.speed * societe.getSpeedMult()));
         this.mana = Math.ceil(this.mana * societe.getManaMult());
-
-        for (int i = 0; i < 5; i += 1){
+        for (int i = 0; i < 5; i++) {
             inventory.add(Item.COMMANDE);
         }
     }
@@ -327,6 +329,10 @@ public class Livreur extends Personnage implements Serializable
         if (f.exists() && f.canRead()) {
             try (ObjectInputStream ois =  new ObjectInputStream(new FileInputStream(path))) {
                 Livreur livreur = (Livreur)ois.readObject();
+                if (livreur.commandeRestante() < 5)
+                    for (int i = 0; i < 5 - livreur.commandeRestante(); i++) {
+                        livreur.inventory.add(Item.COMMANDE);
+                    }
                 return livreur;
             } catch (Exception e) {}
         }

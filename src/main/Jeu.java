@@ -73,7 +73,6 @@ public class Jeu {
         else if (dirSplitted[dirSplitted.length-1].equals("main")) currentDir = currentDir + "";
         else currentDir += "/src/main";
         String path = currentDir + "/ascii/" + dessin + ".txt";
-        System.out.println(path);
         File f = new File(path);
         if (f.exists() && f.canRead()) {
             try (BufferedReader br = new BufferedReader(new FileReader(f))) {
@@ -302,6 +301,7 @@ public class Jeu {
         // Debuter Partie
         Livreur joueur = creerLivreur();
         lstSalle = genererSalles();
+       
         int tour = 0;
         
         while (tour < lstSalle.size() && joueur.isAlive())
@@ -340,6 +340,29 @@ public class Jeu {
                 sleep(2);
                 joueur.dire("EN SELLE !");
                 printFile("cycling");
+                sleep(3);
+
+                joueur.dire("Vous êtes arrivés chez le client, TOC TOC TOC");
+                sleep(3);
+                joueur.dire("CLIENT : Ah c'est pas trop tôt !");
+                sleep(2);
+                int tacosManquants = 5 - joueur.commandeRestante();
+                
+                if (tacosManquants <= 0) {
+                    joueur.dire("Vous avez réussi à livrer votre commande intacte malgré toutes ces embuches, FÉLICITATIONS !");
+                    sleep(2);
+                    joueur.dire("CLIENT : Merci, voici un petit pourboire c'est moi qui régale bg");
+                } else {
+                    joueur.dire("CLIENT : QUOOOOI ?");
+                    sleep(2);
+                    joueur.dire("CLIENT : Déjà que t'arrives en retard mais en plus t'as bouffé ma commande ?!");
+                    sleep(2);
+                    joueur.dire("CLIENT : Il manque " + tacosManquants + " tacos mec !");
+                    sleep(1.5);
+                    joueur.dire("CLIENT : Allez bouge de là tu m'as zehef !");
+                    sleep(2);
+                    joueur.dire("Vous n'avez pas réussi à livrer la commande complète, le client a remonté l'information à " + joueur.getSociete() + ", vous avez par conséquent perdu votre emploi. RIP BOZO");
+                }
             }
         }
         
