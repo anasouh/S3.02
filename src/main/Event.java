@@ -17,14 +17,18 @@ public class Event{
         }
         if(rep.equals("oui")){
             int rdm = Event.rng.nextInt(101);
-            if(rdm>10){
-            Item objet = Item.randomObjet();
+            if(rdm>20){
+            Item objet = Item.randomEquip();
+            Item objet2 = Item.randomEquip();
             System.out.println("Vous trouvez dans le coffre cet objet : ");
             System.out.println(objet);
+            System.out.println(objet2);
            // System.out.println("Voulez vous prendre cet objet il vous reste " + Item.afficherNombreObjet());       
             livreur.addItem(objet);
+            livreur.addItem(objet2);
             }
             else{
+                System.out.println("c'etait un monstre");
                 Monstre mimick = new Monstre("Mimick");
                 Jeu.Combat(livreur, mimick);
             }
@@ -56,7 +60,7 @@ public class Event{
                 System.out.println("Vous ne trouvez rien ");
             }
 
-            if(rdm >74){
+            if(rdm >73){
                 Monstre monstre = new Monstre();
                 Jeu.Combat(livreur, monstre);
                 //créer un monstre aléatoire et faire un combat avec le livreur
@@ -132,8 +136,9 @@ public class Event{
                 livreur.addItem(objet);
 
             }
-            if(rdm>80){
+            if(rdm>79){
                 System.out.println("Oh non ! Un monstre est présent !");
+                Jeu.sleep(2);
                 Monstre monstre = new Monstre();
                 Jeu.Combat(livreur, monstre);
                 //combat monstre / livreur a faire 
@@ -225,8 +230,8 @@ public class Event{
         public static void eventTrap(Livreur livreur){
             Scanner sctrap = new Scanner(System.in);
             String rep ="";
-            System.out.println("Vous tombez dans un piège en marchant. Vous perdez de la vie " + Color.RED_BOLD + (livreur.getHp()*0.05)+5 + Color.RESET);
-            livreur.setHp(livreur.getHp() - (livreur.getHp()*0.05)+5);
+            System.out.println("Vous tombez dans un piège en marchant. Vous perdez de la vie " + Color.RED_BOLD + ((livreur.getHp()*0.05)+5) + Color.RESET);
+            livreur.setHp(livreur.getHp() - ((livreur.getHp()*0.05)+5));
         }
         
 
@@ -242,9 +247,11 @@ public class Event{
         if(rmd>92 && rmd <100){Event.eventCoffre(livreur);}
     }
 
-   /*  public static void main(String[] args) {
-        Livreur liv = new Livreur("zegera", Societe.Deliveroo);
-        Event.aleatoire(liv);
-    } */
+     public static void main(String[] args) {
+        Livreur liv = new Livreur("bug", Societe.Deliveroo);
+        System.out.println(liv);
+        Event.eventCoffre(liv);
+        System.out.println(liv);
+    } 
     
 }
