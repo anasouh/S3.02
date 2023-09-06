@@ -242,14 +242,21 @@ public class Jeu {
             }
             if(selec == 'i')
             {
-               System.out.println(l.seeInventory());
+                List<Item> consommables = l.listeCons(); //afficher la liste des item consommables possédés
+                System.out.println(l.seeInventory());
+                int conso = sc.nextInt();
+                String nomConso = consommables.get(conso).getNom();
+                l.useItem(consommables, consommables.get(conso));
+                System.out.println("Vous avez utilisé 1x " + nomConso);
+                break;
             }
-            if(selec == 'p')
-            {
-               jouerTour(l);; 
-            }
-            selec = sc.next().toLowerCase().charAt(0);
-          }
+            
+        }
+        if(selec == 'p')
+        {
+            jouerTour(l);
+        }
+        selec = sc.next().toLowerCase().charAt(0);
         }
     }
 
