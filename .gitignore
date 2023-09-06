@@ -11,13 +11,17 @@ classes/
 # BlueJ files
 *.ctxt
 
-#IntelliJ files
+# IntelliJ files
 .idea/
 out/
 *.xml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+
+# Saves file
+.bin
+data/
 
 # Package Files #
 *.jar

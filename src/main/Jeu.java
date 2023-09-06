@@ -161,7 +161,7 @@ public class Jeu {
             else {
                 monstre.lancerSort(livreur);
             }
-        } else if (monstre.getType().equals(MonstreType.Defense)){
+        } else if (monstre.getType().equals(MonstreType.Kim_Jung_Un)){
             if (proba < 0.30){
                 monstre.frapper(livreur);
             }
