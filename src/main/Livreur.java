@@ -20,7 +20,7 @@ public class Livreur extends Personnage{
 
     public Livreur(String name, Societe societe){
         //name,hp,physAtk,mana,def,speed
-        super(name,100,(random.nextInt(10) + 30),100,(random.nextInt(10) + 10),(random.nextInt(20) + 25));
+        super(name,100,(random.nextInt(10) + 30),100,(random.nextInt(10) + 10),(random.nextInt(15) + 30));
         this.name = name;
         this.societe = societe;
         

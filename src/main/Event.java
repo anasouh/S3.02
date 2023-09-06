@@ -92,6 +92,7 @@ public class Event{
             else{
                 System.out.println("texte mec méchant veux combat");
                 System.out.println("voulez vous donner un tacos a la personne pour la calmer ?");
+                rep ="";
                 while(!(rep.equals("oui") || rep.equals("non"))){
                 rep = scperson.nextLine();
                 }
