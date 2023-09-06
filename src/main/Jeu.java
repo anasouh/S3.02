@@ -56,6 +56,14 @@ public class Jeu {
         }
     }
 
+    public static int getNbSalle() {
+        return nbSalle;
+    }
+
+    public static List<Salle> getLstSalle() {
+        return lstSalle;
+    }
+
     public static void printFile(String path) {
         File f = new File(path);
         if (f.exists() && f.canRead()) {
@@ -286,6 +294,8 @@ public class Jeu {
 
         }
     }
+
+
 
     
     
