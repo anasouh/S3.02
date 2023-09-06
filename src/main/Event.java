@@ -226,7 +226,7 @@ public class Event{
             }
         }
         
-            else{
+                Jeu.sleep(1.5);
                 System.out.println("Que voulez-vous faire ? \n 1) attaquer \n 2) fuir");
                 while(!(rep.equals("attaquer") || rep.equals("fuir"))){
             rep = scmonstredos.nextLine();
@@ -237,7 +237,7 @@ public class Event{
             if(rep.equals("fuir")){
                 System.out.println("Vous arrivez à vous faufiler sans que le monstre ne vous voie ");
             }
-        }
+        
         }
         
        
