@@ -68,8 +68,9 @@ public class Jeu {
 
     public static void printFile(String dessin) {
         String currentDir = new File(System.getProperty("user.dir")).getAbsolutePath();
-        if (!System.getProperty("user.dir").split("/")[0].equals("src")) currentDir += "/src";
-        String path = currentDir + "/main/ascii/" + dessin + ".txt";
+        String[] dirSplitted = System.getProperty("user.dir").split("/");
+        if (dirSplitted[dirSplitted.length-1].equals("src")) currentDir += "/main";
+        String path = currentDir + "/ascii/" + dessin + ".txt";
         File f = new File(path);
         if (f.exists() && f.canRead()) {
             try (BufferedReader br = new BufferedReader(new FileReader(f))) {
@@ -149,41 +150,6 @@ public class Jeu {
         }
     }
 
-    public static void actionMonstre(Livreur livreur, Monstre monstre){
-        double proba = new Random().nextDouble();
-        if (monstre.getType().equals(MonstreType.Guerrier) || monstre.getType().equals(MonstreType.MiniBoss)){
-            if (proba < 0.60){
-                monstre.frapper(livreur);
-            }
-            else if (proba < 0.90){
-                monstre.setImmune(true);
-            }
-            else {
-                monstre.lancerSort(livreur);
-            }
-        } else if (monstre.getType().equals(MonstreType.Defense)){
-            if (proba < 0.30){
-                monstre.frapper(livreur);
-            }
-            else if (proba < 0.75){
-                monstre.setImmune(true);
-            }
-            else {
-                monstre.lancerSort(livreur);
-            }
-        } else if (monstre.getType().equals(MonstreType.Magicien)){
-            if (proba < 0.15){
-                monstre.frapper(livreur);
-            }
-            else if (proba < 0.40){
-                monstre.setImmune(true);
-            }
-            else {
-                monstre.lancerSort(livreur);
-            }
-        }
-    }
-
 
     public static boolean Combat(Livreur livreur, Monstre monstre){ //retourne true si Livreur gagne
         char choix;
@@ -231,7 +197,7 @@ public class Jeu {
         if (livreur.getHp() > 0) {
             livreur.setDef(ancienneDef); livreur.setPhysAtk(ancienneAtq);
             livreur.setSpeed(ancienneSpeed); livreur.setStealth(ancienneStealth);
-            System.out.println("Vous avez réussi a vaincre le monste");
+            System.out.println("Vous avez réussi a vaincre le monstre");
             return true;
         }
         System.out.println("Oh non le monstre vous a vaincu");
@@ -258,14 +224,14 @@ public class Jeu {
         if (!lstSalle.isEmpty()){
             Salle current = lstSalle.get(0);
             lstSalle.remove(0);
-            System.out.println("Vous arrivez en face de " + current.getName().toString() + "\n");
+            l.dire("Vous arrivez en face de " + current.getName().toString() + "\n");
             if (current.hasEvent())
             {
                 current.lancerEvent(l);
             }
             else
             {
-                System.out.println("Cette salle est vide...");
+                current.noEvent(l);
             }
         } else {
             System.out.println("Salle du boss");

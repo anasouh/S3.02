@@ -81,7 +81,7 @@ public class Livreur extends Personnage implements Serializable
 
     public void dire(String replique)
     {
-        System.out.println(this.getName()+" : "+replique);
+        System.out.println(Color.BLACK_BOLD+" ~ "+replique+Color.RESET);
     }
     
     public static void main(String[] args) {
@@ -119,7 +119,14 @@ public class Livreur extends Personnage implements Serializable
     public void interagir(Personnage p)
     {
         Monstre m = (Monstre) p;
-        this.dire("Oh non ! , "+m.getName()+" à la dalle...",Color.BLUE);
+        if (m.getType().equals(MonstreType.Kim_Jung_Un))
+        {
+            this.dire("Kim Jung Un veut son tacos...",Color.BLUE_BOLD);
+        }
+        else {
+            this.dire("Au non ! , "+m.getName()+" à la dalle...",Color.BLUE);
+        }
+
         m.afficheImage();
 
     }
@@ -183,7 +190,7 @@ public class Livreur extends Personnage implements Serializable
                     this.setSpeed(this.getSpeed() - equipmentsSlots[slot].getpoints());
                     break;
                 default:
-                    System.out.println("non :)");
+                    //
             }
         }
         inventory.remove(item);
@@ -202,7 +209,7 @@ public class Livreur extends Personnage implements Serializable
                 this.setSpeed(this.getSpeed() + item.getpoints());
                 break;
             default:
-                System.out.println("uwu");
+                //
         }
     }
 
@@ -259,7 +266,7 @@ public class Livreur extends Personnage implements Serializable
                     }
                     break;
                 default:
-                    System.out.println("non :)");
+                    //
             }
             consommables.remove(item);
             if (!consommables.equals(inventory)){
@@ -275,7 +282,7 @@ public class Livreur extends Personnage implements Serializable
     }
 
     public boolean isEmptyInventory() {
-        return (inventory.size() == 0);
+        return (inventory.isEmpty());
     }
     
     public int commandeRestante(){

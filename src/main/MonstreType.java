@@ -5,7 +5,7 @@ import java.util.Random;
 public enum MonstreType {
     Magicien("Magicien"), // mana upgradée
     Guerrier("Guerrier"), // atk upgradée
-    Defense("Défenseur"), // défense upgradée
+    Kim_Jung_Un("Kim_Jung_Un"), // défense upgradée
     MiniBoss("MiniBoss"), // tout upgradé
     Boss("AlanFoodChallenge");
 
@@ -23,7 +23,7 @@ public enum MonstreType {
         double val = new Random().nextDouble();
         if (val < 0.35) return Magicien; //35% de chance d'avoir un magicien
         else if (val < 0.70) return Guerrier; //35% de chance d'avoir un guerrier
-        else if (val < 0.95) return Defense; //25% de chance d'avoir un defense
+        else if (val < 0.95) return Kim_Jung_Un; //25% de chance d'avoir un defense
         return MiniBoss; //5% de chance d'avoir un boss
     }
 }
