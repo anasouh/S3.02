@@ -85,8 +85,9 @@ public class Event{
             if(rdm<70){
                 System.out.println("texte pnj redonne de la vie");
                 System.out.println("Vous commencez a vous sentir mieu");
-                livreur.setHp(Event.rng.nextInt(35));
-                System.out.println("Vous avez récuperer de la vie !");
+                int rdm2 = Event.rng.nextInt(25)+10;
+                livreur.setHp(livreur.getHp()+rdm2);
+                System.out.println(Color.RED+"Vous avez récuperer"+ rdm2 +"vie !"+Color.RESET);
             }
             else{
                 System.out.println("texte mec méchant veux combat");
