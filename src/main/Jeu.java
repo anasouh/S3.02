@@ -9,7 +9,8 @@ public class Jeu {
     private static List<Item> listeObjet;
     private static List<Salle> lstSalle = new ArrayList<>();
     private static int nbSalle;
-//t
+    private static Scanner sc = new Scanner(System.in);
+
      public static void setListeObjet(List<Item> listeObjet) {
         Jeu.listeObjet = listeObjet;
     }
@@ -35,7 +36,6 @@ public class Jeu {
     }
 
     public static char demanderLettre() {
-        Scanner sc = new Scanner(System.in);
         return sc.nextLine().charAt(0);
     }
 
@@ -49,7 +49,6 @@ public class Jeu {
 
     public static Livreur creerLivreur()
     {
-        Scanner sc = new Scanner(System.in);
         System.out.print("Entrez le nom de votre personnage: ");
         String nom = sc.nextLine();
         clear();
@@ -139,7 +138,6 @@ public class Jeu {
 
 
     public static boolean Combat(Livreur livreur, Monstre monstre){ //retourne true si Livreur gagne
-        Scanner sc = new Scanner(System.in);
         char choix;
 
         //during fight these stats can change, after combat they're reverted back to its original value
@@ -175,8 +173,6 @@ public class Jeu {
         System.out.println("Livreur : " + livreur);
         System.out.println("Monstre : " + monstre);
         
-        sc.close();
-        
         if (livreur.getHp() > 0) {
             livreur.setDef(ancienneDef); livreur.setPhysAtk(ancienneAtq);
             livreur.setSpeed(ancienneSpeed); livreur.setStealth(ancienneStealth);
@@ -194,7 +190,7 @@ public class Jeu {
     public static List<Salle> genererSalles()
     {
         List<Salle> res = new ArrayList<>();
-        int rnd = new Random().nextInt(10)+1;
+        int rnd = new Random().nextInt(10)+10;
         nbSalle = rnd;
         for (int i = 0; i<rnd; i++)
         {
@@ -207,19 +203,21 @@ public class Jeu {
 
     public static void jouerTour(Livreur l) {
         clear();
-        Salle current = lstSalle.get(0);
-        lstSalle.remove(0);
-        System.out.println("Vous arrivez en face de " + current.getName().toString() + "\n");
-        if (current.hasEvent())
-        {
-            current.lancerEvent(l);
+        if (!lstSalle.isEmpty()){
+            Salle current = lstSalle.get(0);
+            lstSalle.remove(0);
+            System.out.println("Vous arrivez en face de " + current.getName().toString() + "\n");
+            if (current.hasEvent())
+            {
+                current.lancerEvent(l);
+            }
+            else
+            {
+                System.out.println("Cette salle est vide...");
+            }
+        } else {
+            System.out.println("Salle du boss");
         }
-        else
-        {
-            System.out.println("Cette salle est vide...");
-        }
-        
-        
     }
 
     public static void finirTour(Livreur l) {
@@ -228,7 +226,6 @@ public class Jeu {
           int currentTour = nbSalle-lstSalle.size();
           // System.out.println("Vous êtes à la salle "+currentTour+" sur "+nbSalle);
           System.out.println("Tapez :\n "+ bold("'A' pour afficher vos stat; \n 'I' pour utiliser un item; \n 'P' pour passer au tour suivant.") );
-          Scanner sc = new Scanner(System.in);
           char selec = sc.next().toLowerCase().charAt(0);
           if(selec == 'p')
             {
@@ -285,6 +282,7 @@ public class Jeu {
         boolean win = Combat(joueur,monstre);
         System.out.println(win);
 
+        sc.close();
     }
 
 
