@@ -100,4 +100,13 @@ public enum Item {
         }
         return cons.get(new Random().nextInt(cons.size()));
     }
+
+    public static Item toItem(String nom){
+        try{
+            return Item.valueOf(nom);
+        }
+        catch (Exception e){
+            return null;
+        }
+    }
 }
