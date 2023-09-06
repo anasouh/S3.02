@@ -1,12 +1,14 @@
 package main;
 
-public abstract class Personnage implements Interactable<Personnage>
+import java.io.Serializable;
+
+public abstract class Personnage implements Interactable<Personnage>, Serializable
 {
 
     private final static double MANA_MAGIC = 20;
     
     protected String name;
-    protected double hp;
+    protected double hp = 100;
     protected double physAtk;
     protected double mana;
     protected double def;
