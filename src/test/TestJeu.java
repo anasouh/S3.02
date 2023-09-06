@@ -1,6 +1,10 @@
-package main;
+package test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import main.Jeu;
+import main.Livreur;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 

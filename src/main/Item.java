@@ -114,4 +114,15 @@ public enum Item {
     public boolean estCommande(){
         return this.equals(Item.COMMANDE);
     }
+
+    public static Item randomEquip(){
+        List<Item> cons = new ArrayList<>();
+        Item[] items = Item.values();
+        for (Item i : items){
+            if (!i.getCons()){
+                cons.add(i);
+            }
+        }
+        return cons.get(new Random().nextInt(cons.size()));
+    }
 }

@@ -1,5 +1,10 @@
 package main;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -59,12 +64,30 @@ public class Jeu {
         return lstSalle;
     }
 
+    public static void printFile(String dessin) {
+        String currentDir = new File(System.getProperty("user.dir")).getAbsolutePath();
+        if (!System.getProperty("user.dir").split("/")[0].equals("src")) currentDir += "/src";
+        String path = currentDir + "/main/ascii/" + dessin + ".txt";
+        File f = new File(path);
+        if (f.exists() && f.canRead()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } catch (IOException ioe) {
+                System.err.println("Fichier " + path + " illisible");
+            }
+        }
+    }
+
     public static Livreur creerLivreur()
     {
         System.out.print("Entrez le nom de votre personnage: ");
         String nom = sc.nextLine();
         clear();
-        System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats\n ['D'] Deliveroo\n ['K'] KingDelivery \n autre caractère pour être Indépendant"));
+        printFile("cycling");
+        System.out.println("Salut " + bold(nom) + ", avant tout choisissez votre société : \n " + bold("['U'] UberEats (Guerrier)\n ['D'] Deliveroo (Magicien)\n ['K'] KingDelivery (Voleur)\n autre caractère pour être Indépendant (Vierge)"));
         char choix = sc.next().toLowerCase().charAt(0);
         Societe societe;
 
@@ -253,11 +276,17 @@ public class Jeu {
                 } else if (selec == 'i') {
                     System.out.println(l.seeInventory() );
                     if (!l.isEmptyInventory()) {
-                        List<Item> consommables = l.listeCons();
-                        int toUse = sc.nextInt();
-                        Item item = consommables.get(toUse);
-                        l.useItem(consommables, item);
-                        System.out.println("Vous avez utilisé 1x " + item.getNom());
+                        char toUse = demanderLettre();
+                        if (toUse >= '0' && toUse <= '9'){
+                            Item item = l.inventory.get(toUse);
+                            if (item.getCons()){
+                                l.useItem(item);
+                                System.out.println("Vous avez utilisé 1x " + item.getNom());
+                            } else {
+                                l.equipItem(item);
+                                System.out.println("Vous avez équipé 1x " + item.getNom());
+                            }
+                        }
                     }
                     System.out.println(""+Color.BLACK + " (écrivez n'importe quoi pour skip)" + Color.RESET);
                     demanderLettre();
