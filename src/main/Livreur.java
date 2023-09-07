@@ -44,7 +44,7 @@ public class Livreur extends Personnage implements Serializable
 
     public Livreur(String name, Societe societe){
         //name,hp,physAtk,mana,def,speed
-        super(name,100,(random.nextInt(10) + 30),100,(random.nextInt(10) + 10),(random.nextInt(15) + 30));
+        super(name,100,(random.nextInt(10) + 35),100,(random.nextInt(12) + 10),(random.nextInt(30) + 40));
         if(name.equals("bug")){
             this.hp = 1000;
             this.mana = 1000;

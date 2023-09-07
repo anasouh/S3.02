@@ -20,47 +20,65 @@ public class Monstre extends Personnage {
 
   public Monstre()// Nom aleatoir
   {
-    super(generNom(), 100, (random.nextInt(7) + 15), 100, (random.nextInt(10) + 5), (random.nextInt(30) + 20));
+    super(generNom(), 100, (random.nextInt(5) + 12), 100, (random.nextInt(10) + 10), (random.nextInt(15) + 50));
     this.danger = random.nextInt(100); // si le danger du monstre est + grand que le stealth du Livreur alors il voit
     // le Livreur
     this.type = MonstreType.random();
-    if (this.type.equals(MonstreType.Magicien))
+    if (this.type.equals(MonstreType.Magicien)){
       this.mana *= 1.5;
-    else if (this.type.equals(MonstreType.Guerrier))
+      this.hp *= 0.6;
+      this.speed *= 1.3;
+    }
+    else if (this.type.equals(MonstreType.Guerrier)){
       this.physAtk *= 1.5;
-    if (this.type.equals(MonstreType.Kim_Jung_Un))
-      this.def *= 1.5;
+      this.hp *= 0.8;
+      this.def *= 0.6;
+    }
+    if (this.type.equals(MonstreType.Kim_Jung_Un)){
+      this.def *= 3;
+      this.hp *= 1.1;
+      this.speed *= 0.5;
+      this.physAtk *= 0.5;
+    }
     else if (this.type.equals(MonstreType.MiniBoss)) {
       this.mana *= 1.5;
-      this.physAtk *= 1.5;
+      this.physAtk *= 1.2;
       this.def *= 1.5;
+      this.hp *= 1.3;
       this.danger *= 1.5;
-    } else {
-      this.hp = 200;
-      this.physAtk = 30;
-      this.mana = 100;
-      this.speed = 100;
-      this.def = 25;
-    }
+      this.speed *= 0.8;
+    } 
   }
 
   public Monstre(String name) { // monstre random
-    super(name, 100, (random.nextInt(7) + 15), 100, (random.nextInt(10) + 5), (random.nextInt(30) + 20));
+    super(name, 100, (random.nextInt(5) + 12), 100, (random.nextInt(10) + 10), (random.nextInt(15) + 50));
     this.danger = random.nextInt(70); // si le danger du monstre est + grand que le stealth du Livreur alors il voit
     // le Livreur
     this.type = MonstreType.random();
-    if (this.type.equals(MonstreType.Magicien))
+    if (this.type.equals(MonstreType.Magicien)){
       this.mana *= 1.5;
-    if (this.type.equals(MonstreType.Guerrier))
-      this.physAtk *= 1.3;
-    if (this.type.equals(MonstreType.Kim_Jung_Un))
-      this.def *= 1.3;
-    if (this.type.equals(MonstreType.MiniBoss)) {
-      this.mana *= 1.5;
-      this.physAtk *= 1.3;
-      this.def *= 1.3;
-      this.danger *= 1.7;
+      this.hp *= 0.6;
+      this.speed *= 1.3;
     }
+    else if (this.type.equals(MonstreType.Guerrier)){
+      this.physAtk *= 1.5;
+      this.hp *= 0.8;
+      this.def *= 0.6;
+    }
+    if (this.type.equals(MonstreType.Kim_Jung_Un)){
+      this.def *= 3;
+      this.hp *= 1.1;
+      this.speed *= 0.5;
+      this.physAtk *= 0.5;
+    }
+    else if (this.type.equals(MonstreType.MiniBoss)) {
+      this.mana *= 1.5;
+      this.physAtk *= 1.2;
+      this.def *= 1.5;
+      this.hp *= 1.3;
+      this.danger *= 1.5;
+      this.speed *=0.8;
+    } 
   }
 
   public void dire(String replique) {

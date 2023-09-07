@@ -7,28 +7,28 @@ import java.util.Random;
 public enum Item {
     //Equipements
     BATON("Baton", ItemType.ARME, "atk", 5),
-    MATRAQUE("Matraque", ItemType.ARME, "atk", 20),
-    PISTOLET("Pistolet", ItemType.ARME, "atk", 35),
-    OREILLERS("Tenue en oreillers", ItemType.ARMURE, "def", 5),
-    GILET("Gilet", ItemType.ARMURE, "def", 15),
-    SUIT("Tenue oficielle de livreur", ItemType.ARMURE, "def", 25),
-    CHAUSSETTES("Chaussettes", ItemType.ACCESSOIRE, "speed", 20),
-    SCOOTER("Scooter", ItemType.ACCESSOIRE, "speed", 45),
-    LUNETTES("Lunettes de soleil", ItemType.ACCESSOIRE, "stealth", 15),
+    MATRAQUE("Matraque", ItemType.ARME, "atk", 8),
+    PISTOLET("Pistolet", ItemType.ARME, "atk", 12),
+    OREILLERS("Tenue en oreillers", ItemType.ARMURE, "def", 6),
+    GILET("Gilet", ItemType.ARMURE, "def", 10),
+    SUIT("Tenue oficielle de livreur", ItemType.ARMURE, "def", 15),
+    CHAUSSETTES("Chaussettes", ItemType.ACCESSOIRE, "speed", 7),
+    SCOOTER("Scooter", ItemType.ACCESSOIRE, "speed", 15),
+    LUNETTES("Lunettes de soleil", ItemType.ACCESSOIRE, "stealth", 18),
     CARTON("Carton", ItemType.ACCESSOIRE, "stealth", 35),
     //Consommables
     CHAMPIGNON("Champignon", "hp", 30),
-    POMME("Pomme", "mana", 20),
+    POMME("Pomme", "mana", 30),
     PIZZA("Pizza", "hp", 75),
     MOUNTAINDEW("Mountain Dew", "mana", 75),
-    STEROIDES("Stéroïdes", "atk", 10),
+    STEROIDES("Stéroïdes", "atk", 15),
     TACOS("Tacos","def",15),
     KEBAB("Kebab","atk",20),
     BURGER("Burger","mana",30),
     RIZ("Un seul grain de riz","hp",1),
-    SUSHI("Sushi","stealth",20),
-    CAFE("Café","speed",25),
-    COMMANDE("Commande","hp",25);
+    SUSHI("Sushi","stealth",2000),
+    CAFE("Café","speed",75),
+    COMMANDE("Commande","hp",35);
 
     private String nom;
     private boolean cons;

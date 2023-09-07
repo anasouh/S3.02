@@ -17,6 +17,7 @@ public class Jeu {
     private static List<Salle> lstSalle = new ArrayList<>();
     private static int nbSalle;
     private static Scanner sc = new Scanner(System.in);
+    private static Random rng = new Random();
 
      public static void setListeObjet(List<Item> listeObjet) {
         Jeu.listeObjet = listeObjet;
@@ -198,7 +199,27 @@ public class Jeu {
         if (livreur.getHp() > 0) {
             livreur.setDef(ancienneDef); livreur.setPhysAtk(ancienneAtq);
             livreur.setSpeed(ancienneSpeed); livreur.setStealth(ancienneStealth);
-            System.out.println("Vous avez réussi a vaincre le monstre");
+            Jeu.sleep(1);
+            livreur.dire("Vous avez réussi a vaincre le monstre");
+            Jeu.sleep(0.5);
+            int rdm = Jeu.rng.nextInt(101);
+            if(rdm<31){
+                livreur.dire("Oh ? le monstre a laissé un equipement derriere lui");
+                Jeu.sleep(1);
+                Item equip = Item.randomEquip();
+                System.out.println(Color.GREEN+"Vous obtenez "+equip+Color.RESET);
+                livreur.addItem(equip);
+            }
+            if(rdm<81 && rdm>30){
+                livreur.dire("Oh ? le monstre a laissé un objet derriere lui");
+                Jeu.sleep(1);
+                Item cons = Item.randomCons();
+                System.out.println(Color.GREEN+"Vous obtenez "+cons+Color.RESET);
+                livreur.addItem(cons);
+            }
+            Jeu.sleep(0.6);
+            System.out.println(Color.RED+"Vous recuperez un peu de vie"+Color.RESET);
+            livreur.setHp(livreur.getHp()+5);
             return true;
         }
         System.out.println("Oh non le monstre vous a vaincu");
@@ -209,7 +230,7 @@ public class Jeu {
     public static List<Salle> genererSalles()
     {
         List<Salle> res = new ArrayList<>();
-        int rnd = new Random().nextInt(10)+10;
+        int rnd = new Random().nextInt(1)+20;
         nbSalle = rnd;
         for (int i = 0; i<rnd; i++)
         {
@@ -219,6 +240,7 @@ public class Jeu {
     }
 
     public static void jouerTour(Livreur l) {
+        Jeu.sleep(1);
         clear();
         if (!lstSalle.isEmpty()){
             Salle current = lstSalle.get(0);

@@ -1,10 +1,10 @@
 package main;
 
 public enum Societe{
-    UberEats(1.4, 1.2, 0.5, 0.6, 1), //Guerrier
-    Deliveroo(0.8, 0.9, 1.5, 1.1, 1.2),//Magicien
-    KingDelivery(1.2, 0.65, 1, 1.5, 1.6),//Voleur
-    Indépendant(1, 1, 1, 1, 1); //Vierge
+    UberEats(1.6, 1.2, 0.5, 0.6, 1), //Guerrier
+    Deliveroo(1.3, 0.9, 1.5, 1.1, 1.2),//Magicien
+    KingDelivery(2, 0.60, 1, 3, 1.6),//Voleur
+    Indépendant(1.2, 1.2, 1.2, 1.2, 1.3); //Vierge
 
     private double atkMult;
     private double defMult;

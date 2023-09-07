@@ -124,6 +124,7 @@ public abstract class Personnage implements Interactable<Personnage>, Serializab
     public boolean lancerSort(Personnage p) {
         // Attaque magique
         if (mana >= MANA_MAGIC) {
+            
             int degats = (int)(this.physAtk * 1.2);
             System.out.println(p.getName() + " perd " + degats + "HP!");
             p.setHp(p.hp - degats);

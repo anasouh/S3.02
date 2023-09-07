@@ -9,33 +9,7 @@ import java.util.function.Function;
 public class Salle {
     // Ajouter des salles si besoin de plus de 24 
     public final static double PROBA_EVENT = 0.75;
-    private final static String NAMES_LIST = """
-        Chemin énigmatique,
-        Passage obscure,
-        Passage du croisement sourd,
-        Coin mystérieux,
-        Grotte silencieuse,
-        Allée invisible,
-        Caverne abandonnée,
-        Galerie cachée,
-        Antre inexplorée,
-        Passage mystique,
-        Grotte ombragée,
-        Clairière sereine,
-        Abri de nuit,
-        Bosquet mystérieux,
-        Ruine enfouie,
-        Antre sauvage,
-        Caverne oubliée,
-        Marécage profond,
-        Sentier tortueux,
-        Terrier sombre,
-        Source claire,
-        Passage caché,
-        Arche antique,
-        Banc de brume,
-        Étang marécageux
-    """;
+    private final static String NAMES_LIST = "Chemin énigmatique, Passage obscure, Passage du croisement sourd, Coin mystérieux, Grotte silencieuse, Allée invisible, Caverne abandonnée, Galerie cachée, Antre inexplorée, Passage mystique, Grotte ombragée, Clairière sereine, Abri de nuit, Bosquet mystérieux, Ruine enfouie, Antre sauvage, Caverne oubliée, Marécage profond, Sentier tortueux, Terrier sombre, Source claire, Passage caché, Arche antique, Banc de brume, Étang marécageux";
     private static ArrayList<String> NAMES = new ArrayList<>(Arrays.asList(NAMES_LIST.split(",")));
     
     private String name;
