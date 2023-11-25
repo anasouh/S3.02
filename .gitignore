@@ -24,7 +24,6 @@ out/
 data/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
